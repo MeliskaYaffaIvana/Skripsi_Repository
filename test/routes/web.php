@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\ContainerController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('Template',TemplateController::class);
+Route::resource('Container',ContainerController::class);
+Route::resource('Job',JobController::class);
+Route::resource('Login',LoginController::class);
+Route::resource('Home',HomeController::class);
