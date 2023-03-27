@@ -31,11 +31,18 @@
     <link href="{{ asset('assets') }}/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('assets') }}/css/custom.min.css" rel="stylesheet" type="text/css" />
-
-
+    <!-- data table-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css"/>
     <style>
+        .logo{
+            padding-right:15px;
+        }
         .btn1{
-            background-color:#546fab;
+            background-color:#546c9c;
             color:white;
             border: white 3px solid;
     border-radius: 5px;
@@ -52,10 +59,13 @@
             color:#546fab;
         }
         .btn3{
-            margin-left:250px;
             background-color:#ffad41;
             border: #ffad41 3px solid;
 
+        }
+        .footer{
+        height:3px;
+        padding-top:5px;
         }
         </style>
 </head>
@@ -71,21 +81,12 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box horizontal-logo">
-                            <a href="/home" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="22">
-                                </span>
-                                <span class="logo-lg">
-                                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="17">
-                                </span>
-                            </a>
-
                             <a href="/home" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="22">
+                                    <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="50">
+                                    <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="50">
                                 </span>
                             </a>
                         </div>
@@ -106,11 +107,6 @@
 
 
                     <div class="d-flex align-items-center">
-                    <div>
-                            <span class="logo-sm">
-                                <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="100">
-                            </span>
-                        </div>
                         <div class="dropdown d-md-none topbar-head-dropdown header-item">
                             <button type="button"
                                 class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none"
@@ -121,7 +117,7 @@
 
                         </div>
 
-                        <div class="ms-1 header-item d-none d-sm-flex">
+                        <!-- <div class="ms-1 header-item d-none d-sm-flex">
                             <button type="button"
                                 class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none"
                                 data-toggle="fullscreen">
@@ -134,14 +130,14 @@
                                 class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode shadow-none">
                                 <i class='bx bx-moon fs-22'></i>
                             </button>
-                        </div>
+                        </div> -->
 
                         <div class="dropdown ms-sm-3 header-item topbar-user">
                             <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle header-profile-user"
-                                        src="{{ asset('assets') }}/images/logo jti.png" alt="Header Avatar">
+                                        src="{{ asset('assets') }}/images/account.png" alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
                                         <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
                                           </span></span>
@@ -180,19 +176,19 @@
             <!-- Dark Logo-->
             <a href="/home" class="logo logo-dark">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="22">
+                    <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="17">
+                    <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="17">
                 </span>
             </a>
             <!-- Light Logo-->
             <a href="/home" class="logo logo-light">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="22">
+                    <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="50">
+                    <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="50">
                 </span>
             </a>
             <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -211,7 +207,7 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="/home" role="button" aria-expanded="false"
                             aria-controls="sidebarDashboards">
-                            <i class="mdi mdi-view-dashboard"></i> <span data-key="t-dashboards">Dashboards</span>
+                            <i class="mdi mdi-view-dashboard"></i> <span data-key="t-dashboards">Beranda</span>
                         </a>
 
                     </li> <!-- end Dashboard Menu -->
@@ -226,25 +222,25 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('Container.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
-                            <i class="mdi mdi-view-column"></i> <span data-key="t-apps">Container</span>
+                            <i class="mdi mdi-view-column"></i> <span data-key="t-apps">Kontainer</span>
                         </a>
                     </li>
                   
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarLayouts">
-                            <i class="mdi mdi-progress-upload"></i> <span data-key="t-layouts">Manage Job</span>
+                            <i class="mdi mdi-progress-upload"></i> <span data-key="t-layouts">Pekerjaan</span>
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarLayouts">
                             <ul class="nav nav-sm flex-column">
                                 
                                 <li class="nav-item">
                                     <a href="{{ route('Job.index') }}" class="nav-link"
-                                        data-key="t-horizontal">Template Job</a>
+                                        data-key="t-horizontal">Pekerjaan Template </a>
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" data-key="t-detached">Container Job</a>
+                                    <a href="#" class="nav-link" data-key="t-detached">Pekerjaan Container</a>
                                 </li>
                             </ul>
                         </div>
@@ -253,7 +249,7 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
-                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Documentation</span>
+                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Dokumentasi</span>
                         </a>
                     </li>
                    

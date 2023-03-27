@@ -6,7 +6,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Sign In | Velzon - Admin & Dashboard Template</title>
+    <title>Sign In</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -52,7 +52,7 @@
                                         <div class="position-relative h-100 d-flex flex-column">
                                             <div class="mb-4">
                                                 <a href="index-2.html" class="d-block">
-                                                    <img src="assets/images/logo-light.png" alt="" height="18">
+                                                    <img src="assets/images/logo polinema.png" alt="" height="100">
                                                 </a>
                                             </div>
                                             <div class="mt-auto">
@@ -60,7 +60,7 @@
                                                     <i class="ri-double-quotes-l display-4 text-success"></i>
                                                 </div>
 
-                                                <div id="qoutescarouselIndicators" class="carousel slide" data-bs-ride="carousel">
+                                                <!-- <div id="qoutescarouselIndicators" class="carousel slide" data-bs-ride="carousel">
                                                     <div class="carousel-indicators">
                                                         <button type="button" data-bs-target="#qoutescarouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                                         <button type="button" data-bs-target="#qoutescarouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -77,7 +77,7 @@
                                                             <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <!-- end carousel -->
                                             </div>
                                         </div>
@@ -89,7 +89,6 @@
                                     <div class="p-lg-5 p-4">
                                         <div>
                                             <h5 class="text-primary">Welcome Back !</h5>
-                                            <p class="text-muted">Sign in to continue to Velzon.</p>
                                         </div>
 
                                         <div class="mt-4">

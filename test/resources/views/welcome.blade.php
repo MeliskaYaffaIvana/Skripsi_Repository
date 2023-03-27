@@ -34,10 +34,32 @@
 
     <style>
       #page-topbar{
-        padding: 30px 15px;
+        margin-left:-20%;
+        padding: 5px 10px;
       }
+      .nav-link{
+        color:black;
+      }
+       .modal-title{
+            color:#546fab;
+        }
+        .btn2{
+            border: white 3px solid;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-top: 5px;
+        }
       .footer{
         left:0px;
+        height:3px;
+        padding-top:5px;
+        padding-left:33%;
+        text-align:center;
+      }
+      h3{
+			padding-right:50%;
+            font-family: sans-serif;
+        color:#244282;
       }
       </style>
 
@@ -51,28 +73,17 @@
     <div class="layout-width">
         <div class="navbar-header">
             <div class="d-flex">
-                <!-- LOGO -->
-                <div class="navbar-brand-box horizontal-logo">
                             <a href="/home" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="22">
+                                    <img src="{{ asset('assets') }}/images/logo polinema.png"" alt="" height="80">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('assets') }}/images/logo jti.png" alt="" height="22">
+                                    <img src="{{ asset('assets') }}/images/logo polinema.png" alt="" height="80">
                                 </span>
                             </a>
-                        </div>
-
-                <!-- App Search-->
-                <form class="app-search d-none d-md-block">
-                    <div class="position-relative">
-                        <input type="text" class="form-control" placeholder="Search..." autocomplete="off" id="search-options" value="">
-                        <span class="mdi mdi-magnify search-widget-icon"></span>
-                        <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none" id="search-close-options"></span>
-                    </div>
-                </form>
+               
             </div>
-
+            <h3> Sistem Repository Produk Tugas Akhir</h3>
             <div class="d-flex align-items-center">
 
                 <div class="dropdown d-md-none topbar-head-dropdown header-item">
@@ -90,7 +101,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="ms-1 header-item d-none d-sm-flex">
+                <!-- <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" data-toggle="fullscreen">
                         <i class='bx bx-fullscreen fs-22'></i>
                     </button>
@@ -100,14 +111,14 @@
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode shadow-none">
                         <i class='bx bx-moon fs-22'></i>
                     </button>
-                </div>
+                </div> -->
                                     <a href="{{ route('Home.index') }}" class="nav-link"
                                         data-key="t-horizontal">Home</a>
                                     <a href="{{ route('Login.index') }}" class="nav-link" data-key="t-detached">Login</a>
             </div>
         </div>
     </div>
-</header><br><br><br>
+</header>
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -118,71 +129,83 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title mb-0">Product</h5>
+                                    
+                        <div class="col-sm">
+                            <div class="d-flex justify-content-sm-end">
+                                <div class="search-box ms-2">
+                                    <input type="text" class="form-control search" placeholder="Search...">
+                                    <i class="ri-search-line search-icon"></i>
+                                </div>
+                            </div>
+                        </div>
                                 </div>
                                 <div class="card-body">
                                     <table id="scroll-horizontal" class="table nowrap align-middle" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th scope="col" style="width: 10px;">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option">
-                                                    </div>
-                                                </th>
                                                 <th>No.</th>
-                                                <th>Title</th>
-                                                <th>Student</th>
-                                                <th>Year</th>
-                                                <th>Action</th>
+                                                <th>Judul</th>
+                                                <th>Mahasiswa</th>
+                                                <th>Tahun</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                                    </div>
-                                                </th>
                                                 <td>01</td>
                                                 <td>Docker</td>
                                                 <td>Joseph Parker</td>
                                                 <td>03 Oct, 2021</td>
-                                                <td>Detail</td>
+                                                <td>
+                                                <div class="d-flex gap-2">
+                                            <div class="edit">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
+                                            </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                                    </div>
-                                                </th>
                                                 <td>02</td>
                                                 <td>IOT</td>
                                                 <td>Josephine</td>
                                                 <td>03 Oct, 2021</td>
-                                                <td>Detail</td>
+                                                <td>
+                                                <div class="d-flex gap-2">
+                                            <div class="edit">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
+                                            </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                                    </div>
-                                                </th>
                                                 <td>03</td>
                                                 <td>POS</td>
                                                 <td>Joseline</td>
                                                 <td>03 Oct, 2021</td>
-                                                <td>Detail</td>
+                                                <td>
+                                                <div class="d-flex gap-2">
+                                            <div class="edit">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
+                                            </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input fs-15" type="checkbox" name="checkAll" value="option1">
-                                                    </div>
-                                                </th>
                                                 <td>04</td>
                                                 <td>DSS</td>
                                                 <td>Joshua</td>
                                                 <td>03 Oct, 2021</td>
-                                                <td>Detail</td>
+                                                <td>
+                                                <div class="d-flex gap-2">
+                                            <div class="edit">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
+                                            </div>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -211,6 +234,47 @@
 
     </div>
     <!-- END layout-wrapper -->
+     <!-- Detail Modal -->
+<div class="modal fade" id="showDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    id="close-modal"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="#" enctype="multipart/form-data"
+                    id="myForm">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="Judul">Judul</label>
+                        <input type="text" name="desc" class="form-control" value="Docker" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc">Deskripsi</label>
+                        <input type="text" name="desc" class="form-control" value="Sistem repository produk tugas akhir yang dapat menyimpan dan mendeploy hasil dari tugas akhir mahasiswa" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Mhs">Mahasiswa</label>
+                        <input type="text" name="description" class="form-control" value="Joseph Parker" readonly >
+                    </div>
+                    <div class="mb-3">
+                        <label for="Tahun">Tahun</label>
+                        <input type="text" name="desc" class="form-control" Value="03 Oct, 2021" readonly>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <div class="hstack gap-2 justify-content-end">
+                            <button type="button" class="btn2 btn-light" data-bs-dismiss="modal">Close</button>
+                           
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
 

@@ -55,9 +55,9 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
-                                                <button class="btn btn-sm btn-success edit-item-btn"
+                                                <button class="btn btn-sm btn-info edit-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Detail</button>
+                                                    data-bs-target="#showEditModal"><i class="bx bx-detail"></i></button>
                                             </div>
                                             <div class="remove">
 
