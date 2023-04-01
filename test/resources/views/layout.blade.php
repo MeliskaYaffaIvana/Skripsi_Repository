@@ -81,7 +81,7 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box horizontal-logo">
-                            <a href="/home" class="logo logo-light">
+                            <a href="#" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="22">
                                 </span>
@@ -147,16 +147,16 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
                                 <h6 class="dropdown-header">Welcome !</h6>
-                                <a class="dropdown-item" href="#"><i
+                                <a class="dropdown-item" href="{{ route('profile.index') }}"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Profile</span></a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="mdi mdi-logout text-muted fs-16 align-middle me-1" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"></i>
                                     <span class="align-middle">Logout</span>
 
 
-                                    <form id="logout-form" action="#" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                             </div>
@@ -174,7 +174,7 @@
         <!-- LOGO -->
         <div class="navbar-brand-box">
             <!-- Dark Logo-->
-            <a href="/home" class="logo logo-dark">
+            <a href="#" class="logo logo-dark">
                 <span class="logo-sm">
                     <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="22">
                 </span>
@@ -183,7 +183,7 @@
                 </span>
             </a>
             <!-- Light Logo-->
-            <a href="/home" class="logo logo-light">
+            <a href="#" class="logo logo-light">
                 <span class="logo-sm">
                     <img src="{{ asset('assets') }}/images/logo-jti.png" alt="" height="22">
                 </span>
@@ -205,7 +205,7 @@
                 <ul class="navbar-nav" id="navbar-nav">
 
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="/home" role="button" aria-expanded="false"
+                        <a class="nav-link menu-link" href="/Home" role="button" aria-expanded="false"
                             aria-controls="sidebarDashboards">
                             <i class="mdi mdi-view-dashboard"></i> <span data-key="t-dashboards">Beranda</span>
                         </a>
@@ -240,7 +240,7 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" data-key="t-detached">Pekerjaan Container</a>
+                                    <a href="{{ route('Jc.index') }}" class="nav-link" data-key="t-detached">Pekerjaan Kontainer</a>
                                 </li>
                             </ul>
                         </div>
@@ -249,7 +249,7 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
-                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Dokumentasi</span>
+                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Panduan</span>
                         </a>
                     </li>
                    

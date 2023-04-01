@@ -56,9 +56,9 @@
                                                 </a>
                                             </div>
                                             <div class="mt-auto">
-                                                <div class="mb-3">
+                                                <!-- <div class="mb-3">
                                                     <i class="ri-double-quotes-l display-4 text-success"></i>
-                                                </div>
+                                                </div> -->
 
                                                 <!-- <div id="qoutescarouselIndicators" class="carousel slide" data-bs-ride="carousel">
                                                     <div class="carousel-indicators">

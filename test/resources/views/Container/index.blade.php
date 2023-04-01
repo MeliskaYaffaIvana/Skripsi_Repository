@@ -30,6 +30,7 @@
             <tr>
                 <th>Nama</th>
                 <th>NIM Mahasiswa</th>
+                <th>Nama Kontainer</th>
                 <th>Status Kontainer</th>
                 <th>Aksi</th>
                 
@@ -39,145 +40,131 @@
             <tr>
                 <td>Tiger Nixon</td>
                 <td>1</td>
+                <td>Kontainer 1</td>
                 <td>Enable</td>
                 <td>
-                                        <div class="d-flex gap-2">
-                                            
-                                        <div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                        <div class="btn-group">
+                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
+                            <div class="dropdown-menu dropdownmenu-secondary">
+                                        <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
-                                            </div>
-                                            <div class="edit">
-                                                <button class="btn btn-sm btn-warning edit-item-btn"
+                                                    data-bs-target="#showDetailModal">Detail</a>
+                                                <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal"><i class="las la-edit"></i></button>
-                                            </div>
-                                            <div class="remove">
-
+                                                    data-bs-target="#showEditModal">Edit</a>
                                                 <form action="#"
                                                     method="POST">
-                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
+                                                    <a type="submit" class="dropdown-item"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                        data-bs-target="#deleteRecordModal">Hapus</a>
                                                 </form>
-                                            </div>
+                                        </div>
+                                        </div>
                                         </div>
                                     </td>
             </tr>
             <tr>
                 <td>Garrett Winters</td>
                 <td>2</td>
+                <td>Kontainer 2</td>
                 <td>disable</td>
                 <td>
-                                        <div class="d-flex gap-2">
-                                            
-                                        <div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
+                    <div class="btn-group">
+                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
+                            <div class="dropdown-menu dropdownmenu-secondary">
+                                         <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
-                                            </div>
-                                            <div class="edit">
-                                                <button class="btn btn-sm btn-warning edit-item-btn"
+                                                    data-bs-target="#showDetailModal">Detail</a>
+                                                <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal"><i class="las la-edit"></i></button>
-                                            </div>
-                                            <div class="remove">
-
+                                                    data-bs-target="#showEditModal">Edit</a>
                                                 <form action="#"
                                                     method="POST">
-                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
+                                                    <a type="submit" class="dropdown-item"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                        data-bs-target="#deleteRecordModal">Hapus</a>
                                                 </form>
-                                            </div>
+                                        </div>
+                                        </div>
                                         </div>
                                     </td>
             </tr>
             <tr>
                 <td>Ashton Cox</td>
                 <td>3</td>
+                <td>Kontainer 3</td>
                 <td>disable</td>
                 <td>
-                                        <div class="d-flex gap-2">
-                                            
-                                        <div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
+                             <div class="btn-group">
+                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
+                            <div class="dropdown-menu dropdownmenu-secondary">
+                                         <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
-                                            </div>
-                                            <div class="edit">
-                                                <button class="btn btn-sm btn-warning edit-item-btn"
+                                                    data-bs-target="#showDetailModal">Detail</a>
+                                                <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal"><i class="las la-edit"></i></button>
-                                            </div>
-                                            <div class="remove">
-
+                                                    data-bs-target="#showEditModal">Edit</a>
                                                 <form action="#"
                                                     method="POST">
-                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
+                                                    <a type="submit" class="dropdown-item"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                        data-bs-target="#deleteRecordModal">Hapus</a>
                                                 </form>
                                             </div>
+                                        </div>
+                                        </div>
                                         </div>
                                     </td>
             </tr>
             <tr>
                 <td>Cedric Kelly</td>
                 <td>4</td>
+                <td>Kontainer 4</td>
                 <td>enable</td>
                 <td>
-                                        <div class="d-flex gap-2">
-                                            
-                                        <div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                       <div class="btn-group">
+                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
+                            <div class="dropdown-menu dropdownmenu-secondary">
+                                         <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
-                                            </div>
-                                            <div class="edit">
-                                                <button class="btn btn-sm btn-warning edit-item-btn"
+                                                    data-bs-target="#showDetailModal">Detail</a>
+                                                <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal"><i class="las la-edit"></i></button>
-                                            </div>
-                                            <div class="remove">
-
+                                                    data-bs-target="#showEditModal">Edit</a>
                                                 <form action="#"
                                                     method="POST">
-                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
+                                                    <a type="submit" class="dropdown-item"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                        data-bs-target="#deleteRecordModal">Hapus</a>
                                                 </form>
-                                            </div>
+                                        </div>
+                                        </div>
                                         </div>
                                     </td>
             </tr>
             <tr>
                 <td>Airi Satou</td>
                 <td>5</td>
+                <td>Kontainer 5</td>
                 <td>enable</td>
                 <td>
-                                        <div class="d-flex gap-2">
-                                            
-                                        <div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                      <div class="btn-group">
+                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
+                            <div class="dropdown-menu dropdownmenu-secondary">
+                                                <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
-                                            </div>
-                                            <div class="edit">
-                                                <button class="btn btn-sm btn-warning edit-item-btn"
+                                                    data-bs-target="#showDetailModal">Detail</a>
+                                                <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal"><i class="las la-edit"></i></button>
-                                            </div>
-                                            <div class="remove">
-
+                                                    data-bs-target="#showEditModal">Edit</a>
                                                 <form action="#"
                                                     method="POST">
-                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
+                                                    <a type="submit" class="dropdown-item"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                        data-bs-target="#deleteRecordModal">Hapus</a>
                                                 </form>
-                                            </div>
+                                        </div>
+                                        </div>
                                         </div>
                                     </td>
             </tr>
@@ -200,7 +187,7 @@
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
-                        <label for="Description">Judul</label>
+                                                     <label for="Description">Judul</label>
                         <input type="text" name="desc" class="form-control" id="#"required>
                     </div>
                     <div class="mb-3">

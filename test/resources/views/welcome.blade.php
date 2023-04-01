@@ -32,6 +32,13 @@
     <!-- custom Css-->
     <link href="{{ asset('assets') }}/css/custom.min.css" rel="stylesheet" type="text/css" />
 
+  <!-- data table-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css"/>
+
     <style>
       #page-topbar{
         margin-left:-20%;
@@ -114,7 +121,7 @@
                 </div> -->
                                     <a href="{{ route('Home.index') }}" class="nav-link"
                                         data-key="t-horizontal">Home</a>
-                                    <a href="{{ route('Login.index') }}" class="nav-link" data-key="t-detached">Login</a>
+                                    <a href="{{ url('login') }}" class="nav-link" data-key="t-detached">Login</a>
             </div>
         </div>
     </div>
@@ -128,87 +135,221 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title mb-0">Product</h5>
-                                    
-                        <div class="col-sm">
-                            <div class="d-flex justify-content-sm-end">
-                                <div class="search-box ms-2">
-                                    <input type="text" class="form-control search" placeholder="Search...">
-                                    <i class="ri-search-line search-icon"></i>
-                                </div>
-                            </div>
-                        </div>
+                                    <h5 class="card-title mb-0">Daftar Produk</h5>
                                 </div>
                                 <div class="card-body">
-                                    <table id="scroll-horizontal" class="table nowrap align-middle" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Judul</th>
-                                                <th>Mahasiswa</th>
-                                                <th>Tahun</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>01</td>
-                                                <td>Docker</td>
-                                                <td>Joseph Parker</td>
-                                                <td>03 Oct, 2021</td>
-                                                <td>
-                                                <div class="d-flex gap-2">
-                                            <div class="edit">
+                                    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Judul</th>
+                <th>Mahasiswa</th>
+                <th>Tahun</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td><div class="Detail">
                                                 <button class="btn btn-sm btn-info edit-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
-                                            </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>02</td>
-                                                <td>IOT</td>
-                                                <td>Josephine</td>
-                                                <td>03 Oct, 2021</td>
-                                                <td>
-                                                <div class="d-flex gap-2">
-                                            <div class="edit">
+                                                    data-bs-target="#showDetailModal">Detail</button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td><div class="Detail">
                                                 <button class="btn btn-sm btn-info edit-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
-                                            </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>03</td>
-                                                <td>POS</td>
-                                                <td>Joseline</td>
-                                                <td>03 Oct, 2021</td>
-                                                <td>
-                                                <div class="d-flex gap-2">
-                                            <div class="edit">
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Junior Technical Author</td>
+                <td>San Francisco</td>
+                <td>66</td>
+                <td><div class="Detail">
                                                 <button class="btn btn-sm btn-info edit-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
-                                            </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>04</td>
-                                                <td>DSS</td>
-                                                <td>Joshua</td>
-                                                <td>03 Oct, 2021</td>
-                                                <td>
-                                                <div class="d-flex gap-2">
-                                            <div class="edit">
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Senior Javascript Developer</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td><div class="Detail">
                                                 <button class="btn btn-sm btn-info edit-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal"><i class="bx bx-detail"></i></button>
-                                            </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>33</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Integration Specialist</td>
+                <td>New York</td>
+                <td>61</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Sales Assistant</td>
+                <td>San Francisco</td>
+                <td>59</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Integration Specialist</td>
+                <td>Tokyo</td>
+                <td>55</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Javascript Developer</td>
+                <td>San Francisco</td>
+                <td>39</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Software Engineer</td>
+                <td>Edinburgh</td>
+                <td>23</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Office Manager</td>
+                <td>London</td>
+                <td>30</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Support Lead</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Regional Director</td>
+                <td>San Francisco</td>
+                <td>36</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Senior Marketing Designer</td>
+                <td>London</td>
+                <td>43</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Regional Director</td>
+                <td>London</td>
+                <td>19</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Marketing Designer</td>
+                <td>London</td>
+                <td>66</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Chief Financial Officer (CFO)</td>
+                <td>New York</td>
+                <td>64</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>Systems Administrator</td>
+                <td>New York</td>
+                <td>59</td>
+                <td><div class="Detail">
+                                                <button class="btn btn-sm btn-info edit-item-btn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showDetailModal">Detail</i></button>
+                                            </div></td>
+            </tr>
+           
+        </tbody>
+    </table>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +407,7 @@
                     
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
-                            <button type="button" class="btn2 btn-light" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn2 btn-light" data-bs-dismiss="modal">Tutup</button>
                            
                         </div>
                     </div>
