@@ -64,7 +64,7 @@
         text-align:center;
       }
       h3{
-			padding-right:50%;
+			padding-right:55%;
             font-family: sans-serif;
         color:#244282;
       }
@@ -119,8 +119,8 @@
                         <i class='bx bx-moon fs-22'></i>
                     </button>
                 </div> -->
-                                    <a href="{{ route('Home.index') }}" class="nav-link"
-                                        data-key="t-horizontal">Home</a>
+                                    <!-- <a href="{{ route('Home.index') }}" class="nav-link"
+                                        data-key="t-horizontal">Home</a> -->
                                     <a href="{{ url('login') }}" class="nav-link" data-key="t-detached">Login</a>
             </div>
         </div>

@@ -27,7 +27,6 @@
                     </div><table id="example" class="table " style="width:100%">
         <thead>
             <tr>
-                <th>No</th>
                 <th>Nama Template</th>
                 <th>Kategori</th>
                 <th>Versi</th>
@@ -36,103 +35,56 @@
             </tr>
         </thead>
         <tbody>
+                @foreach($template as $template)
             <tr>
-                <td>1</td>
-                <td>PHP</td>
-                <td>Bahasa Pemrograman</td>
-                <td>10</td>
-                 <th>Enable</th>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">{{ $template->tipe_template }}</div>
+                    </div>
+                </td>
+                <td>
+                    @foreach($kategori as $kat)
+                    @if($kat->id_kat ==$template->id_kat)
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">{{ $kat->nama_kat}}</div>
+                    </div>
+                    @endif
+                    @endforeach
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">{{ $template->versi }}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">{{ $template->status_template }}</div>
+                    </div>
+                </td>
                 <td>
                                         <div class="btn-group">
                             <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
                             <div class="dropdown-menu dropdownmenu-secondary">
+                                <div class="edit">
                                                 <a class="dropdown-item"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
+                                                    data-bs-target="#showEditModal{{$template->id_template}}">Edit</a>
+</div>
+                                                    <div class="remove">
+                                                        <form action="{{ route('Template.destroy', $template->id_template) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="dropdown-item"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
+                                                        data-bs-target="#deleteRecordModal">Hapus</button>
                                                 </form>
                                             </div>
-                                        </div>
-                                    </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>MySQL</td>
-                <td>Database</td>
-                <td>8</td>
-                 <th>Disable</th>
-                <td>
-                                  <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
                                             </div>
                                         </div>
-                                    </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>PostgreSQL</td>
-                <td>Database</td>
-                <td>12</td>
-                 <th>Disable</th>
-                <td>
-                    <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Python</td>
-                <td>Bahasa Pemrograman</td>
-                <td>22</td>
-                 <th>Enable</th>
-                <td>
-                    <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </td>
-            </tr>
-           
-        </tbody>
-    </table>
+                                    </td>   
+</tr>      
      <!-- edit Modal -->
-                                <div class="modal fade" id="showEditModal" tabindex=" -1"
+                                <div class="modal fade" id="showEditModal{{ $template->id_template }}" tabindex=" -1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -143,24 +95,32 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form method="post"
-                                                    action="#"
+                                                    action="{{ route('template.update', $template->id_template) }}"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
-                        <label for="nama">Nama Template</label>
-                        <input type="text" name="desc" class="form-control" id="#"required>
+                        <label for="tipe_template">Nama Template</label>
+                        <input type="text" name="tipe_template" class="form-control" id="tipe_template" value="{{ $template->tipe_template }}"required>
                     </div>
                     <div class="mb-3">
-                        <label for="kategori">Kategori</label>
-                        <select name="bulan" class="form-control" id="kategori">
-                                                <option>Bahasa Pemrograman</option>
-                                                <option>Database</option>
+                        <label for="id_kat">Kategori</label>
+                        <select name="id_kat" class="form-control" id="id_kat">
+                            @foreach($kategori as $kat)
+                            <option value="{{$kat->id_kat}}">{{"$kat->nama_kat"}}
+                                @endforeach
                                             </select>
                     </div>
                     <div class="mb-3">
                         <label for="versi">Versi</label>
-                        <input type="text" name="desc" class="form-control" id="#"required>
-                    </div>                                                                                                
+                        <input type="text" name="versi" class="form-control" id="versi" value="{{ $template->versi }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status_template">Status</label>
+                        <select name="status_template" class="form-control" id="status_template" value="{{ $template->status }}">
+                            <option>Enable</option>
+                            <option>Disable</option>
+                        </select>
+                    </div>                                                             
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
                                                             <button type="button" class="btn2 btn-light"
@@ -173,6 +133,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
+                                    </tbody>
+    </table>
                 </div>
             </div><!-- end card -->
         </div>
@@ -191,7 +154,7 @@
 });
 </script>
  <!-- add Modal -->
- <div class="modal fade" id="#showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
@@ -200,23 +163,31 @@
                     id="close-modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="#" enctype="multipart/form-data"
+                <form method="post" action="{{route('Template.store')}}" enctype="multipart/form-data"
                     id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama">Nama Template</label>
-                        <input type="text" name="desc" class="form-control" id="#"required>
+                        <label for="tipe_template">Nama Template</label>
+                        <input type="text" name="tipe_template" class="form-control" id="tipe_template"required>
                     </div>
                     <div class="mb-3">
-                        <label for="kategori">Kategori</label>
-                        <select name="bulan" class="form-control" id="kategori">
-                                                <option>Bahasa Pemrograman</option>
-                                                <option>Database</option>
+                        <label for="id_kat">Kategori</label>
+                        <select name="id_kat" class="form-control" id="id_kat">
+                            @foreach($kategori as $kat)
+                            <option value="{{$kat->id_kat}}">{{"$kat->nama_kat"}}
+                                @endforeach
                                             </select>
                     </div>
                     <div class="mb-3">
                         <label for="versi">Versi</label>
-                        <input type="text" name="desc" class="form-control" id="#"required>
+                        <input type="text" name="versi" class="form-control" id="versi"required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status_template">Status</label>
+                        <select name="status_template" class="form-control" id="status_template">
+                            <option>Enable</option>
+                            <option>Disable</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
@@ -229,3 +200,4 @@
         </div>
     </div>
   @endsection
+  

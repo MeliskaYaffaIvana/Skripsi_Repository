@@ -25,6 +25,8 @@ Route::get('/', function () {
 });
 Route::middleware(['auth'])->group(function () {
 Route::resource('Template',TemplateController::class);
+Route::post('/Template/update/{id}', [TemplateController::class, 'update'])->name('template.update');
+Route::delete('/Template/destroy/{id}',[TemplateController::class, 'destroy'])->name('template.destroy');
 Route::resource('Container',ContainerController::class);
 Route::resource('Job',JobController::class);
 Route::resource('Jc',JobContainerController::class);

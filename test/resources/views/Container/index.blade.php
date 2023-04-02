@@ -171,8 +171,8 @@
         </tbody>
     </table>
 
-                                <!-- edit Modal -->
-                                <div class="modal fade" id="showEditModal" tabindex=" -1"
+                                <!-- edit Modal
+                                <div class="modal fade" id="showEditModal1" tabindex=" -1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -218,7 +218,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>  -->
                             </tbody>
                         </table>
                     </div>
@@ -234,7 +234,7 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-    <!-- Detail Modal -->
+    <!-- Detail Modal
 <div class="modal fade" id="showDetailModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -273,9 +273,9 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
   <!-- add Modal -->
-<div class="modal fade" id="showModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
