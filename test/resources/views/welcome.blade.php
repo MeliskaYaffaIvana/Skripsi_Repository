@@ -151,9 +151,9 @@
         <tbody>
             <tr>
                 <td>1</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
+                <td>Sistem Informasi Penjualan Batik Berbasis Website Studi Kasus Batik Gatot Tuban</td>
+                <td>Siti Aminah dan Ina Destia Yuliana</td>
+                <td>2021</td>
                 <td><div class="Detail">
                                                 <button class="btn btn-sm btn-info edit-item-btn"
                                                     data-bs-toggle="modal"
@@ -162,9 +162,9 @@
             </tr>
             <tr>
                 <td>2</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
+                <td>Pembuatan Sistem Pelaporan Jurnal Mengajar Guru Sekolah Dasar Berbasis Website Pada SD Negeri Butun 02 Di Kabupaten Blitar</td>
+                <td>Ayu Ariesta Wandari</td>
+                <td>2022</td>
                 <td><div class="Detail">
                                                 <button class="btn btn-sm btn-info edit-item-btn"
                                                     data-bs-toggle="modal"
@@ -173,9 +173,9 @@
             </tr>
             <tr>
                 <td>3</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
+                <td>Perancangan Sistem Inventory Dengan Peramalan Stok Barang Menggunakan Metode Double Exponential Smoothing(Studi Kasus: Toko SInar Baja</td>
+                <td>Gilang Wahyu Hidayat</td>
+                <td>2022</td>
                 <td><div class="Detail">
                                                 <button class="btn btn-sm btn-info edit-item-btn"
                                                     data-bs-toggle="modal"
@@ -184,170 +184,15 @@
             </tr>
             <tr>
                 <td>4</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>22</td>
+                <td>Pengembangan Media Pembelajaran IQRA 1 Menggunakan Metode SAVI</td>
+                <td>Fahmi Firmansyah </td>
+                <td>2022</td>
                 <td><div class="Detail">
                                                 <button class="btn btn-sm btn-info edit-item-btn"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#showDetailModal">Detail</i></button>
                                             </div></td>
             </tr>
-            <tr>
-                <td>5</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Sales Assistant</td>
-                <td>San Francisco</td>
-                <td>59</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Integration Specialist</td>
-                <td>Tokyo</td>
-                <td>55</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Software Engineer</td>
-                <td>Edinburgh</td>
-                <td>23</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>Office Manager</td>
-                <td>London</td>
-                <td>30</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td>Support Lead</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>13</td>
-                <td>Regional Director</td>
-                <td>San Francisco</td>
-                <td>36</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>14</td>
-                <td>Senior Marketing Designer</td>
-                <td>London</td>
-                <td>43</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>15</td>
-                <td>Regional Director</td>
-                <td>London</td>
-                <td>19</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>16</td>
-                <td>Marketing Designer</td>
-                <td>London</td>
-                <td>66</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>17</td>
-                <td>Chief Financial Officer (CFO)</td>
-                <td>New York</td>
-                <td>64</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-            <tr>
-                <td>18</td>
-                <td>Systems Administrator</td>
-                <td>New York</td>
-                <td>59</td>
-                <td><div class="Detail">
-                                                <button class="btn btn-sm btn-info edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</i></button>
-                                            </div></td>
-            </tr>
-           
         </tbody>
     </table>
                                 </div>
@@ -390,19 +235,19 @@
                     @csrf
                     <div class="mb-3">
                         <label for="Judul">Judul</label>
-                        <input type="text" name="desc" class="form-control" value="Docker" readonly>
+                        <input type="text" name="desc" class="form-control" value="Sistem Informasi Penjualan Batik Berbasis Website Studi Kasus Batik Gatot Tuban" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="desc">Deskripsi</label>
-                        <input type="text" name="desc" class="form-control" value="Sistem repository produk tugas akhir yang dapat menyimpan dan mendeploy hasil dari tugas akhir mahasiswa" readonly>
+                        <textarea type="text" name="desc" class="form-control" readonly>Sistem Informasi Penjualan Batik Berbasis Website Studi Kasus Batik Gatot Tuban dibuat untuk dapat melakukan penjualan secara online. Dengan adanya sistem informasi ini dapat memmpermudah toko gatot batik untuk menyampaikan informasi oriduk dan transaksi pemesanan secara cepat dengan biaya yang rendah. Aplikasi ini dibangun dengan bahasa pemrograman PHP dan database MySQL</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="Mhs">Mahasiswa</label>
-                        <input type="text" name="description" class="form-control" value="Joseph Parker" readonly >
+                        <input type="text" name="description" class="form-control" value="Siti Aminah dan Ina Destia Yuliana" readonly >
                     </div>
                     <div class="mb-3">
                         <label for="Tahun">Tahun</label>
-                        <input type="text" name="desc" class="form-control" Value="03 Oct, 2021" readonly>
+                        <input type="text" name="desc" class="form-control" Value="2021" readonly>
                     </div>
                     
                     <div class="modal-footer">

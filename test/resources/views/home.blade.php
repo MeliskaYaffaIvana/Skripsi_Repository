@@ -29,122 +29,21 @@
         <thead>
             <tr>
                 <th>Nama</th>
-                <th>NIM Mahasiswa</th>
-                <th>Nama Kontainer</th>
-                <th>Status Kontainer</th>
+                <th>NIM </th>
+                <th>Judul</th>
+                <th>Deskripsi</th>
+                <th>Status</th>
                 <th>Aksi</th>
                 
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Tiger Nixon</td>
-                <td>1</td>
-                <td>Kontainer 1</td>
+                <td>Ayu Ariesta Wandari</td>
+                <td>1841720022</td>
+                <td>Pembuatan Sistem Pelaporan Jurnal Mengajar Guru Sekolah Dasar Berbasis Website Pada SD Negeri Butun 02 Di Kabupaten Blitar</td>
+                <td>Aplikasi berbasis websote yang dapat membantu dalam pembuatan jurnal, rekapan dan absensi guru menjadi lebih cepat dan efisien</td>
                 <td>Enable</td>
-                <td>
-                      <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                        <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</a>
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                        </div>
-                                        </div>
-                                        </div>
-                                    </td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>2</td>
-                <td>Kontainer 2</td>
-                <td>disable</td>
-                <td>
-                           <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                        <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</a>
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                        </div>
-                                        </div>
-                                        </div>
-                                    </td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>3</td>
-                <td>Kontainer 3</td>
-                <td>disable</td>
-                <td>
-                          <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                        <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</a>
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                        </div>
-                                        </div>
-                                        </div>
-                                    </td>
-            </tr>
-            <tr>
-                <td>Cedric Kelly</td>
-                <td>4</td>
-                <td>Kontainer 4</td>
-                <td>enable</td>
-                <td>
-                                      <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                        <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</a>
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                        </div>
-                                        </div>
-                                        </div>
-                                    </td>
-            <tr>
-                <td>Airi Satou</td>
-                <td>5</td>
-                <td>Kontainer 5</td>
-                <td>enable</td>
                 <td>
                       <div class="btn-group">
                             <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>

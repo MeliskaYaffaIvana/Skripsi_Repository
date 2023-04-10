@@ -19,34 +19,14 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama Container</th>
                 <th>Nama Mahasiswa</th>
-                <th>Status</th>
+                <th>Status Kontainer</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>1</td>
-                <td>Kontainer 1</td>
-                <td>Tiger Nixon</td>
-                <td>Selesai</td>
-            </tr>
-            <tr>
-               <td>2</td>
-                <td>Kontainer 2</td>
-                <td>Meliska</td>
-                <td>Proses</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Kontainer 3</td>
-                <td>Yaffa</td>
-                <td>Tertunda</td>
-            </tr>
-            <tr>
-               <td>4</td>
-                <td>Kontainer 4</td>
-                <td>Ivana</td>
+                <td>Ayu Ariesta Wandari</td>
                 <td>Selesai</td>
             </tr>
         </tbody>

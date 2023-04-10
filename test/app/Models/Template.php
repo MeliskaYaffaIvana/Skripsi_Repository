@@ -17,4 +17,7 @@ class Template extends Model
         'versi',
         'status_template',
     ];
+    public function container(){
+        return $this->hasMany('App\Models\Container');
+    }
 }

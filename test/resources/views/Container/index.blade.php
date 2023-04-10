@@ -28,20 +28,36 @@
                     <table id="example" class="table " style="width:100%">
         <thead>
             <tr>
+                <th>Judul</th>
                 <th>Nama</th>
-                <th>NIM Mahasiswa</th>
-                <th>Nama Kontainer</th>
-                <th>Status Kontainer</th>
+                <th>NIM </th>
+                <th>User</th>
                 <th>Aksi</th>
                 
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Tiger Nixon</td>
-                <td>1</td>
-                <td>Kontainer 1</td>
-                <td>Enable</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">Pembuatan Sistem Pelaporan Jurnal Mengajar Guru Sekolah Dasar Berbasis Website Pada SD Negeri Butun 02 Di Kabupaten Blitar</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">Ayu Ariesta Wandari</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">1841720022</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">1841720022</div>
+                    </div>
+                </td>
                 <td>
                                         <div class="btn-group">
                             <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
@@ -62,114 +78,6 @@
                                         </div>
                                         </div>
                                     </td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>2</td>
-                <td>Kontainer 2</td>
-                <td>disable</td>
-                <td>
-                    <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                         <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</a>
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                        </div>
-                                        </div>
-                                        </div>
-                                    </td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>3</td>
-                <td>Kontainer 3</td>
-                <td>disable</td>
-                <td>
-                             <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                         <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</a>
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                    </td>
-            </tr>
-            <tr>
-                <td>Cedric Kelly</td>
-                <td>4</td>
-                <td>Kontainer 4</td>
-                <td>enable</td>
-                <td>
-                                       <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                         <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</a>
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                        </div>
-                                        </div>
-                                        </div>
-                                    </td>
-            </tr>
-            <tr>
-                <td>Airi Satou</td>
-                <td>5</td>
-                <td>Kontainer 5</td>
-                <td>enable</td>
-                <td>
-                                      <div class="btn-group">
-                            <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                            <div class="dropdown-menu dropdownmenu-secondary">
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal">Detail</a>
-                                                <a class="dropdown-item"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showEditModal">Edit</a>
-                                                <form action="#"
-                                                    method="POST">
-                                                    <a type="submit" class="dropdown-item"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Hapus</a>
-                                                </form>
-                                        </div>
-                                        </div>
-                                        </div>
-                                    </td>
-            </tr>
-        </tbody>
-    </table>
 
                                 <!-- edit Modal
                                 <div class="modal fade" id="showEditModal1" tabindex=" -1"
@@ -284,28 +192,32 @@
                     id="close-modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="#" enctype="multipart/form-data"
+                <form method="post" action="{{ route('Container.store') }}" enctype="multipart/form-data"
                     id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="Description">Judul</label>
-                        <input type="text" name="desc" class="form-control" id="#"required>
+                        <label for="judul">Judul</label>
+                        <input type="text" name="judul" class="form-control" id="judul"required>
                     </div>
                     <div class="mb-3">
-                        <label for="description">Deskripsi</label>
-                        <input type="text" name="description" class="form-control" id="#"required>
+                        <label for="deskripsi">Deskripsi</label>
+                        <input type="text" name="deskripsi" class="form-control" id="deskripsi"required>
                     </div>
                     <div class="mb-3">
-                        <label for="Description">Front-End</label>
-                        <input type="text" name="desc" class="form-control" id="#"required>
+                        <label for="frontend">Front-End</label>
+                        <select name="frontend" class="form-control" id="frontend"required>
+                            @foreach($template as $template)
+                            <option value="{{$template->id_template}}">{{"$template->tipe_template"}}
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="Description">Backend-End</label>
-                        <input type="text" name="desc" class="form-control" id="#"required>
+                        <label for="backend">Backend-End</label>
+                         <input name="backend" class="form-control" id="backend"required>
                     </div>
                     <div class="mb-3">
-                        <label for="Description">Database</label>
-                        <input type="text" name="desc" class="form-control" id="#"required>
+                        <label for="database">Database</label>
+                         <input name="database" class="form-control" id="database"required>
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">

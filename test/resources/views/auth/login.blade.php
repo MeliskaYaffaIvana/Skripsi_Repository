@@ -85,7 +85,7 @@
 
                         <div class="mb-3">
                                         <label class="input-group-addon">Password</label>
-                                <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Masukkan Password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Masukkan Password" required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

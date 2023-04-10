@@ -91,7 +91,7 @@ class TemplateController extends Controller
         $template->versi = $request->get('versi');
         $template->status_template = $request->get('status_template');
         $template->save();
-          return redirect()->route('Template.edit', $id_template)->with('success', 'Data berhasil ditambahkan');
+          return redirect()->route('Template.edit', $id_template)->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -104,7 +104,7 @@ class TemplateController extends Controller
     {
         $template = Template::where('id_template', $id_template);
         $template->delete();
-        return redirect()->route('Template.index')->with('Success, data berhasi dihapus');
+        return redirect()->route('Template.index')->with('Success', 'data berhasi dihapus');
     }
 }
 
