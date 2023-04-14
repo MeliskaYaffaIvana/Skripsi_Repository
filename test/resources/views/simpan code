@@ -14,3 +14,11 @@
                             @endforeach -->
     </select>
 </div>
+
+
+### UID
+https://id-laravel.com/post/menggunakan-uuid-di-php-laravel/
+
+
+### Hashing
+https://laravel.com/docs/10.x/hashing

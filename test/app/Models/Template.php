@@ -12,7 +12,7 @@ class Template extends Model
     protected $primaryKey = 'id_template';
     public $timestamps = false;
     protected $fillable = [
-        'id_kat',
+        'id_kategori',
         'tipe_template',
         'versi',
         'status_template',

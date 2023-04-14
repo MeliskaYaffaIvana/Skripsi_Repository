@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\ContainerController;
 use App\Http\Controllers\JobController;
@@ -24,10 +25,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::middleware(['auth'])->group(function () {
+//kategori
+Route::resource('Kategori',KategoriController::class);
+Route::post('/Kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+Route::delete('/Kategori/destroy/{id}',[KategoriController::class, 'destroy'])->name('kategori.destroy');
+
+//template
 Route::resource('Template',TemplateController::class);
 Route::post('/Template/update/{id}', [TemplateController::class, 'update'])->name('template.update');
 Route::delete('/Template/destroy/{id}',[TemplateController::class, 'destroy'])->name('template.destroy');
+
+//container
 Route::resource('Container',ContainerController::class);
+
+//job
 Route::resource('Job',JobController::class);
 Route::resource('Jc',JobContainerController::class);
 Route::resource('Login',LoginController::class);

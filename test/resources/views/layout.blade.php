@@ -213,6 +213,12 @@
                     </li> <!-- end Dashboard Menu -->
                     
                     <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('Kategori.index') }}"  role="button"
+                            aria-expanded="false" aria-controls="sidebarIcons">
+                            <i class="mdi mdi-image-filter-black-white"></i> <span data-key="t-icons">Kategori</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('Template.index') }}"  role="button"
                             aria-expanded="false" aria-controls="sidebarIcons">
                             <i class="mdi mdi-image-filter-black-white"></i> <span data-key="t-icons">Template</span>

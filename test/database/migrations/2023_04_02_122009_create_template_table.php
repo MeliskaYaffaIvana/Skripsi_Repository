@@ -15,8 +15,8 @@ class CreateTemplateTable extends Migration
     {
         Schema::create('template', function (Blueprint $table) {
             $table->id('id_template');
-            $table->unsignedBigInteger('id_kat');
-            $table->foreign('id_kat')->references('id_kat')->on('kategori')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('id_kategori', 5);
+            $table->foreign('id_kategori')->references('id')->on('kategori')->onDelete('cascade')->onUpdate('cascade');
             $table->String('tipe_template');
             $table->String('versi');
             $table->String('status_template');
