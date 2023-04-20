@@ -6,7 +6,6 @@ use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\ContainerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobContainerController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 
@@ -41,7 +40,6 @@ Route::resource('Container',ContainerController::class);
 //job
 Route::resource('Job',JobController::class);
 Route::resource('Jc',JobContainerController::class);
-Route::resource('Login',LoginController::class);
 Route::resource('Home',HomeController::class);
 Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
 });

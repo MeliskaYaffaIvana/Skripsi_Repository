@@ -67,6 +67,9 @@
         height:3px;
         padding-top:5px;
         }
+        .mb-1{
+            color:black;
+        }
         </style>
 </head>
 
@@ -146,7 +149,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <h6 class="dropdown-header">Welcome !</h6>
+                                <h6 class="dropdown-header">Welcome {{ Auth::user()->nama }}</h6>
                                 <a class="dropdown-item" href="{{ route('profile.index') }}"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Profile</span></a>
@@ -215,7 +218,7 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('Kategori.index') }}"  role="button"
                             aria-expanded="false" aria-controls="sidebarIcons">
-                            <i class="mdi mdi-image-filter-black-white"></i> <span data-key="t-icons">Kategori</span>
+                            <i class="bx bx-category"></i> <span data-key="t-icons">Kategori</span>
                         </a>
                     </li>
                     <li class="nav-item">

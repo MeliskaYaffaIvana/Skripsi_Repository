@@ -72,11 +72,11 @@
                                         <div class="col-lg-4 col">
                                             <div class="row text-muted text-center">
                                                 <div class="col-6 border-end border-end-dashed">
-                                                    <h5 class="mb-1">Ika</h5>
+                                                    <h5 class="mb-1">c</h5>
                                                     <p class="text-muted mb-0">Nama Mahasiswa</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <h5 class="mb-1">yaff</h5>
+                                                    <h5 class="mb-1">{{ Auth::user()->nim }}</h5>
                                                     <p class="text-muted mb-0">NIM Mahasiswa</p>
                                                 </div>
                                             </div>

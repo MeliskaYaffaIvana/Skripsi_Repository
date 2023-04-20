@@ -14,12 +14,18 @@ class CreateTemplateTable extends Migration
     public function up()
     {
         Schema::create('template', function (Blueprint $table) {
-            $table->id('id_template');
+            $table->string('id', 18)->primary();
             $table->string('id_kategori', 5);
             $table->foreign('id_kategori')->references('id')->on('kategori')->onDelete('cascade')->onUpdate('cascade');
-            $table->String('tipe_template');
-            $table->String('versi');
-            $table->String('status_template');
+            $table->string('id_user', 50);
+            $table->foreign('id_user')->references('id')->on('users')->nullable();
+            $table->string('nama_template');
+            $table->string('versi');
+            $table->string('link_template');
+            $table->tinyInteger('bolehkan')->default(0)->comment('0: Menyala, 1: Tidak Menyala');
+            $table->tinyInteger('status_job')->default(0)->comment('0: Masuk Antrian, 1: Dalam Proses, 2: Selesai, 3: Failed');
+            $table->dateTime('tgl_dibuat');
+            $table->dateTime('tgl_selesai');
         });
     }
     /**

@@ -18,23 +18,38 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     public $table = 'users';
-    protected $primaryKey = 'id_user';
+    protected $primaryKey = 'id';
+    public $incrementing = false;
     protected $fillable = [
-        'username',
-        'name',
-        'password',
+        'nim',
+        'nama',
+        'judul',
+        'deskripsi',
         'status',
+        'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
+    // protected static function booted(){
+    //     static::creating(function ($users){
+    //         $users->nim = Crypt::encrypt($users->nim);
+    //         $users->id = strtoupper(substr(md5($users->nim), 0, 10));
+    //     });
+    // }
+    
+    public static function getIdFromNim($nim)
+{
+    $hash = md5($nim);
+    $id = substr($hash, 0, 50);
+    return $id;
+}
+public function Template(){
+        return $this->hasMany('App\Models\Template');
+    }
 
     /**
      * The attributes that should be cast.

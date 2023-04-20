@@ -23,7 +23,7 @@ class Kategori extends Model
         parent::boot();
 
         static::creating(function ($model){
-            $model->id = IdGenerator::generate(['table' => 'kategori', 'length' => 5, 'prefix' =>'KT-']);
+            $model->id = IdGenerator::generate(['table' => 'kategori', 'length' => 5, 'prefix' =>'KT']);
     });
 }
     public function template(){

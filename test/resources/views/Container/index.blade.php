@@ -28,34 +28,33 @@
                     <table id="example" class="table " style="width:100%">
         <thead>
             <tr>
-                <th>Judul</th>
-                <th>Nama</th>
-                <th>NIM </th>
-                <th>User</th>
+                <th>Nama Kontainer</th>
+                <th>Template</th>
+                <th>Mahasiswa</th>
                 <th>Aksi</th>
                 
             </tr>
         </thead>
         <tbody>
+            @foreach($container as $container)
             <tr>
                 <td>
                     <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">Pembuatan Sistem Pelaporan Jurnal Mengajar Guru Sekolah Dasar Berbasis Website Pada SD Negeri Butun 02 Di Kabupaten Blitar</div>
+                        <div class="flex-grow-1">{{ $container->nama_kontainer}}</div>
                     </div>
                 </td>
                 <td>
+                    @foreach($template as $temp)
+                    @if($temp->id ==$container->id_template)
                     <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">Ayu Ariesta Wandari</div>
+                        <div class="flex-grow-1">{{ $temp->nama_template}}</div>
                     </div>
+                    @endif
+                    @endforeach
                 </td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">1841720022</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">1841720022</div>
+                        <div class="flex-grow-1">{{ Auth::user()->nama }}</div>
                     </div>
                 </td>
                 <td>
@@ -127,6 +126,7 @@
                                             </div>
                                         </div>
                                     </div>  -->
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -196,28 +196,16 @@
                     id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="judul">Judul</label>
-                        <input type="text" name="judul" class="form-control" id="judul"required>
+                        <label for="nama_kontainer">Nama Kontainer</label>
+                        <input type="text" name="nama_kontainer" class="form-control" id="nama_kontainer"required>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi">Deskripsi</label>
-                        <input type="text" name="deskripsi" class="form-control" id="deskripsi"required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="frontend">Front-End</label>
-                        <select name="frontend" class="form-control" id="frontend"required>
-                            @foreach($template as $template)
-                            <option value="{{$template->id_template}}">{{"$template->tipe_template"}}
+                        <label for="id_template">Front-End</label>
+                        <select name="id_template" class="form-control" id="id_template"required>
+                            @foreach($template as $temp)
+                            <option value="{{$temp->id}}">{{"$temp->nama_template"}}
                             @endforeach
                         </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="backend">Backend-End</label>
-                         <input name="backend" class="form-control" id="backend"required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="database">Database</label>
-                         <input name="database" class="form-control" id="database"required>
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">

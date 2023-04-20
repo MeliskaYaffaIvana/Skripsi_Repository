@@ -16,16 +16,32 @@ class UserSeeder extends Seeder
     {
         $users=[
             [
-            'username' => 'Meliska',
+                'nim' => '1941720020',
+                'nama' => 'Meliska',
+                'judul' => 'Docker',
+                'deskripsi' => 'Repository',
                 'password' => Hash::make('ikaaa123'),
                 'status'=>'mahasiswa'
             ],
             [
-                'username' => 'Administrator',
+                'nim' => '1',
+                'nama' => 'Admin',
+                'judul' => 'Admin',
+                'deskripsi' => 'Admin',
                 'password' => Hash::make('admin123'),
                 'status'=>'administrator'
             ],
         ];
-        User::insert($users);
+        foreach($users as $user){
+        User::create([
+            'nim' => $user['nim'],
+            'nama' => $user['nama'],
+            'judul' => $user['judul'],
+            'deskripsi' => $user['deskripsi'],
+            'password' => $user['password'],
+            'status' => $user['status'],
+            'id' => User::getIdFromNim($user['nim']),
+        ]);
+        }
     }
 }

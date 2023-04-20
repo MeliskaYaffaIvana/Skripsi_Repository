@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Template;
 use App\Models\Container;
+use App\Models\User;
+use Auth;
 
 class ContainerController extends Controller
 {
@@ -43,12 +45,11 @@ class ContainerController extends Controller
     public function store(Request $request)
     {
         $container = new Container;
-        $container->judul = $request->judul;
-        $container->deskripsi = $request->deskripsi;
-        $container->frontend = $request->fronted;
-        $container->backend = $request->backend;
-        $container->database = $request->database;
-        $container->id_user = $request->id_user;
+        $container->id_user = Auth::id();
+        $container->id_template = $request->id_template;
+        $container->nama_kontainer = $request->nama_kontainer;
+        // $container->bolehkan = $request->bolehkan;
+        // $container->status_job = $request->status_job;
         $container->save();
         return redirect()->route('Container.create')->with('success', 'Data berhasil ditambahkan');
     }
@@ -70,7 +71,7 @@ class ContainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_container)
+    public function edit($id)
     {
         $users = auth()->user();
         $template = Template::all();        
@@ -85,17 +86,16 @@ class ContainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_container)
+    public function update(Request $request, $id)
     {
         $container = Container::where('id_container', $id_container)->first();
-        $container->judul = $request->get('judul');
-        $container->deskripsi = $request->get('deskripsi');
-        $container->frontend = $request->get('frontend');
-        $container->backend = $request->get('backend');
-        $container->database = $request->get('database');
-        $container->id_user = $request->get('id_user');
+        $container->id_user = Auth::id();
+        $container->id_template = $request->get('id_template');
+        $container->nama_kontainer = $request->get('nama_kontainer');
+        // $container->bolehkan = $request->get('bolehkan');
+        // $container->status_job = $request->get('status_job');
         $container->save();
-        return redirect()->route('Container.edit', $id_container)->with('success', 'Data berhasil diubah');
+        return redirect()->route('Container.edit', $id)->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -104,9 +104,9 @@ class ContainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_container)
+    public function destroy($id)
     {
-        $container = COntainer::where('id_container', $id_container);
+        $container = Container::where('id', $id);
         $container->delete();
         return redirect()->route('Container.index')->with('succes', 'data berhasil dihapus');
     }

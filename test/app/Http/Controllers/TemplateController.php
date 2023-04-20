@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Template;
+use App\Models\User;
+use Auth;
 
 class TemplateController extends Controller
 {
@@ -17,7 +19,7 @@ class TemplateController extends Controller
     {
         $users = auth()->user();
         $kategori = Kategori::all();
-        $template = Template::all();
+        $template = Template::all();  
         return view('Template.index', compact ('users', 'kategori','template'));
     }
 
@@ -43,10 +45,13 @@ class TemplateController extends Controller
     public function store(Request $request)
     {
         $template = new Template;
-        $template->id_kat = $request->id_kat;
-        $template->tipe_template = $request->tipe_template;
+        $template->id_kategori = $request->id_kategori;
+        $template->id_user = Auth::id();
+        $template->nama_template = $request->nama_template;
         $template->versi = $request->versi;
-        $template->status_template = $request->status_template;
+        $template->link_template = $request->link_template;
+        // $template->bolehkan = $request->bolehkan;
+        // $template->status_job = $request->status_job;
         $template->save();
          return redirect()->route('Template.create')->with('success', 'Data berhasil ditambahkan');
     }
@@ -68,9 +73,9 @@ class TemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_template)
+    public function edit($id)
     {
-       $users = auth()->user();
+        $users = auth()->user();
         $kategori = Kategori::all();
         $template = Template::all();
         return view('Template.index', compact ('users', 'kategori','template'));
@@ -83,15 +88,20 @@ class TemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_template)
+    public function update(Request $request, $id)
     {
-        $template = Template::where('id_template', $id_template)->first();
-        $template->id_kat = $request->get('id_kat');
-        $template->tipe_template = $request->get('tipe_template');
+        // dd($request);
+        $template = Template::where('id', $id)->first();
+        $template->id_kategori = $request->get('id_kategori');
+        $template->id_user = Auth::id();
+        $template->nama_template = $request->get('nama_template');
         $template->versi = $request->get('versi');
-        $template->status_template = $request->get('status_template');
+        $template->link_template = $request->get('link_template');
+        // $template->bolehkan = $request->get('bolehkan');
+        // $template->status_job = $request->get('status_job');
+        
         $template->save();
-          return redirect()->route('Template.edit', $id_template)->with('success', 'Data berhasil diubah');
+          return redirect()->route('Template.edit', $id)->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -100,9 +110,9 @@ class TemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_template)
+    public function destroy($id)
     {
-        $template = Template::where('id_template', $id_template);
+        $template = Template::where('id', $id);
         $template->delete();
         return redirect()->route('Template.index')->with('Success', 'data berhasi dihapus');
     }

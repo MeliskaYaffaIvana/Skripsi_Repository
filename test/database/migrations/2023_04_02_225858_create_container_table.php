@@ -14,18 +14,17 @@ class CreateContainerTable extends Migration
     public function up()
     {
         Schema::create('container', function (Blueprint $table) {
-            $table->id('id_container');
-            $table->String('judul');
-            $table->String('deskripsi');
-            $table->unsignedBigInteger('frontend')->nullable();
-            $table->foreign('frontend')->references('id_template')->on('template')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('backend')->nullable();
-            $table->foreign('backend')->references('id_template')->on('template')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('database')->nullable();
-            $table->foreign('database')->references('id_template')->on('template')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
+            $table->id('id', 18);
+            $table->string('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('id_template')->nullable();
+            $table->foreign('id_template')->references('id')->on('template')->onDelete('cascade')->onUpdate('cascade');
+            $table->String('nama_kontainer');
+            $table->tinyInteger('bolehkan')->default(0)->comment('0: Menyala, 1: Tidak Menyala');
+            $table->tinyInteger('status_job')->default(0)->comment('0: Masuk Antrian, 1: Dalam Proses, 2: Selesai, 3: Failed');
+            $table->dateTime('tgl_dibuat');
+            $table->dateTime('tgl_selesai');
+            // $table->timestamps();
         });
     }
 

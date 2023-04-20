@@ -65,7 +65,7 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-         $users = auth()->user();
+        $users = auth()->user();
         $kategori = Kategori::all();
         return view('Kategori.index', compact ('users', 'kategori'));
     }
