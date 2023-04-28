@@ -44,13 +44,22 @@ class ContainerController extends Controller
      */
     public function store(Request $request)
     {
-        $container = new Container;
-        $container->id_user = Auth::id();
-        $container->id_template = $request->id_template;
-        $container->nama_kontainer = $request->nama_kontainer;
-        // $container->bolehkan = $request->bolehkan;
-        // $container->status_job = $request->status_job;
-        $container->save();
+        $container = $request->input('container');
+
+        foreach ($container as $container){
+            Container::create([
+                'nama_kontainer' => $container['nama_kontainer'],
+                'id_template' =>$container['id_template'],
+                'id_user' => Auth::id()
+            ]);
+        }
+        // $container = new Container;
+        // $container->id_user = Auth::id();
+        // $container->id_template = $request->id_template;
+        // $container->nama_kontainer = $request->nama_kontainer;
+        // // $container->bolehkan = $request->bolehkan;
+        // // $container->status_job = $request->status_job;
+        // $container->save();
         return redirect()->route('Container.create')->with('success', 'Data berhasil ditambahkan');
     }
 
@@ -88,7 +97,7 @@ class ContainerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $container = Container::where('id_container', $id_container)->first();
+        $container = Container::where('id', $id)->first();
         $container->id_user = Auth::id();
         $container->id_template = $request->get('id_template');
         $container->nama_kontainer = $request->get('nama_kontainer');

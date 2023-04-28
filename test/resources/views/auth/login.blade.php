@@ -50,7 +50,7 @@
                                         <div class="bg-overlay"></div>
                                         <div class="position-relative h-100 d-flex flex-column">
                                             <div class="mb-4">
-                                                <a href="index-2.html" class="d-block">
+                                                <a href="/" class="d-block">
                                                     <img src="assets/images/logo polinema.png" alt="" height="100">
                                                 </a>
                                             </div>

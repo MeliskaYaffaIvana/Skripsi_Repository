@@ -10,7 +10,7 @@ class Container extends Model
 {
     use HasFactory;
     public $table = 'container';
-    protected $primaryKey = 'id_container';
+    protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
         'id_user',

@@ -36,7 +36,8 @@ Route::delete('/Template/destroy/{id}',[TemplateController::class, 'destroy'])->
 
 //container
 Route::resource('Container',ContainerController::class);
-
+Route::post('/Container/update/{id}', [ContainerController::class, 'update'])->name('container.update');
+Route::delete('/Container/destroy/{id}',[ContainerController::class, 'destroy'])->name('container.destroy');
 //job
 Route::resource('Job',JobController::class);
 Route::resource('Jc',JobContainerController::class);

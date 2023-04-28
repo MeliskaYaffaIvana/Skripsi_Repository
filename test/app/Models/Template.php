@@ -54,12 +54,12 @@ class Template extends Model
             $model->tgl_dibuat = Carbon::now();
             $model->tgl_selesai = Carbon::now()->addDays(1);
             $model->id = date('YmdHis');
-        //     $model->id = IdGenerator::generate([
-        //         'table' => 'template',
-        //         'length' => 20,
-        //         'prefix' => 'TP-' . date('YmdHis'),
-        //         'reset_on_prefix_change' => false,
-        //     ]);
+            // $model->id = IdGenerator::generate([
+            //     'table' => 'template',
+            //     'length' => 18,
+            //     'prefix' => 'TP' . date('YmdHis'),
+            //     'reset_on_prefix_change' => false,
+            // ]);
          });
     }
     // protected static function boot()
