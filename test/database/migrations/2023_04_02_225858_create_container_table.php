@@ -14,7 +14,7 @@ class CreateContainerTable extends Migration
     public function up()
     {
         Schema::create('container', function (Blueprint $table) {
-            $table->id('id', 18);
+            $table->string('id', 18)->primary();
             $table->string('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('id_template')->nullable();
