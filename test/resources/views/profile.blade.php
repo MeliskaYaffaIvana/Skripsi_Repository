@@ -63,8 +63,11 @@
                                                         class="img-fluid d-block rounded-circle" />
                                                 </div>
                                                 <div class="team-content">
-                                                    <p class="text-muted mb-0"> <h2><strong>gdb</h2></p>
-                                                    
+                                                    @foreach($container as $container)
+                                                    @if($users->id == $container->id_user)
+                                                    <h5 class="mb-1">{{ $container->nama_kontainer }}</h5>
+                                                    @endif
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -72,7 +75,7 @@
                                         <div class="col-lg-4 col">
                                             <div class="row text-muted text-center">
                                                 <div class="col-6 border-end border-end-dashed">
-                                                    <h5 class="mb-1">c</h5>
+                                                    <h5 class="mb-1">{{ Auth::user()->nama }}</h5>
                                                     <p class="text-muted mb-0">Nama Mahasiswa</p>
                                                 </div>
                                                 <div class="col-6">

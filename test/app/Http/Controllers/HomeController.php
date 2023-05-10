@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Template;
+use App\Models\Container;
+use App\Models\User;
 use Auth;
 class HomeController extends Controller
 {
@@ -23,10 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $users = auth()->user();
+        $template = Template::all();        
+        $container = Container::all();
         if(Auth::User()->level == 'administrator'){
-            return view('home');
+            return view('home', compact('users', 'template', 'container'));
         }else{
-        return view('home');
+        return view('home', compact('users', 'template', 'container'));
     }
 }
 }

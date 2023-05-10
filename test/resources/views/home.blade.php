@@ -17,12 +17,12 @@
                 <div id="Container">
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
-                            <div>
+                            <!-- <div>
                                 <button type="button" class="btn btn-success waves-effect waves-light edit-btn" data-bs-toggle="modal"
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
                                     Tambah</button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <table id="example" class="table " style="width:100%">
@@ -33,18 +33,19 @@
                 <th>Judul</th>
                 <th>Deskripsi</th>
                 <th>Status</th>
-                <th>Aksi</th>
+                <!-- <th>Aksi</th> -->
                 
             </tr>
         </thead>
         <tbody>
+            @foreach($container as $container)
             <tr>
-                <td>Ayu Ariesta Wandari</td>
-                <td>1841720022</td>
-                <td>Pembuatan Sistem Pelaporan Jurnal Mengajar Guru Sekolah Dasar Berbasis Website Pada SD Negeri Butun 02 Di Kabupaten Blitar</td>
-                <td>Aplikasi berbasis websote yang dapat membantu dalam pembuatan jurnal, rekapan dan absensi guru menjadi lebih cepat dan efisien</td>
-                <td>Enable</td>
-                <td>
+                <td>{{ Auth::user()->nama }}</td>
+                <td>{{ Auth::user()->nim }}</td>
+                <td>{{ Auth::user()->judul }}</td>
+                <td>{{ Auth::user()->deskripsi }}</td>
+                <td>{{ $container->bolehkan }}</td>
+                <!-- <td>
                       <div class="btn-group">
                             <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
                             <div class="dropdown-menu dropdownmenu-secondary">
@@ -63,8 +64,9 @@
                                         </div>
                                         </div>
                                         </div>
-                                    </td>
+                                    </td> -->
             </tr>
+            @endforeach
         </tbody>
     </table>
 
