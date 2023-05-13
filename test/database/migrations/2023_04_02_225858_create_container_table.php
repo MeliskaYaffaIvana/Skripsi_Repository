@@ -38,4 +38,3 @@ class CreateContainerTable extends Migration
         Schema::dropIfExists('container');
     }
 }
-

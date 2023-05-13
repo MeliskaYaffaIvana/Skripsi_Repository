@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 class UserSeeder extends Seeder
 {
     /**
@@ -42,6 +44,7 @@ class UserSeeder extends Seeder
             'status' => $user['status'],
             'id' => User::getIdFromNim($user['nim']),
         ]);
+        \App\Models\User::factory()->count(30)->create(); 
         }
     }
 }

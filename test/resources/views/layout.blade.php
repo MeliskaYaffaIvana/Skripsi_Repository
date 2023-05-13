@@ -36,41 +36,47 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
-    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
     <style>
-        .logo{
-            padding-right:15px;
-        }
-        .btn1{
-            background-color:#546c9c;
-            color:white;
-            border: white 3px solid;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-top: 5px;
-        }
-        .btn2{
-            border: white 3px solid;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-top: 5px;
-        }
-        .modal-title{
-            color:#546fab;
-        }
-        .btn3{
-            background-color:#ffad41;
-            border: #ffad41 3px solid;
+    .logo {
+        padding-right: 15px;
+    }
 
-        }
-        .footer{
-        height:3px;
-        padding-top:5px;
-        }
-        .mb-1{
-            color:black;
-        }
-        </style>
+    .btn1 {
+        background-color: #546c9c;
+        color: white;
+        border: white 3px solid;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-top: 5px;
+    }
+
+    .btn2 {
+        border: white 3px solid;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-top: 5px;
+    }
+
+    .modal-title {
+        color: #546fab;
+    }
+
+    .btn3 {
+        background-color: #ffad41;
+        border: #ffad41 3px solid;
+
+    }
+
+    .footer {
+        height: 3px;
+        padding-top: 5px;
+    }
+
+    .mb-1 {
+        color: black;
+    }
+    </style>
 </head>
 
 <body>
@@ -143,7 +149,7 @@
                                         src="{{ asset('assets') }}/images/account.png" alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
                                         <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
-                                          </span></span>
+                                        </span></span>
 
                                 </span>
                             </button>
@@ -214,27 +220,27 @@
                         </a>
 
                     </li> <!-- end Dashboard Menu -->
-                    
+                    @if(Auth::user()->status == 'administrator')
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('Kategori.index') }}"  role="button"
+                        <a class="nav-link menu-link" href="{{ route('Kategori.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarIcons">
                             <i class="bx bx-category"></i> <span data-key="t-icons">Kategori</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('Template.index') }}"  role="button"
+                        <a class="nav-link menu-link" href="{{ route('Template.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarIcons">
                             <i class="mdi mdi-image-filter-black-white"></i> <span data-key="t-icons">Template</span>
                         </a>
                     </li>
-                    
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('Container.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
                             <i class="mdi mdi-view-column"></i> <span data-key="t-apps">Kontainer</span>
                         </a>
                     </li>
-                  
+                    @if(Auth::user()->status == 'administrator')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarLayouts">
@@ -242,27 +248,28 @@
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarLayouts">
                             <ul class="nav nav-sm flex-column">
-                                
+
                                 <li class="nav-item">
                                     <a href="{{ route('Job.index') }}" class="nav-link"
                                         data-key="t-horizontal">Pekerjaan Template </a>
                                 </li>
-                                
+
                                 <li class="nav-item">
-                                    <a href="{{ route('Jc.index') }}" class="nav-link" data-key="t-detached">Pekerjaan Kontainer</a>
+                                    <a href="{{ route('Jc.index') }}" class="nav-link" data-key="t-detached">Pekerjaan
+                                        Kontainer</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                                     
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="#" role="button"
-                            aria-expanded="false" aria-controls="sidebarApps">
+                        <a class="nav-link menu-link" href="#" role="button" aria-expanded="false"
+                            aria-controls="sidebarApps">
                             <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Panduan</span>
                         </a>
                     </li>
-                   
-                    
+
+
                     <!-- end Dashboard Menu -->
                 </ul>
             </div>
@@ -374,7 +381,7 @@
 </html>
 
 
-    <!-- <body class="antialiased">
+<!-- <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
