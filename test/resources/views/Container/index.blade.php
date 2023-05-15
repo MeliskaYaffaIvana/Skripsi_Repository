@@ -41,13 +41,14 @@
                                     <tr>
                                         <th>Nama Kontainer</th>
                                         <th>Template</th>
-                                        <th>Mahasiswa</th>
+                                        <!-- <th>Mahasiswa</th> -->
                                         <th>Aksi</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($container as $container)
+                                    @if($container->id_user == $users->id || $users->status == 'administrator')
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -63,11 +64,11 @@
                                             @endif
                                             @endforeach
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ Auth::user()->nama }}</div>
+                                                <div class="flex-grow-1">{{ $container->id_user }}</div>
                                             </div>
-                                        </td>
+                                        </td> -->
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn-sm btn-info dropdown-toggle"
@@ -135,6 +136,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                             @endforeach
                                 </tbody>
                             </table>
@@ -164,6 +166,8 @@
             <div class="modal-body">
                 <form method="post" action="{{ route('Container.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
+                    <input name="dibuat_oleh" type="text" class="form-control" id="dibuat_oleh" value="{{$users->nama}}"
+                        readonly hidden>
                     <div class="form-group">
                         <label>1. Database </label>
                         <input type="radio" name="choice" value="yes" onclick="showForm()" required> Yes

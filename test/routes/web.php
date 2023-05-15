@@ -8,6 +8,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobContainerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,9 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('Kategori',KategoriController::class);
 Route::post('/Kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
 Route::delete('/Kategori/destroy/{id}',[KategoriController::class, 'destroy'])->name('kategori.destroy');
+
+//user
+Route::resource('User',UserController::class);
 
 //template
 Route::resource('Template',TemplateController::class);

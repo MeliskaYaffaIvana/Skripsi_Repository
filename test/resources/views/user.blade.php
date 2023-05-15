@@ -28,41 +28,41 @@
                             <table id="example" class="table " style="width:100%">
                                 <thead>
                                     <tr>
-                                        <!-- <th>Nama</th>
+                                        <th>Nama</th>
                                         <th>NIM </th>
                                         <th>Judul</th>
                                         <th>Deskripsi</th>
-                                        <th>Status</th> -->
-                                        <!-- <th>Aksi</th> -->
-                                        <th>Nama Kontainer</th>
-                                        <th>Template</th>
-                                        <!-- <th>Mahasiswa</th> -->
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($container as $container)
-                                    @if($container->id_user == $users->id || $users->status == 'administrator')
+                                    @foreach($users as $user)
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $container->nama_kontainer}}</div>
+                                                <div class="flex-grow-1">{{ $user->nama}}</div>
                                             </div>
                                         </td>
                                         <td>
-                                            @foreach($template as $temp)
-                                            @if($temp->id ==$container->id_template)
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $temp->nama_template}}</div>
+                                                <div class="flex-grow-1">{{ $user->nim}}</div>
                                             </div>
-                                            @endif
-                                            @endforeach
                                         </td>
-                                        <!-- <td>
+                                        <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $container->id_user }}</div>
+                                                <div class="flex-grow-1">{{ $user->judul}}</div>
                                             </div>
-                                        </td> -->
-                                        @endif
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $user->deskripsi}}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $user->status}}</div>
+                                            </div>
+                                        </td>
                                         <!-- <td>
                       <div class="btn-group">
                             <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>

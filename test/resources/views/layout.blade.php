@@ -228,6 +228,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('User.index') }}" role="button"
+                            aria-expanded="false" aria-controls="sidebarIcons">
+                            <i class="bx bx-category"></i> <span data-key="t-icons">Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('Template.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarIcons">
                             <i class="mdi mdi-image-filter-black-white"></i> <span data-key="t-icons">Template</span>
