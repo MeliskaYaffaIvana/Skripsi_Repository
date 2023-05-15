@@ -227,12 +227,7 @@
                             <i class="bx bx-category"></i> <span data-key="t-icons">Kategori</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('User.index') }}" role="button"
-                            aria-expanded="false" aria-controls="sidebarIcons">
-                            <i class="bx bx-category"></i> <span data-key="t-icons">Users</span>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('Template.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarIcons">
@@ -266,6 +261,12 @@
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('User.index') }}" role="button"
+                            aria-expanded="false" aria-controls="sidebarIcons">
+                            <i class="bx bx-category"></i> <span data-key="t-icons">Daftar Pengguna</span>
+                        </a>
                     </li>
                     @endif
                     <li class="nav-item">

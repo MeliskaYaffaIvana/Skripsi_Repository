@@ -116,10 +116,12 @@
                                                             <div class="mb-3">
                                                                 <label for="id_template">Template</label>
                                                                 <select name="id_template" class="form-control"
-                                                                    id="id_template" required>
+                                                                    id="id_template" required readonly>
                                                                     @foreach($template as $temp)
+                                                                    @if($temp->id ==$container->id_template)
                                                                     <option value="{{ $temp->id }}">
                                                                         {{ $temp->nama_template }}</option>
+                                                                    @endif
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -176,7 +178,7 @@
                         <div id="formInput" class="form-input">
 
                         </div><br>
-                        <label>2. Fronted, Backend </label>
+                        <label>2. Fronted & Backend </label>
                         <input type="radio" name="pilihan" value="gabung" onclick="show1()" required> Gabung
                         <input type="radio" name="pilihan" value="pisah" onclick="show2()" required> Pisah
 
@@ -312,7 +314,7 @@
 
         var html = '<div class="form-group" id="row">';
         html += '<div class="mb-3">';
-        html += '<label for="nama_kontainer">Nama Kontainer</label>';
+        html += '<label for="nama_kontainer">Nama Kontainer </label>';
         html += '<input type="text" name="container[1][nama_kontainer]" class="form-control" required>';
         html += '</div>';
         html += '<div class="mb-3">';
@@ -364,7 +366,7 @@
 
         var html = '<div class="form-group" id="row">';
         html += '<div class="mb-3">';
-        html += '<label for="nama_kontainer">Nama Kontainer</label>';
+        html += '<label for="nama_kontainer">Nama Kontainer Frontend</label>';
         html += '<input type="text" name="container[2][nama_kontainer]" class="form-control" required>';
         html += '</div>';
         html += '<div class="mb-3">';
@@ -377,7 +379,7 @@
         html += '</select>';
         html += '</div>';
         html += '<div class="mb-3">';
-        html += '<label for="nama_kontainer">Nama Kontainer</label>';
+        html += '<label for="nama_kontainer">Nama Kontainer Backend</label>';
         html += '<input type="text" name="container[3][nama_kontainer]" class="form-control" required>';
         html += '</div>';
         html += '<div class="mb-3">';
