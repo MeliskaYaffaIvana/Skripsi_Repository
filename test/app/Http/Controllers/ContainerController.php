@@ -119,4 +119,13 @@ class ContainerController extends Controller
         $container->delete();
         return redirect()->route('Container.index')->with('succes', 'data berhasil dihapus');
     }
+    public function toggleStatus(Request $request, $id)
+{
+    $container = Container::where('id', $id)->firstOrFail();
+    $container->status = !$container->status;
+    $container->save();
+
+    return response()->json(['success' => true]);
+}
+
 }

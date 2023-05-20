@@ -41,7 +41,7 @@
                                     <tr>
                                         <th>Nama Kontainer</th>
                                         <th>Template</th>
-                                        <!-- <th>Mahasiswa</th> -->
+                                        <th>Status</th>
                                         <th>Aksi</th>
 
                                     </tr>
@@ -64,11 +64,14 @@
                                             @endif
                                             @endforeach
                                         </td>
-                                        <!-- <td>
+                                        <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $container->id_user }}</div>
+                                                <!-- <div class="flex-grow-1">{{ $container->id_user }}</div> -->
+                                                <span
+                                                    id="status{{ $container->id }}">{{ $container->status ? 'Enable' : 'Disable' }}</span>
+
                                             </div>
-                                        </td> -->
+                                        </td>
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn-sm btn-info dropdown-toggle"
@@ -88,9 +91,24 @@
                                                                     data-bs-target="#deleteRecordModal">Hapus</button>
                                                             </form>
                                                         </div>
+                                                        <div class="status">
+
+                                                            <button class="toggle-status dropdown-item"
+                                                                data-container="{{ $container->id }}">
+                                                                {{ $container->status ? 'Disable' : 'Enable' }}
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
+
+
                                         </td>
+                                        <td>
+                                            <div>
+
+
+                                            </div>
+                                        </td>
+
 
                                         <!-- edit Modal  -->
                                         <div class="modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
@@ -286,6 +304,31 @@
 
 
 </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+    var toggleButtons = document.querySelectorAll('.toggle-status');
+
+    toggleButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var id = button.getAttribute('data-container');
+            axios.put('/Container/' + id + '/toggle-status')
+                .then(function(response) {
+                    var statusElement = document.getElementById('status' + id);
+                    if (statusElement.innerText === 'Enable') {
+                        statusElement.innerText = 'Disable';
+                    } else {
+                        statusElement.innerText = 'Enable';
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        });
+    });
+    </script>
+
+
     <script>
     function validateForm() {
         var radios = document.getElementsByName('choice');
