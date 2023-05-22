@@ -15,6 +15,7 @@ class AddStatusContainerTable extends Migration
 {
     Schema::table('container', function (Blueprint $table) {
         $table->boolean('status')->default(true);
+        $table->integer('port')->default(16000);
     });
 }
 
@@ -26,6 +27,9 @@ class AddStatusContainerTable extends Migration
      */
     public function down()
     {
-        //
-    }
+        Schema::table('container', function (Blueprint $table) {
+        $table->dropColumn('status');
+        $table->dropColumn('port');
+    });
+}
 }

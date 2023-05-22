@@ -190,8 +190,8 @@
                         readonly hidden>
                     <div class="form-group">
                         <label>1. Database </label>
-                        <input type="radio" name="choice" value="yes" onclick="showForm()" required> Yes
-                        <input type="radio" name="choice" value="no" onclick="hideForm()" required> No
+                        <input type="radio" name="choice" value="yes" onclick="showForm()" required> Iya
+                        <input type="radio" name="choice" value="no" onclick="hideForm()" required> Tidak
 
                         <div id="formInput" class="form-input">
 
@@ -201,48 +201,10 @@
                         <input type="radio" name="pilihan" value="pisah" onclick="show2()" required> Pisah
 
                         <div id="form1" class="form1">
-                            <!-- <div class="mb-3">
-                                <label for="nama_kontainer"> Nama Kontainer</label>
-                                <input type="text" name="container[2][nama_kontainer]" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="id_template">Item Template</label>
-                                <select name="container[2][id_template]" class="form-control">
-                                    <option value="">Pilih template</option>
-                                    @foreach($template as $temp)
-                                    <option value="{{ $temp->id }}">{{ $temp->nama_template }}</option>
-                                    @endforeach
-                                </select>
-                            </div> -->
+
                         </div><br>
                         <div id="form2" class="form2" style="display:none">
-                            <!-- <div class="mb-3">
-                                <label for="nama_kontainer"> Nama Kontainer</label>
-                                <input type="text" name="container[2][nama_kontainer]" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="id_template">Item Template</label>
-                                <select name="container[2][id_template]" class="form-control">
-                                    <option value="">Pilih template</option>
-                                    @foreach($template as $temp)
-                                    <option value="{{ $temp->id }}">{{ $temp->nama_template }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="nama_kontainer"> Nama Kontainer</label>
-                                <input type="text" name="container[3][nama_kontainer]" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label for="id_template">Item Template</label>
-                                <select name="container[3][id_template]" class="form-control">
-                                    <option value="">Pilih template</option>
-                                    @foreach($template as $temp)
-                                    <option value="{{ $temp->id }}">{{ $temp->nama_template }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div><br> -->
+
                         </div>
                         <div class="modal-footer">
                             <div class="hstack gap-2 justify-content-end">
@@ -260,50 +222,6 @@
     });
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <script>
-        $(document).ready(function() {
-            var count = 1;
-
-            $(document).on('change', '#jumlah-form', function() {
-                var jumlahForm = parseInt($(this).val());
-                var currentFormCount = $('.form-group').length - 1; // Kurangi satu karena form pertama tidak dihitung
-
-                if (jumlahForm > currentFormCount) {
-                    for (var i = currentFormCount; i < jumlahForm; i++) {
-                        count++;
-                        var html = '<div class="form-group" id="row' + count + '">';
-                        html += '<div class="mb-3">';
-                        html += '<label for="nama_kontainer">Nama Kontainer</label>';
-                        html += '<input type="text" name="container[' + count + '][nama_kontainer]" class="form-control" required>';
-                        html += '</div>';
-                        html += '<div class="mb-3">';
-                        html += '<label for="id_template">Template</label>';
-                        html += '<select name="container[' + count + '][id_template]" class="form-control" required>';
-                        html += '<option value="">Pilih Template</option>';
-                        @foreach($template as $temp)
-                        html += '<option value="{{ $temp->id }}">{{ $temp->nama_template }}</option>';
-                        @endforeach
-                        html += '</select>';
-                        html += '</div>';
-
-
-
-                        html += '</div>';
-
-                        $('#form1').append(html);
-                    }
-                } else if (jumlahForm < currentFormCount) {
-                    for (var i = currentFormCount; i > jumlahForm; i--) {
-                        $('#row' + i).remove();
-                        count--;
-                    }
-                }
-            });
-        });
-    
-
-
-</script> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
