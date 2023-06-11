@@ -21,6 +21,7 @@ class Template extends Model
         'nama_template',
         'versi',
         'link_template',
+        'default_dir',
         'bolehkan',
         'status_job',
         'tgl_dibuat',

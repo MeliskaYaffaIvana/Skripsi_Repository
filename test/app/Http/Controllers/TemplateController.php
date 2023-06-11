@@ -50,6 +50,7 @@ class TemplateController extends Controller
         $template->nama_template = $request->nama_template;
         $template->versi = $request->versi;
         $template->link_template = $request->link_template;
+        $template->default_dir = $request->default_dir;
         // $template->bolehkan = $request->bolehkan;
         // $template->status_job = $request->status_job;
         $template->save();
@@ -97,6 +98,7 @@ class TemplateController extends Controller
         $template->nama_template = $request->get('nama_template');
         $template->versi = $request->get('versi');
         $template->link_template = $request->get('link_template');
+        $template->default_dir = $request->get('default_dir');
         // $template->bolehkan = $request->get('bolehkan');
         // $template->status_job = $request->get('status_job');
         
@@ -117,4 +119,3 @@ class TemplateController extends Controller
         return redirect()->route('Template.index')->with('Success', 'data berhasi dihapus');
     }
 }
-
