@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
             'status' => $user['status'],
             'id' => User::getIdFromNim($user['nim']),
         ]);
-        \App\Models\User::factory()->count(30)->create(); 
+        \App\Models\User::factory()->count(5)->create(); 
         }
     }
 }
