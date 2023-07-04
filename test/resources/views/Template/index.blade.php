@@ -70,6 +70,7 @@
                                                     Selesai
                                                     @else
                                                     Failed
+                                                    @endif
                                                 </div>
                                             </div>
                                         </td>
