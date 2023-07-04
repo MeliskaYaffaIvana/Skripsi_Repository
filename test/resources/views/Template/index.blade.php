@@ -68,7 +68,7 @@
                                                     Dalam Proses
                                                     @else if ($template->status_job ==2)
                                                     Selesai
-                                                    @else ($template->status_job ==3)
+                                                    @else
                                                     Failed
                                                 </div>
                                             </div>
