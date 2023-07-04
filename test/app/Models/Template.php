@@ -74,7 +74,7 @@ class Template extends Model
             //     'reset_on_prefix_change' => false,
             // ]);
          });
-         static::saving(function ($template) {
+         static::updated(function ($template) {
             if ($template->status_job == 2 && empty($template->tgl_selesai)) {
                 $template->tgl_selesai = Carbon::now('Asia/Jakarta')->toDateString();
             } elseif ($template->status_job == 0) {
