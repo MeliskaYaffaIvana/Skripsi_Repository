@@ -64,9 +64,9 @@
                                                 <div class="flex-grow-1">
                                                     @if ($template->status_job ==0)
                                                     Masuk Antrian
-                                                    @else if ($template->status_job ==1)
+                                                    @elseif ($template->status_job ==1)
                                                     Dalam Proses
-                                                    @else if ($template->status_job ==2)
+                                                    @elseif ($template->status_job ==2)
                                                     Selesai
                                                     @else
                                                     Failed
