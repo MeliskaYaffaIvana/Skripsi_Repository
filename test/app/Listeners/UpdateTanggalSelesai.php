@@ -19,6 +19,7 @@ class UpdateTanggalSelesai implements ShouldQueue
     public function handle(StatusJobUpdated $event)
     {
         if ($event->template->status_job == 2) {
+            $now = Carbon::now('Asia/Jakarta');
             $event->template->tanggal_selesai = now()->toDateString();
             $event->template->save();
         }
