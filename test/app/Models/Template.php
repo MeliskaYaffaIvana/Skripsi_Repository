@@ -74,6 +74,11 @@ class Template extends Model
             //     'reset_on_prefix_change' => false,
             // ]);
          });
+         static::saving(function ($template) {
+            if ($template->status_job == 2 && empty($template->tgl_selesai)) {
+                $template->tgl_selesai = Carbon::now('Asia/Jakarta')->toDateString();
+            }
+        });
     }
 
     public function kategori(){
