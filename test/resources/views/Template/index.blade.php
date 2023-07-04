@@ -31,8 +31,7 @@
                                         <th>Nama Template</th>
                                         <th>Kategori</th>
                                         <th>Versi</th>
-                                        <!-- <th>Status Template</th>
-                <th>Status Job</th> -->
+                                        <th>Status Job</th>
                                         <th>Tanggal Dibuat</th>
                                         <th>Tanggal Selesai</th>
                                         <th>Aksi</th>
@@ -60,16 +59,20 @@
                                                 <div class="flex-grow-1">{{ $template->versi }}</div>
                                             </div>
                                         </td>
-                                        <!-- <td>
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">{{ $template->bolehkan }}</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">{{ $template->status_job }}</div>
-                    </div>
-                </td> -->
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">
+                                                    @if ($template->status_job ==0)
+                                                    Masuk Antrian
+                                                    @else if ($template->status_job ==1)
+                                                    Dalam Proses
+                                                    @else if ($template->status_job ==2)
+                                                    Selesai
+                                                    @else if ($template->status_job ==3)
+                                                    Failed
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $template->tgl_dibuat }}</div>
