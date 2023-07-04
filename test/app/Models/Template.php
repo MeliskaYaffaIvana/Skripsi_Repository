@@ -77,6 +77,8 @@ class Template extends Model
          static::saving(function ($template) {
             if ($template->status_job == 2 && empty($template->tgl_selesai)) {
                 $template->tgl_selesai = Carbon::now('Asia/Jakarta')->toDateString();
+            } elseif ($template->status_job == 0) {
+                $template->tgl_selesai = null;
             }
         });
     }
