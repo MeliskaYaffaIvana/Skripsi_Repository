@@ -90,13 +90,11 @@
                                                     data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
                                                 <div class="dropdown-menu dropdownmenu-secondary">
                                                     <div class="bolehkan">
-                                                        <a class="dropdown-item">
-                                                            <button class="toggle-button"
-                                                                data-template-id="{{ $template->id }}"
-                                                                data-template-bolehkan="{{ $template->bolehkan }}">
-                                                                {{ $template->bolehkan == 1 ? 'Disable' : 'Enable' }}
-                                                            </button>
-                                                        </a>
+                                                        <button class="toggle-button dropdown-item"
+                                                            data-template-id="{{ $template->id }}"
+                                                            data-template-bolehkan="{{ $template->bolehkan }}">
+                                                            {{ $template->bolehkan == 1 ? 'Disable' : 'Enable' }}
+                                                        </button>
                                                     </div>
                                                     @if($template->bolehkan == 0)
                                                     <div class="edit">
