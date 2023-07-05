@@ -118,4 +118,17 @@ class TemplateController extends Controller
         $template->delete();
         return redirect()->route('Template.index')->with('Success', 'data berhasi dihapus');
     }
+    public function toggle(Request $request, $id)
+    {
+    $template = Template::find($id);
+    if ($template) {
+        $template->bolehkan = $request->status;
+        $template->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    return response()->json(['success' => false]);
+}
+
 }

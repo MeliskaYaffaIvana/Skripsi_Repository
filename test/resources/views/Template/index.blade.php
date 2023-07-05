@@ -89,11 +89,22 @@
                                                 <button type="button" class="btn-sm btn-info dropdown-toggle"
                                                     data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
                                                 <div class="dropdown-menu dropdownmenu-secondary">
+                                                    <div class="bolehkan">
+                                                        <a class="dropdown-item">
+                                                            <button class="toggle-button"
+                                                                data-template-id="{{ $template->id }}"
+                                                                data-template-bolehkan="{{ $template->bolehkan }}">
+                                                                {{ $template->bolehkan == 1 ? 'Disable' : 'Enable' }}
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                    @if($template->bolehkan == 0)
                                                     <div class="edit">
                                                         <a class="dropdown-item" data-bs-toggle="modal"
                                                             data-bs-target="#showEditModal{{$template->id}}">Edit</a>
                                                     </div>
-                                                    <div class="remove">
+                                                    @endif
+                                                    <!-- <div class="remove">
                                                         <form action="{{ route('Template.destroy', $template->id) }}"
                                                             method="POST">
                                                             @csrf
@@ -102,7 +113,7 @@
                                                                 data-bs-toggle="modal"
                                                                 data-bs-target="#deleteRecordModal">Hapus</button>
                                                         </form>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                         </td>
@@ -187,7 +198,43 @@ $(document).ready(function() {
     $('#example').DataTable();
 });
 </script>
-<!-- add Modal -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.toggle-button').click(function() {
+        var button = $(this);
+        var templateId = button.data('template-id');
+        var templateBolehkan = button.data('template-bolehkan');
+
+        // Mengubah status perangkat
+        var newStatus = templateBolehkan == 1 ? 0 : 1;
+        var buttonText = newStatus == 1 ? 'Disable' : 'Enable';
+
+        // Mengirim permintaan AJAX ke server
+        $.ajax({
+            url: '/Template/' + templateId + '/toggle',
+            type: 'PATCH',
+            dataType: 'json',
+            data: {
+                _token: '{{ csrf_token() }}',
+                status: newStatus
+            },
+            success: function(response) {
+                if (response.success) {
+                    // Perbarui teks tombol dan atribut data
+                    button.data('template-bolehkan', newStatus);
+                    button.text(buttonText);
+
+                }
+            }
+        });
+    });
+});
+</script>
+
+
+<!-- add Modal 
+-->
 <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

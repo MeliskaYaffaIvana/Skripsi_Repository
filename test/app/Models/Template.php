@@ -28,6 +28,7 @@ class Template extends Model
         'tgl_selesai',
     ];
     
+    
     public static function generateCustomID(){
         $prefix = 'TP';
         $date = Carbon::now('Asia/Jakarta')->format('YmdHis');
@@ -48,10 +49,6 @@ class Template extends Model
             $lastID = (int) $lastID;
             $newID = $lastID + 1;
             $newID = str_pad($newID, 2, '0', STR_PAD_LEFT);
-            // $lenID = $strlen($newID);
-            // for($i=0; $i<(2-$lenID); $i++){
-            //     $newID = '0'.$newID;
-            // }
             $lastID = $newID;
         }
         
@@ -63,16 +60,7 @@ class Template extends Model
 
         static::creating(function($model){
             $model->tgl_dibuat = Carbon::now('Asia/Jakarta');
-            // $model->tgl_selesai = Carbon::now('Asia/Jakarta')->addDays(1);
             $model->id = self::generateCustomID();
-
-            // $model->id = date('YmdHis');
-            // $model->id = IdGenerator::generate([
-            //     'table' => 'template',
-            //     'length' => 18,
-            //     'prefix' => 'TP' . date('YmdHis'),
-            //     'reset_on_prefix_change' => false,
-            // ]);
          });
          static::saving(function ($template) {
             if ($template->status_job == 2 && empty($template->tgl_selesai)) {

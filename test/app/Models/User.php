@@ -35,18 +35,31 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    // protected static function booted(){
-    //     static::creating(function ($users){
-    //         $users->nim = Crypt::encrypt($users->nim);
-    //         $users->id = strtoupper(substr(md5($users->nim), 0, 10));
-    //     });
-    // }
+    public function rules()
+    {
+        return [
+            'nim' => 'required|unique:users,nim',
+            // tambahkan aturan validasi lainnya
+        ];
+    }
     
     public static function getIdFromNim($nim)
 {
     $hash = md5($nim);
     $id = substr($hash, 0, 50);
     return $id;
+}
+protected static function boot()
+{
+    parent::boot();
+
+    static::creating(function ($user) {
+        // Mendapatkan ID dari NIM menggunakan fungsi getIdFromNim()
+        $id = static::getIdFromNim($user->nim);
+
+        // Mengatur nilai ID pengguna sebelum disimpan
+        $user->id = $id;
+    });
 }
 public function Template(){
         return $this->hasMany('App\Models\Template');

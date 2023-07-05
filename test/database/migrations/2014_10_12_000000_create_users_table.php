@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->enum('status', ['administrator', 'mahasiswa']);
             $table->string('password');
             $table->tinyInteger('terdaftar')->default(0)->comment('0: terdaftar, 1: tidak terdaftar');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

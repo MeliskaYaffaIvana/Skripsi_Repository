@@ -37,6 +37,7 @@ Route::resource('User',UserController::class);
 Route::resource('Template',TemplateController::class);
 Route::post('/Template/update/{id}', [TemplateController::class, 'update'])->name('template.update');
 Route::delete('/Template/destroy/{id}',[TemplateController::class, 'destroy'])->name('template.destroy');
+Route::patch('/Template/{id}/toggle', [TemplateController::class, 'toggle']);
 
 //container
 Route::resource('Container',ContainerController::class);
