@@ -26,6 +26,7 @@ class Template extends Model
         'status_job',
         'tgl_dibuat',
         'tgl_selesai',
+        'port',
     ];
     
     

@@ -164,6 +164,11 @@
                                                                 id="default_dir" value="{{ $template->default_dir }}"
                                                                 required>
                                                         </div>
+                                                        <div class="mb-3">
+                                                            <label for="port">Port</label>
+                                                            <input type="text" name="default_dir" class="form-control"
+                                                                id="port" value="{{ $template->port }}" required>
+                                                        </div>
                                                         <div class=" modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn2 btn-light"
@@ -267,6 +272,10 @@ $(document).ready(function() {
                     <div class="mb-3">
                         <label for="default_dir">Default DIR</label>
                         <input type="text" name="default_dir" class="form-control" id="default_dir" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="port">Port</label>
+                        <input type="text" name="port" class="form-control" id="port" required>
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">

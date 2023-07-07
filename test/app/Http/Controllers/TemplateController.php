@@ -51,6 +51,7 @@ class TemplateController extends Controller
         $template->versi = $request->versi;
         $template->link_template = $request->link_template;
         $template->default_dir = $request->default_dir;
+        $template->port = $request->port;
         // $template->bolehkan = $request->bolehkan;
         // $template->status_job = $request->status_job;
         $template->save();
@@ -99,6 +100,7 @@ class TemplateController extends Controller
         $template->versi = $request->get('versi');
         $template->link_template = $request->get('link_template');
         $template->default_dir = $request->get('default_dir');
+        $template->port = $request->get('port');
         // $template->bolehkan = $request->get('bolehkan');
         // $template->status_job = $request->get('status_job');
         
