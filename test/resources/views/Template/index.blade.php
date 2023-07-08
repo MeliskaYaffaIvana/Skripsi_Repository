@@ -166,7 +166,7 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="port">Port</label>
-                                                            <input type="text" name="default_dir" class="form-control"
+                                                            <input type="text" name="port" class="form-control"
                                                                 id="port" value="{{ $template->port }}" required>
                                                         </div>
                                                         <div class=" modal-footer">
