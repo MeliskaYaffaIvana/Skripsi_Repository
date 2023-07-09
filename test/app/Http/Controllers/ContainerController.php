@@ -45,50 +45,51 @@ class ContainerController extends Controller
      */
     public function store(Request $request)
     {
-        $container = $request->input('container');
+        $containers = $request->input('container');
 
-        foreach ($container as $container){
-             $user = User::find(Auth::id()); // Get the associated user
+    foreach ($containers as $containerData) {
+        $user = User::find(Auth::id()); // Get the associated user
 
-    if ($user) {
-        $prodi = $user->prodi;
-        $nimDigit = substr($user->nim, 0, 2);
+        if ($user) {
+            $nim = $user->nim;
+            $digit6 = substr($nim, 5, 1);
 
-        $portPrefix = 0;
-        $portSuffix = 0;
+            $prodi = '';
+            $portPrefix = 0;
+            $portSuffix = 0;
 
-        if ($prodi === 'TI') {
-            $portPrefix = intval($nimDigit) - 9;
-        } elseif ($prodi === 'SIB') {
-            $portPrefix = intval($nimDigit) + 16;
-        }
+            if ($digit6 == '2') {
+                $prodi = 'TI';
+                $nimDigit = substr($nim, 0, 2);
+                $portPrefix = intval($nimDigit) - 9;
 
-        // Mendapatkan nilai counter terakhir untuk TI dan SIB
-        $lastPort = DB::table('container')
-            ->join('users', 'container.id_user', '=', 'users.id')
-            ->where('users.prodi', $prodi)
-            ->where('container.port', 'LIKE', $portPrefix.'%')
-            ->max('container.port');
+                // Mendapatkan nilai counter terakhir untuk TI
+                $lastPortTI = Container::where('port', 'LIKE', $portPrefix . '%')->max('port');
+                $counterTI = intval(substr($lastPortTI, -3)) + 1;
+                $portSuffix = str_pad($counterTI, 3, '0', STR_PAD_LEFT);
+            } elseif ($digit6 == '6') {
+                $prodi = 'SIB';
+                $nimDigit = substr($nim, 0, 2);
+                $portPrefix = intval($nimDigit) + 16;
 
-        // Mengambil digit terakhir dari counter TI/SIB
-        $counter = intval(substr($lastPort, -3)) + 1;
+                // Mendapatkan nilai counter terakhir untuk SIB
+                $lastPortSIB = Container::where('port', 'LIKE', $portPrefix . '%')->max('port');
+                $counterSIB = intval(substr($lastPortSIB, -3)) + 1;
+                $portSuffix = str_pad($counterSIB, 3, '0', STR_PAD_LEFT);
+            }
 
-        // Menyesuaikan portSuffix berdasarkan prodi
-        $portSuffix = $counter;
+            // Mengisi kolom port di tabel kontainer dengan format port
+            $port = intval($portPrefix . $portSuffix);
 
-        // Mengisi kolom port di tabel kontainer dengan format port
-        $port = intval($portPrefix . str_pad($portSuffix, 3, '0', STR_PAD_LEFT));
-        $newContainer = Container::create([
-                'nama_kontainer' => $container['nama_kontainer'],
-                'id_template' =>$container['id_template'],
+            $container = [
+                'nama_kontainer' => $containerData['nama_kontainer'],
+                'id_template' =>$containerData['id_template'],
                 'id_user' => Auth::id(),
                 'port' => $port
-            ]);
-    }
+            ];
 
-    
-    
-            
+            Container::create($container);
+        }
         }
         
         return redirect()->route('Container.create')->with('success', 'Data berhasil ditambahkan');

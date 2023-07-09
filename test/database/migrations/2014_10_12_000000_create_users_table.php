@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->string('id', 50)->primary();    
             $table->string('nim', 10)->unique();
             $table->string('nama', 100);
-            $table->string('prodi');
             $table->string('judul');
             $table->text('deskripsi');
             $table->enum('status', ['administrator', 'mahasiswa']);

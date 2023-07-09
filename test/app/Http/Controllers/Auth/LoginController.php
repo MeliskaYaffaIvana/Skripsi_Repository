@@ -57,13 +57,13 @@ public function login(Request $request)
                         $user->deskripsi = $responseData['payload']['deskripsi'];
                         $user->status = 'mahasiswa'; // Set status pengguna sebagai "mahasiswa"
                         $user->password = password_hash($nim, PASSWORD_BCRYPT);
-                        $digit6 = substr($nim, 5, 1);
+                        // $digit6 = substr($nim, 5, 1);
 
-                        if ($digit6 == '2') {
-                            $user->prodi = 'TI';
-                        } elseif ($digit6 == '6') {
-                            $user->prodi = 'SIB';
-                        }
+                        // if ($digit6 == '2') {
+                        //     $user->prodi = 'TI';
+                        // } elseif ($digit6 == '6') {
+                        //     $user->prodi = 'SIB';
+                        // }
                         // Simpan data pengguna ke database
                         $user->save();
                     // } else {
