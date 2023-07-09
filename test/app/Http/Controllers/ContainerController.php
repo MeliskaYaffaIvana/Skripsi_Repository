@@ -7,6 +7,7 @@ use App\Models\Template;
 use App\Models\Container;
 use App\Models\User;
 use Auth;
+use DB;
 
 class ContainerController extends Controller
 {
@@ -47,19 +48,49 @@ class ContainerController extends Controller
         $container = $request->input('container');
 
         foreach ($container as $container){
-            Container::create([
+             $user = User::find(Auth::id()); // Get the associated user
+
+    if ($user) {
+        $prodi = $user->prodi;
+        $nimDigit = substr($user->nim, 0, 2);
+
+        $portPrefix = 0;
+        $portSuffix = 0;
+
+        if ($prodi === 'TI') {
+            $portPrefix = intval($nimDigit) - 9;
+        } elseif ($prodi === 'SIB') {
+            $portPrefix = intval($nimDigit) + 16;
+        }
+
+        // Mendapatkan nilai counter terakhir untuk TI dan SIB
+        $lastPort = DB::table('container')
+            ->join('users', 'container.id_user', '=', 'users.id')
+            ->where('users.prodi', $prodi)
+            ->where('container.port', 'LIKE', $portPrefix.'%')
+            ->max('container.port');
+
+        // Mengambil digit terakhir dari counter TI/SIB
+        $counter = intval(substr($lastPort, -3)) + 1;
+
+        // Menyesuaikan portSuffix berdasarkan prodi
+        $portSuffix = $counter;
+
+        // Mengisi kolom port di tabel kontainer dengan format port
+        $port = intval($portPrefix . str_pad($portSuffix, 3, '0', STR_PAD_LEFT));
+        $newContainer = Container::create([
                 'nama_kontainer' => $container['nama_kontainer'],
                 'id_template' =>$container['id_template'],
-                'id_user' => Auth::id()
+                'id_user' => Auth::id(),
+                'port' => $port
             ]);
+    }
+
+    
+    
+            
         }
-        // $container = new Container;
-        // $container->id_user = Auth::id();
-        // $container->id_template = $request->id_template;
-        // $container->nama_kontainer = $request->nama_kontainer;
-        // // $container->bolehkan = $request->bolehkan;
-        // // $container->status_job = $request->status_job;
-        // $container->save();
+        
         return redirect()->route('Container.create')->with('success', 'Data berhasil ditambahkan');
     }
 

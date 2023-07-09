@@ -22,6 +22,7 @@ class Container extends Model
         'status_job',
         'tgl_dibuat',
         'status',
+        'port',
     ];
     public static function generateCustomID(){
         $prefix = 'CT';

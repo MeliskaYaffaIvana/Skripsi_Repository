@@ -23,11 +23,12 @@ class CreateTemplateTable extends Migration
             $table->string('versi');
             $table->string('link_template');
             $table->string('default_dir');
+            $table->string('port');
             $table->tinyInteger('bolehkan')->default(0)->comment('0: Tidak Menyala, 1: Menyala');
             $table->tinyInteger('status_job')->default(0)->comment('0: Masuk Antrian, 1: Dalam Proses, 2: Selesai, 3: Failed');
             $table->dateTime('tgl_dibuat');
             $table->dateTime('tgl_selesai')->nullable();
-            $table->string('port');
+            
         });
     }
     /**
