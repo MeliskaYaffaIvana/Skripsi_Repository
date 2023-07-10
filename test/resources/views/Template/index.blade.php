@@ -96,12 +96,10 @@
                                                             {{ $template->bolehkan == 1 ? 'Disable' : 'Enable' }}
                                                         </button>
                                                     </div>
-                                                    @if($template->bolehkan == 0)
                                                     <div class="edit">
                                                         <a class="dropdown-item" data-bs-toggle="modal"
                                                             data-bs-target="#showEditModal{{$template->id}}">Edit</a>
                                                     </div>
-                                                    @endif
                                                     <!-- <div class="remove">
                                                         <form action="{{ route('Template.destroy', $template->id) }}"
                                                             method="POST">
@@ -156,18 +154,20 @@
                                                             <label for="link_template">Link Template</label>
                                                             <input type="text" name="link_template" class="form-control"
                                                                 id="link_template"
-                                                                value="{{ $template->link_template }}" required>
+                                                                value="{{ $template->link_template }}" required
+                                                                readonly>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="default_dir">Default DIR</label>
                                                             <input type="text" name="default_dir" class="form-control"
                                                                 id="default_dir" value="{{ $template->default_dir }}"
-                                                                required>
+                                                                required readonly>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="port">Port</label>
                                                             <input type="text" name="port" class="form-control"
-                                                                id="port" value="{{ $template->port }}" required>
+                                                                id="port" value="{{ $template->port }}" required
+                                                                readonly>
                                                         </div>
                                                         <div class=" modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">

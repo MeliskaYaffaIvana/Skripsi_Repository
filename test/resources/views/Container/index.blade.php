@@ -78,8 +78,9 @@
                                                     data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
                                                 <div class="dropdown-menu dropdownmenu-secondary">
                                                     <div class="edit">
-                                                        <a class="dropdown-item" data-bs-toggle="modal"
-                                                            data-bs-target="#showEditModal{{$container->id}}">Edit</a>
+                                                        <!-- <a class="dropdown-item" data-bs-toggle="modal"
+                                                            data-bs-target="#showEditModal{{$container->id}}">Edit</a> -->
+                                                        @if($container->status == false)
                                                         <div class="remove">
                                                             <form
                                                                 action="{{ route('Container.destroy', $container->id) }}"
@@ -91,12 +92,27 @@
                                                                     data-bs-target="#deleteRecordModal">Hapus</button>
                                                             </form>
                                                         </div>
-                                                        <div class="status">
-
-                                                            <button class="toggle-status dropdown-item"
-                                                                data-container="{{ $container->id }}">
-                                                                {{ $container->status ? 'Disable' : 'Enable' }}
-                                                            </button>
+                                                        @endif
+                                                        @if(session('status'))
+                                                        <div class="alert alert-success">
+                                                            {{ session('status') }}
+                                                        </div>
+                                                        @endif
+                                                        <div class="bolehkan">
+                                                            <form
+                                                                action="{{ route('container.update_bolehkan',  $container->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('PATCH')
+                                                                <select name="bolehkan" onchange="this.form.submit()">
+                                                                    <option value="0"
+                                                                        {{ $container->bolehkan == 0 ? 'selected' : '' }}>
+                                                                        Exited</option>
+                                                                    <option value="1"
+                                                                        {{ $container->bolehkan == 1 ? 'selected' : '' }}>
+                                                                        Running</option>
+                                                                </select>
+                                                            </form>
                                                         </div>
                                                     </div>
 
@@ -225,18 +241,18 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
-    var toggleButtons = document.querySelectorAll('.toggle-status');
+    var toggleButtons = document.querySelectorAll('.toggle-bolehkan');
 
     toggleButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             var id = button.getAttribute('data-container');
-            axios.put('/Container/' + id + '/toggle-status')
+            axios.put('/Container/' + id + '/toggle-bolehkan')
                 .then(function(response) {
-                    var statusElement = document.getElementById('status' + id);
-                    if (statusElement.innerText === 'Enable') {
-                        statusElement.innerText = 'Disable';
+                    var statusElement = document.getElementById('bolehkan' + id);
+                    if (statusElement.innerText === 'Running') {
+                        statusElement.innerText = 'Exited';
                     } else {
-                        statusElement.innerText = 'Enable';
+                        statusElement.innerText = 'Running';
                     }
                 })
                 .catch(function(error) {

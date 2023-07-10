@@ -16,7 +16,7 @@ class CreateTemplateTable extends Migration
         Schema::create('template', function (Blueprint $table) {
             $table->string('id', 18)->primary();
             $table->string('id_kategori', 5);
-            $table->foreign('id_kategori')->references('id')->on('kategori')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_kategori')->references('id')->on('kategori');
             $table->string('id_user', 50);
             $table->foreign('id_user')->references('id')->on('users')->nullable();
             $table->string('nama_template');

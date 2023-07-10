@@ -85,7 +85,7 @@ class ContainerController extends Controller
                 'nama_kontainer' => $containerData['nama_kontainer'],
                 'id_template' =>$containerData['id_template'],
                 'id_user' => Auth::id(),
-                'port' => $port
+                'port_kontainer' => $port
             ];
 
             Container::create($container);
@@ -151,13 +151,21 @@ class ContainerController extends Controller
         $container->delete();
         return redirect()->route('Container.index')->with('succes', 'data berhasil dihapus');
     }
-    public function toggleStatus(Request $request, $id)
+    public function toggleBolehkan(Request $request, $id)
+    {
+        $container = Container::where('id', $id)->firstOrFail();
+        $container->bolehkan = !$container->bolehkan;
+        $container->save();
+
+        return response()->json(['success' => true]);
+    }
+    public function updateBolehkan(Request $request, $id)
 {
-    $container = Container::where('id', $id)->firstOrFail();
-    $container->status = !$container->status;
+    $container = Container::findOrFail($id);
+    $container->bolehkan = $request->bolehkan;
     $container->save();
 
-    return response()->json(['success' => true]);
+    return redirect()->back()->with('status', 'Nilai Bolehkan berhasil diperbarui.');
 }
 
 }
