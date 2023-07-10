@@ -64,7 +64,7 @@ class ContainerController extends Controller
                 $portPrefix = intval($nimDigit) - 9;
 
                 // Mendapatkan nilai counter terakhir untuk TI
-                $lastPortTI = Container::where('port', 'LIKE', $portPrefix . '%')->max('port');
+                $lastPortTI = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
                 $counterTI = intval(substr($lastPortTI, -3)) + 1;
                 $portSuffix = str_pad($counterTI, 3, '0', STR_PAD_LEFT);
             } elseif ($digit6 == '6') {
