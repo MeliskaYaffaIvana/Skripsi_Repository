@@ -73,7 +73,7 @@ class ContainerController extends Controller
                 $portPrefix = intval($nimDigit) + 16;
 
                 // Mendapatkan nilai counter terakhir untuk SIB
-                $lastPortSIB = Container::where('port', 'LIKE', $portPrefix . '%')->max('port');
+                $lastPortSIB = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port');
                 $counterSIB = intval(substr($lastPortSIB, -3)) + 1;
                 $portSuffix = str_pad($counterSIB, 3, '0', STR_PAD_LEFT);
             }
