@@ -165,7 +165,7 @@ class ContainerController extends Controller
     $container->bolehkan = $request->bolehkan;
     $container->save();
 
-    return redirect()->back()->with('status', 'Nilai Bolehkan berhasil diperbarui.');
+    return redirect()->back();
 }
 
 }

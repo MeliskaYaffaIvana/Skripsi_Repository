@@ -98,20 +98,22 @@
                                                             {{ session('status') }}
                                                         </div>
                                                         @endif
+
                                                         <div class="bolehkan">
                                                             <form
-                                                                action="{{ route('container.update_bolehkan',  $container->id) }}"
+                                                                action="{{ route('container.update_bolehkan', $container->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('PATCH')
-                                                                <select name="bolehkan" onchange="this.form.submit()">
-                                                                    <option value="0"
-                                                                        {{ $container->bolehkan == 0 ? 'selected' : '' }}>
-                                                                        Exited</option>
-                                                                    <option value="1"
-                                                                        {{ $container->bolehkan == 1 ? 'selected' : '' }}>
-                                                                        Running</option>
-                                                                </select>
+                                                                @if ($container->bolehkan == 0)
+                                                                <button type="submit" name="bolehkan"
+                                                                    class="dropdown-item" value="1">Running
+                                                                    Kontainer</button>
+                                                                @elseif ($container->bolehkan == 1)
+                                                                <button type="submit" name="bolehkan"
+                                                                    class="dropdown-item" value="0">Exited
+                                                                    Kontainer</button>
+                                                                @endif
                                                             </form>
                                                         </div>
                                                     </div>
