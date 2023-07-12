@@ -160,12 +160,12 @@ class ContainerController extends Controller
         return response()->json(['success' => true]);
     }
     public function updateBolehkan(Request $request, $id)
-{
-    $container = Container::findOrFail($id);
-    $container->bolehkan = $request->bolehkan;
-    $container->save();
+    {
+        $container = Container::findOrFail($id);
+        $container->bolehkan = $request->bolehkan;
+        $container->save();
 
-    return redirect()->back();
-}
+        return redirect()->back();
+    }
 
 }

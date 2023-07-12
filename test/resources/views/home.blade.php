@@ -28,15 +28,9 @@
                             <table id="example" class="table " style="width:100%">
                                 <thead>
                                     <tr>
-                                        <!-- <th>Nama</th>
-                                        <th>NIM </th>
-                                        <th>Judul</th>
-                                        <th>Deskripsi</th>
-                                        <th>Status</th> -->
-                                        <!-- <th>Aksi</th> -->
-                                        <th>Nama Kontainer</th>
-                                        <th>Template</th>
-                                        <!-- <th>Mahasiswa</th> -->
+                                        <th>Kontainer</th>
+                                        <th>Status</th>
+                                        <th>Port</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,14 +43,22 @@
                                             </div>
                                         </td>
                                         <td>
-                                            @foreach($template as $temp)
-                                            @if($temp->id ==$container->id_template)
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $temp->nama_template}}</div>
+                                                <div class="flex-grow-1">
+                                                    @if ($container->bolehkan == 0)
+                                                    Exited
+                                                    @elseif ($container->bolehkan == 1)
+                                                    Running
+                                                    @endif
+                                                </div>
                                             </div>
-                                            @endif
-                                            @endforeach
                                         </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $container->port_kontainer}}</div>
+                                            </div>
+                                        </td>
+
                                         <!-- <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $container->id_user }}</div>

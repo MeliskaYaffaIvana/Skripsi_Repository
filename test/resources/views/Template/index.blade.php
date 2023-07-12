@@ -1,6 +1,15 @@
 @extends('layout')
 
 @section('content')
+<style>
+.icon-on {
+    color: green;
+}
+
+.icon-off {
+    color: red;
+}
+</style>
 <!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper">
@@ -59,13 +68,24 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="bolehkan">
-                                                    <button class="toggle-button dropdown-item"
-                                                        data-template-id="{{ $template->id }}"
-                                                        data-template-bolehkan="{{ $template->bolehkan }}">
-                                                        {{ $template->bolehkan == 1 ? 'Disable' : 'Enable' }}
-                                                    </button>
+                                                    <form
+                                                        action="{{ route('template.update_bolehkan', $template->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        @if ($template->bolehkan == 0)
+                                                        <button type="submit" name="bolehkan"
+                                                            class="dropdown-item icon-off" value="1"> <i
+                                                                class="fas fa-toggle-off"></i></button>
+                                                        @elseif ($template->bolehkan == 1)
+                                                        <button type="submit" name="bolehkan"
+                                                            class="dropdown-item icon-on" value="0"> <i
+                                                                class="fas fa-toggle-on"></i></button>
+                                                        @endif
+                                                    </form>
                                                 </div>
-                                                <div class="edit">
+
+                                                <div class=" edit">
                                                     <a class="btn btn-sm btn-success edit-item-btn"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#showEditModal{{$template->id}}"><i
@@ -171,39 +191,26 @@ $(document).ready(function() {
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('.toggle-button').click(function() {
-        var button = $(this);
-        var templateId = button.data('template-id');
-        var templateBolehkan = button.data('template-bolehkan');
+var toggleButtons = document.querySelectorAll('.toggle-bolehkan');
 
-        // Mengubah status perangkat
-        var newStatus = templateBolehkan == 1 ? 0 : 1;
-        var buttonText = newStatus == 1 ? 'Disable' : 'Enable';
-
-        // Mengirim permintaan AJAX ke server
-        $.ajax({
-            url: '/Template/' + templateId + '/toggle',
-            type: 'PATCH',
-            dataType: 'json',
-            data: {
-                _token: '{{ csrf_token() }}',
-                status: newStatus
-            },
-            success: function(response) {
-                if (response.success) {
-                    // Perbarui teks tombol dan atribut data
-                    button.data('template-bolehkan', newStatus);
-                    button.text(buttonText);
-
+toggleButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        var id = button.getAttribute('data-container');
+        axios.put('/Template/' + id + '/toggle-bolehkan')
+            .then(function(response) {
+                var statusElement = document.getElementById('bolehkan' + id);
+                if (statusElement.innerText === 'Enable') {
+                    statusElement.innerText = 'Disable';
+                } else {
+                    statusElement.innerText = 'Enable';
                 }
-            }
-        });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     });
 });
 </script>
-
-
 <!-- add Modal 
 -->
 <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

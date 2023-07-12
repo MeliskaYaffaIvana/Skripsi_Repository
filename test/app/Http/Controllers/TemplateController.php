@@ -120,17 +120,13 @@ class TemplateController extends Controller
         $template->delete();
         return redirect()->route('Template.index')->with('Success', 'data berhasi dihapus');
     }
-    public function toggle(Request $request, $id)
+    public function updateBolehkan(Request $request, $id)
     {
-    $template = Template::find($id);
-    if ($template) {
-        $template->bolehkan = $request->status;
+        $template = Template::findOrFail($id);
+        $template->bolehkan = $request->bolehkan;
         $template->save();
 
-        return response()->json(['success' => true]);
+        return redirect()->back();
     }
-
-    return response()->json(['success' => false]);
-}
 
 }
