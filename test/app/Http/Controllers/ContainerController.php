@@ -167,5 +167,38 @@ class ContainerController extends Controller
 
         return redirect()->back();
     }
+    public function getContainersByCategory()
+    {
+        // Query untuk mendapatkan data kontainer per kategori dengan inner join
+        $query = "
+            SELECT
+                kategori.kategori AS category,
+                container.nama_kontainer
+            FROM
+                containers
+                INNER JOIN template ON container.id_template = template.id
+                INNER JOIN kategori ON template.id_kategori = kategori.id
+            ORDER BY
+                kategori.kategori, container.name_kontainer
+        ";
 
+        // Eksekusi query menggunakan DB facade
+        $containers = DB::select($query);
+
+        // Format data kontainer per kategori ke dalam bentuk array
+        $data = [];
+        foreach ($containers as $container) {
+            $category = $container->category;
+            $name = $container->nama_kontainer;
+
+            if (!isset($data[$category])) {
+                $data[$category] = [];
+            }
+
+            $data[$category][] = ['name' => $name];
+        }
+
+        return response()->json($data);
+    }
+    }
 }
