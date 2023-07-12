@@ -1,6 +1,18 @@
 @extends('layout')
 
 @section('content')
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+@if (session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
+
 <!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper">

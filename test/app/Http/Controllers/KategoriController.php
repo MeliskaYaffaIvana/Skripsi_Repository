@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kategori;
+use App\Models\Template;
 
 
 class KategoriController extends Controller
@@ -93,8 +94,22 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        $kategori = Kategori::where('id', $id);
+         // Mengambil data kategori berdasarkan ID
+        $kategori = Kategori::findOrFail($id);
+        
+        // Memeriksa apakah kategori digunakan oleh template
+        $isUsedInTemplate = Template::where('id_kategori', $kategori->id)->exists();
+
+        // Jika kategori digunakan oleh template, tampilkan pesan error
+        if ($isUsedInTemplate) {
+            return redirect()->route('Kategori.index')->with('error', 'Kategori tidak dapat dihapus karena digunakan oleh template.');
+        }
+
+        // Jika kategori tidak digunakan oleh template, lanjutkan proses penghapusan
         $kategori->delete();
-         return redirect()->route('Kategori.index')->with('Success', 'data berhasi dihapus');
+
+        return redirect()->route('Kategori.index')->with('success', 'Data berhasil dihapus.');
     }
+    // ...
+
 }

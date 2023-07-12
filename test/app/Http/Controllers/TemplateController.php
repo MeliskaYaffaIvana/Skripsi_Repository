@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Template;
+use App\Models\Container;
 use App\Models\User;
 use Auth;
 
@@ -116,10 +117,23 @@ class TemplateController extends Controller
      */
     public function destroy($id)
     {
-        $template = Template::where('id', $id);
+         // Mengambil data kategori berdasarkan ID
+        $template = Template::findOrFail($id);
+        
+        // Memeriksa apakah kategori digunakan oleh template
+        $isUsedInContainer = Container::where('id_template', $template->id)->exists();
+
+        // Jika kategori digunakan oleh template, tampilkan pesan error
+        if ($isUsedInContainer) {
+            return redirect()->route('Template.index')->with('error', 'Template tidak dapat dihapus karena digunakan oleh Kontainer.');
+        }
+
+        // Jika kategori tidak digunakan oleh template, lanjutkan proses penghapusan
         $template->delete();
-        return redirect()->route('Template.index')->with('Success', 'data berhasi dihapus');
+
+        return redirect()->route('Template.index')->with('success', 'Data berhasil dihapus.');
     }
+    // ...
     public function updateBolehkan(Request $request, $id)
     {
         $template = Template::findOrFail($id);
