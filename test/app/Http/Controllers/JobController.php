@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kategori;
+use App\Models\Template;
 
 class JobController extends Controller
 {
@@ -13,7 +15,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('Job.indexTemplate');
+        $kategori = Kategori::all();
+        $template = Template::all();  
+        return view('Job.indexTemplate', compact ( 'kategori','template'));
     }
     /**
      * Show the form for creating a new resource.

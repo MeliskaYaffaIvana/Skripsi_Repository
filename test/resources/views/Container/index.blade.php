@@ -73,50 +73,48 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn-sm btn-info dropdown-toggle"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                                                <div class="dropdown-menu dropdownmenu-secondary">
-                                                    <div class="edit">
-                                                        <!-- <a class="dropdown-item" data-bs-toggle="modal"
+                                            <div class="d-flex gap-2">
+                                                <div class="edit">
+                                                    <!-- <a class="dropdown-item" data-bs-toggle="modal"
                                                             data-bs-target="#showEditModal{{$container->id}}">Edit</a> -->
-                                                        @if($container->status == false)
-                                                        <div class="remove">
-                                                            <form
-                                                                action="{{ route('Container.destroy', $container->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="dropdown-item"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#deleteRecordModal">Hapus</button>
-                                                            </form>
-                                                        </div>
-                                                        @endif
-                                                        @if(session('status'))
-                                                        <div class="alert alert-success">
-                                                            {{ session('status') }}
-                                                        </div>
-                                                        @endif
-
-                                                        <div class="bolehkan">
-                                                            <form
-                                                                action="{{ route('container.update_bolehkan', $container->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('PATCH')
-                                                                @if ($container->bolehkan == 0)
-                                                                <button type="submit" name="bolehkan"
-                                                                    class="dropdown-item" value="1">Running
-                                                                    Kontainer</button>
-                                                                @elseif ($container->bolehkan == 1)
-                                                                <button type="submit" name="bolehkan"
-                                                                    class="dropdown-item" value="0">Exited
-                                                                    Kontainer</button>
-                                                                @endif
-                                                            </form>
-                                                        </div>
+                                                    @if($container->status == false)
+                                                    <div class="remove">
+                                                        <form action="{{ route('Container.destroy', $container->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#deleteRecordModal"><i
+                                                                    class="mdi mdi-delete-outline"></i></button>
+                                                        </form>
                                                     </div>
+                                                    @endif
+                                                    @if(session('status'))
+                                                    <div class="alert alert-success">
+                                                        {{ session('status') }}
+                                                    </div>
+                                                    @endif
+
+                                                    <div class="bolehkan">
+                                                        <form
+                                                            action="{{ route('container.update_bolehkan', $container->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            @if ($container->bolehkan == 0)
+                                                            <button type="submit" name="bolehkan" class="dropdown-item"
+                                                                value="1">Running
+                                                                Kontainer</button>
+                                                            @elseif ($container->bolehkan == 1)
+                                                            <button type="submit" name="bolehkan" class="dropdown-item"
+                                                                value="0">Exited
+                                                                Kontainer</button>
+                                                            @endif
+                                                        </form>
+                                                    </div>
+                                                </div>
 
 
                                         </td>

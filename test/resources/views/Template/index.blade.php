@@ -31,9 +31,6 @@
                                         <th>Nama Template</th>
                                         <th>Kategori</th>
                                         <th>Versi</th>
-                                        <th>Status Job</th>
-                                        <th>Tanggal Dibuat</th>
-                                        <th>Tanggal Selesai</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -60,129 +57,100 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">
-                                                    @if ($template->status_job ==0)
-                                                    Masuk Antrian
-                                                    @elseif ($template->status_job ==1)
-                                                    Dalam Proses
-                                                    @elseif ($template->status_job ==2)
-                                                    Selesai
-                                                    @else
-                                                    Failed
-                                                    @endif
+                                            <div class="d-flex gap-2">
+                                                <div class="bolehkan">
+                                                    <button class="toggle-button dropdown-item"
+                                                        data-template-id="{{ $template->id }}"
+                                                        data-template-bolehkan="{{ $template->bolehkan }}">
+                                                        {{ $template->bolehkan == 1 ? 'Disable' : 'Enable' }}
+                                                    </button>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $template->tgl_dibuat }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $template->tgl_selesai }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn-sm btn-info dropdown-toggle"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
-                                                <div class="dropdown-menu dropdownmenu-secondary">
-                                                    <div class="bolehkan">
-                                                        <button class="toggle-button dropdown-item"
-                                                            data-template-id="{{ $template->id }}"
-                                                            data-template-bolehkan="{{ $template->bolehkan }}">
-                                                            {{ $template->bolehkan == 1 ? 'Disable' : 'Enable' }}
-                                                        </button>
-                                                    </div>
-                                                    <div class="edit">
-                                                        <a class="dropdown-item" data-bs-toggle="modal"
-                                                            data-bs-target="#showEditModal{{$template->id}}">Edit</a>
-                                                    </div>
-                                                    <!-- <div class="remove">
-                                                        <form action="{{ route('Template.destroy', $template->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="dropdown-item"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#deleteRecordModal">Hapus</button>
-                                                        </form>
-                                                    </div> -->
+                                                <div class="edit">
+                                                    <a class="btn btn-sm btn-success edit-item-btn"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#showEditModal{{$template->id}}"><i
+                                                            class="ri-edit-2-line"></i></a>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!-- edit Modal -->
-                                    <div class="modal fade" id="showEditModal{{$template->id}}" tabindex=" -1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close" id="close-modal"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form method="post"
-                                                        action="{{ route('template.update', $template->id) }}"
-                                                        enctype="multipart/form-data" id="myForm">
+                                                <div class="remove">
+                                                    <form action="{{ route('Template.destroy', $template->id) }}"
+                                                        method="POST">
                                                         @csrf
-                                                        <div class="mb-3">
-                                                            <label for="nama_template">Nama Template</label>
-                                                            <input type="text" name="nama_template" class="form-control"
-                                                                id="nama_template"
-                                                                value="{{ $template->nama_template }}" required>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="id_kategori">Kategori</label>
-                                                            <select name="id_kategori" class="form-control"
-                                                                id="id_kategori">
-                                                                @foreach($kategori as $kat)
-                                                                <option value="{{$kat->id}}">{{"$kat->kategori"}}
-                                                                </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="versi">Versi</label>
-                                                            <input type="text" name="versi" class="form-control"
-                                                                id="versi" value="{{ $template->versi }}" required>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="link_template">Link Template</label>
-                                                            <input type="text" name="link_template" class="form-control"
-                                                                id="link_template"
-                                                                value="{{ $template->link_template }}" required
-                                                                readonly>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="default_dir">Default DIR</label>
-                                                            <input type="text" name="default_dir" class="form-control"
-                                                                id="default_dir" value="{{ $template->default_dir }}"
-                                                                required readonly>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="port">Port</label>
-                                                            <input type="text" name="port" class="form-control"
-                                                                id="port" value="{{ $template->port }}" required
-                                                                readonly>
-                                                        </div>
-                                                        <div class=" modal-footer">
-                                                            <div class="hstack gap-2 justify-content-end">
-                                                                <button type="button" class="btn2 btn-light"
-                                                                    data-bs-dismiss="modal">Tutup</button>
-                                                                <button type="submit" class="btn1 btn-success"
-                                                                    id="edit-btn">Perbarui</button>
-                                                            </div>
-                                                        </div>
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#deleteRecordModal"><i
+                                                                class="mdi mdi-delete-outline"></i></a></button>
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                        @endforeach
-                                </tbody>
+                        </div>
+                        </td>
+                        </tr>
+                        <!-- edit Modal -->
+                        <div class="modal fade" id="showEditModal{{$template->id}}" tabindex=" -1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-light p-3">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close" id="close-modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="{{ route('template.update', $template->id) }}"
+                                            enctype="multipart/form-data" id="myForm">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="nama_template">Nama Template</label>
+                                                <input type="text" name="nama_template" class="form-control"
+                                                    id="nama_template" value="{{ $template->nama_template }}" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="id_kategori">Kategori</label>
+                                                <select name="id_kategori" class="form-control" id="id_kategori">
+                                                    @foreach($kategori as $kat)
+                                                    <option value="{{$kat->id}}">{{"$kat->kategori"}}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="versi">Versi</label>
+                                                <input type="text" name="versi" class="form-control" id="versi"
+                                                    value="{{ $template->versi }}" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="link_template">Link Template</label>
+                                                <input type="text" name="link_template" class="form-control"
+                                                    id="link_template" value="{{ $template->link_template }}" required
+                                                    readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="default_dir">Default DIR</label>
+                                                <input type="text" name="default_dir" class="form-control"
+                                                    id="default_dir" value="{{ $template->default_dir }}" required
+                                                    readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="port">Port</label>
+                                                <input type="text" name="port" class="form-control" id="port"
+                                                    value="{{ $template->port }}" required readonly>
+                                            </div>
+                                            <div class=" modal-footer">
+                                                <div class="hstack gap-2 justify-content-end">
+                                                    <button type="button" class="btn2 btn-light"
+                                                        data-bs-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn1 btn-success"
+                                                        id="edit-btn">Perbarui</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            </tbody>
                             </table>
                         </div>
                     </div><!-- end card -->

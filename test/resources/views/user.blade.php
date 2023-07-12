@@ -28,7 +28,6 @@
                             <table id="example" class="table " style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
                                         <th>NIM </th>
                                         <th>Judul</th>
                                         <th>Deskripsi</th>
@@ -38,11 +37,6 @@
                                 <tbody>
                                     @foreach($users as $user)
                                     <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $user->nama}}</div>
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $user->nim}}</div>
