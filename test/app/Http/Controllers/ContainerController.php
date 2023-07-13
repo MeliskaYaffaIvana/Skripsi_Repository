@@ -200,5 +200,4 @@ class ContainerController extends Controller
 
         return response()->json($data);
     }
-    }
 }
