@@ -179,7 +179,7 @@ class ContainerController extends Controller
                 INNER JOIN template ON container.id_template = template.id
                 INNER JOIN kategori ON template.id_kategori = kategori.id
             ORDER BY
-                kategori.kategori, container.name_kontainer
+                kategori.kategori, container.nama_kontainer
         ";
 
         // Eksekusi query menggunakan DB facade
