@@ -175,7 +175,7 @@ class ContainerController extends Controller
                 kategori.kategori AS category,
                 container.nama_kontainer
             FROM
-                containers
+                container
                 INNER JOIN template ON container.id_template = template.id
                 INNER JOIN kategori ON template.id_kategori = kategori.id
             ORDER BY
