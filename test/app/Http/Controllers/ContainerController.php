@@ -167,37 +167,38 @@ class ContainerController extends Controller
 
         return redirect()->back();
     }
-    public function getContainersByCategory()
-    {
-        // Query untuk mendapatkan data kontainer per kategori dengan inner join
-        $query = "
-            SELECT
-                kategori.kategori AS category,
-                container.nama_kontainer
-            FROM
-                container
-                INNER JOIN template ON container.id_template = template.id
-                INNER JOIN kategori ON template.id_kategori = kategori.id
-            ORDER BY
-                kategori.kategori, container.nama_kontainer
-        ";
+public function getContainersByCategory()
+{
+    // Query untuk mendapatkan data kontainer per kategori dengan inner join
+    $query = "
+        SELECT
+            kategori.kategori AS category,
+            container.nama_kontainer as nama_kontainer
+        FROM
+            container
+            INNER JOIN template ON container.id_template = template.id
+            INNER JOIN kategori ON template.id_kategori = kategori.id
+        ORDER BY
+            kategori.kategori, container.nama_kontainer
+    ";
 
-        // Eksekusi query menggunakan DB facade
-        $containers = DB::select($query);
+    // Eksekusi query menggunakan DB facade
+    $containers = DB::select($query);
 
-        // Format data kontainer per kategori ke dalam bentuk array
-        $data = [];
-        foreach ($containers as $container) {
-            $category = $container->category;
-            $name = $container->nama_kontainer;
+    // Format data kontainer per kategori ke dalam bentuk array
+    $data = [];
+    foreach ($containers as $container) {
+        $category = $container->category;
+        $name = $container->nama_kontainer;
 
-            if (!isset($data[$category])) {
-                $data[$category] = [];
-            }
-
-            $data[$category][] = ['name' => $name];
+        if (!isset($data[$category])) {
+            $data[$category] = [];
         }
 
-        return response()->json($data);
+        $data[$category][] = ['nama_kontainer' => $name];
     }
+
+    return response()->json($data);
+}
+
 }
