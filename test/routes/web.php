@@ -52,6 +52,9 @@ Route::resource('Job',JobController::class);
 Route::resource('Jc',JobContainerController::class);
 Route::resource('Home',HomeController::class);
 Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
+
+Route::get('/getContainerId/{id}', [ShellInABoxController::class, 'getContainerId'])->name('getContainerId');
+
 });
 Auth::routes();
 

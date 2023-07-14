@@ -123,6 +123,69 @@
                                                                 class="mdi mdi-delete-outline"></i></button>
                                                     </form>
                                                 </div>
+                                                @endif
+                                                <div class="shellinabox">
+                                                    <button type="button" onclick="connectToShellInABox()">Connect to
+                                                        Shell In A Box</button>
+
+                                                    <script>
+                                                    function executeCommandInContainer(containerId) {
+                                                        var xhr = new XMLHttpRequest();
+                                                        xhr.open('POST', 'http://<alamat-ip-server>/executeCommand',
+                                                            true);
+                                                        xhr.setRequestHeader('Content-Type', 'application/json');
+                                                        xhr.onreadystatechange = function() {
+                                                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                                                var response = JSON.parse(xhr.responseText);
+                                                                if (response.success) {
+                                                                    openShellInABox(containerId);
+                                                                } else {
+                                                                    console.log('Failed to execute command');
+                                                                }
+                                                            }
+                                                        };
+
+                                                        var commandData = {
+                                                            containerId: containerId
+                                                        };
+
+                                                        xhr.send(JSON.stringify(commandData));
+                                                    }
+
+                                                    function openShellInABox(containerId) {
+                                                        var iframe = document.createElement('iframe');
+                                                        iframe.src = 'http://10.0.0.18:4200/?containerId=' +
+                                                            encodeURIComponent(containerId);
+                                                        iframe.width = '100%';
+                                                        iframe.height = '600';
+                                                        document.body.appendChild(iframe);
+                                                    }
+
+                                                    function getContainerId() {
+                                                        var containerId =
+                                                            '<id_kontainer>'; // Ganti dengan ID kontainer yang sesuai
+                                                        var endpointUrl = 'http://10.0.0.18:8080/getContainerId/' +
+                                                            encodeURIComponent(containerId);
+                                                        var xhr = new XMLHttpRequest();
+                                                        xhr.open('GET', endpointUrl, true);
+                                                        xhr.onreadystatechange = function() {
+                                                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                                                var response = JSON.parse(xhr.responseText);
+                                                                if (response.containerId) {
+                                                                    executeCommandInContainer(response.containerId);
+                                                                } else {
+                                                                    console.log('Failed to get container ID');
+                                                                }
+                                                            }
+                                                        };
+                                                        xhr.send();
+                                                    }
+
+                                                    function connectToShellInABox() {
+                                                        getContainerId();
+                                                    }
+                                                    </script>
+                                                </div>
                                             </div>
 
 
@@ -136,7 +199,7 @@
 
 
                                         <!-- edit Modal  -->
-                                        <div class="modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
+                                        <div class=" modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
@@ -151,7 +214,8 @@
                                                             enctype="multipart/form-data" id="myForm">
                                                             @csrf
                                                             <div class="mb-3">
-                                                                <label for="nama_kontainer">Nama kontainer</label>
+                                                                <label for="nama_kontainer">Nama
+                                                                    kontainer</label>
                                                                 <input type="text" name="nama_kontainer"
                                                                     class="form-control" id="nama_kontainer"
                                                                     value="{{ $container->nama_kontainer }}" required>
@@ -181,7 +245,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endif
                                             @endforeach
                                 </tbody>
                             </table>
