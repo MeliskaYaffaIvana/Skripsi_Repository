@@ -129,50 +129,50 @@
 
                                                     <script>
                                                     document.getElementById('shellInABoxBtn').addEventListener('click',
-                                                    function() {
-                                                        // Ambil ID kontainer dari server Laravel
-                                                        fetch('/getContainerId' + containerId))
-                                                    .then(response => response.json())
-                                                    .then(data => {
-                                                        var containerId = data.containerId;
-                                                        if (containerId) {
-                                                            // Kirim permintaan POST ke server Django untuk menjalankan perintah Docker execute
-                                                            fetch('http://10.0.0.21:8080/executeCommand/', {
-                                                                    method: 'POST',
-                                                                    headers: {
-                                                                        'Content-Type': 'application/json'
-                                                                    },
-                                                                    body: JSON.stringify({
-                                                                        containerId: containerId
-                                                                    })
-                                                                })
+                                                        function() {
+                                                            // Ambil ID kontainer dari server Laravel
+                                                            fetch('/getContainerId' + containerId)
                                                                 .then(response => response.json())
                                                                 .then(data => {
-                                                                    var success = data.success;
-                                                                    if (success) {
-                                                                        // Redirect ke halaman Shell In A Box dengan menyertakan ID kontainer
-                                                                        window.location.href =
-                                                                            "http://10.0.0.21:4200/?containerId=" +
-                                                                            containerId;
+                                                                    var containerId = data.containerId;
+                                                                    if (containerId) {
+                                                                        // Kirim permintaan POST ke server Django untuk menjalankan perintah Docker execute
+                                                                        fetch('http://10.0.0.21:8080/executeCommand/', {
+                                                                                method: 'POST',
+                                                                                headers: {
+                                                                                    'Content-Type': 'application/json'
+                                                                                },
+                                                                                body: JSON.stringify({
+                                                                                    containerId: containerId
+                                                                                })
+                                                                            })
+                                                                            .then(response => response.json())
+                                                                            .then(data => {
+                                                                                var success = data.success;
+                                                                                if (success) {
+                                                                                    // Redirect ke halaman Shell In A Box dengan menyertakan ID kontainer
+                                                                                    window.location.href =
+                                                                                        "http://10.0.0.21:4200/?containerId=" +
+                                                                                        containerId;
+                                                                                } else {
+                                                                                    console.log(
+                                                                                        "Failed to execute command"
+                                                                                    );
+                                                                                }
+                                                                            })
+                                                                            .catch(error => {
+                                                                                console.log(error);
+                                                                            });
                                                                     } else {
                                                                         console.log(
-                                                                            "Failed to execute command"
+                                                                            "Failed to retrieve container ID"
                                                                         );
                                                                     }
                                                                 })
                                                                 .catch(error => {
                                                                     console.log(error);
                                                                 });
-                                                        } else {
-                                                            console.log(
-                                                                "Failed to retrieve container ID"
-                                                            );
-                                                        }
-                                                    })
-                                                    .catch(error => {
-                                                        console.log(error);
-                                                    });
-                                                    });
+                                                        });
                                                     </script>
                                                 </div>
                                             </div>
