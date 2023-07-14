@@ -131,7 +131,7 @@
                                                     <script>
                                                     function executeCommandInContainer(containerId) {
                                                         var xhr = new XMLHttpRequest();
-                                                        xhr.open('POST', 'http://<alamat-ip-server>/executeCommand',
+                                                        xhr.open('POST', 'http:/10.0.0.18:8080/executeCommand',
                                                             true);
                                                         xhr.setRequestHeader('Content-Type', 'application/json');
                                                         xhr.onreadystatechange = function() {
