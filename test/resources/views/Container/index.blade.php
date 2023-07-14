@@ -125,55 +125,39 @@
                                                 </div>
                                                 @endif
                                                 <div class="shellinabox">
-                                                    <button id="shellInABoxBtn"
+                                                    <button class="shellInABoxBtn"
                                                         data-container-id="{{ $container->id }}">Shell In A Box</button>
                                                 </div>
 
+                                                <div id="shellInABoxContainer"></div>
+
                                                 <script>
-                                                document.getElementById('shellInABoxBtn').addEventListener('click',
-                                                    function() {
-                                                        var containerId = this.getAttribute('data-container-id');
+                                                var shellInABoxBtns = document.querySelectorAll('.shellInABoxBtn');
 
-                                                        // Membuat objek data untuk dikirim dalam permintaan POST
-                                                        var data = {
-                                                            containerId: containerId
-                                                        };
+                                                shellInABoxBtns.forEach(function(btn) {
+                                                    btn.addEventListener('click', function() {
+                                                        var containerId = this.getAttribute(
+                                                            'data-container-id');
 
-                                                        // Mengirim permintaan POST ke server Django
-                                                        fetch('http://10.0.0.21:8080/api/executeCommand/', {
-                                                                method: 'POST',
-                                                                headers: {
-                                                                    'Content-Type': 'application/json'
-                                                                },
-                                                                body: JSON.stringify(data)
-                                                            })
-                                                            .then(response => response.json())
-                                                            .then(data => {
-                                                                var success = data.success;
-                                                                if (success) {
-                                                                    // Buat elemen <iframe>
-                                                                    var iframe = document.createElement(
-                                                                        'iframe');
-                                                                    iframe.src =
-                                                                        "http://10.0.0.21:4200/?containerId=" +
-                                                                        containerId;
-                                                                    iframe.width = "100%";
-                                                                    iframe.height = "500px";
-                                                                    iframe.style.border = "none";
+                                                        // Buat elemen <iframe>
+                                                        var iframe = document.createElement('iframe');
+                                                        iframe.src =
+                                                            "http://10.0.0.21:4200/?containerId=" +
+                                                            containerId;
+                                                        iframe.width = "100%";
+                                                        iframe.height = "500px";
+                                                        iframe.style.border = "none";
 
-                                                                    // Sisipkan elemen <iframe> ke dalam elemen target di halaman
-                                                                    var targetElement = document.getElementById(
-                                                                        'shellInABoxContainer');
-                                                                    targetElement.appendChild(iframe);
-                                                                } else {
-                                                                    console.log("Failed to execute command");
-                                                                }
-                                                            })
-                                                            .catch(error => {
-                                                                console.log(error);
-                                                            });
+                                                        // Sisipkan elemen <iframe> ke dalam elemen target di halaman
+                                                        var targetElement = document.getElementById(
+                                                            'shellInABoxContainer');
+                                                        targetElement.innerHTML =
+                                                        ''; // Menghapus konten sebelumnya (jika ada)
+                                                        targetElement.appendChild(iframe);
                                                     });
+                                                });
                                                 </script>
+
 
 
                                             </div>
