@@ -126,15 +126,13 @@
                                                 @endif
                                                 <div class="shellinabox">
                                                     <button id="shellInABoxBtn"
-                                                        data-container-id="{{ $container->id }}">Shell In A
-                                                        Box</button>
+                                                        data-container-id="{{ $container->id }}">Shell In A Box</button>
                                                 </div>
 
                                                 <script>
                                                 document.getElementById('shellInABoxBtn').addEventListener('click',
                                                     function() {
-                                                        var containerId = this.getAttribute(
-                                                            'data-container-id');
+                                                        var containerId = this.getAttribute('data-container-id');
 
                                                         // Membuat objek data untuk dikirim dalam permintaan POST
                                                         var data = {
@@ -170,13 +168,13 @@
                                                                 } else {
                                                                     console.log("Failed to execute command");
                                                                 }
-
                                                             })
                                                             .catch(error => {
                                                                 console.log(error);
                                                             });
                                                     });
                                                 </script>
+
 
                                             </div>
                         </div>
