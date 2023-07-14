@@ -131,7 +131,11 @@
                                                     document.getElementById('shellInABoxBtn').addEventListener('click',
                                                         function() {
                                                             // Ambil ID kontainer dari server Laravel
-                                                            fetch('/getContainerId' + containerId)
+                                                            fetch('/getContainerId' + {
+                                                                    {
+                                                                        $container - > id
+                                                                    }
+                                                                })
                                                                 .then(response => response.json())
                                                                 .then(data => {
                                                                     var containerId = data.containerId;
