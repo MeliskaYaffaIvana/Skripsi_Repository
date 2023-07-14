@@ -153,14 +153,24 @@
                                                             .then(data => {
                                                                 var success = data.success;
                                                                 if (success) {
-                                                                    // Redirect ke halaman Shell In A Box dengan menyertakan ID kontainer
-                                                                    window.location.href =
+                                                                    // Buat elemen <iframe>
+                                                                    var iframe = document.createElement(
+                                                                        'iframe');
+                                                                    iframe.src =
                                                                         "http://10.0.0.21:4200/?containerId=" +
                                                                         containerId;
+                                                                    iframe.width = "100%";
+                                                                    iframe.height = "500px";
+                                                                    iframe.style.border = "none";
+
+                                                                    // Sisipkan elemen <iframe> ke dalam elemen target di halaman
+                                                                    var targetElement = document.getElementById(
+                                                                        'shellInABoxContainer');
+                                                                    targetElement.appendChild(iframe);
                                                                 } else {
-                                                                    console.log(
-                                                                        "Failed to execute command");
+                                                                    console.log("Failed to execute command");
                                                                 }
+
                                                             })
                                                             .catch(error => {
                                                                 console.log(error);
