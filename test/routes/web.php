@@ -45,7 +45,7 @@ Route::post('/Container/update/{id}', [ContainerController::class, 'update'])->n
 Route::delete('/Container/destroy/{id}',[ContainerController::class, 'destroy'])->name('container.destroy');
 Route::put('/Container/{id}/toggle-status', [ContainerController::class, 'toggleStatus']);
 Route::patch('/Container/{id}/update-bolehkan', [ContainerController::class, 'updateBolehkan'])->name('container.update_bolehkan');
-Route::get('/getContainerId', [ContainerController::class, 'getContainerId']);
+Route::get('/getContainerId/{id}', [ContainerController::class, 'getContainerId']);
 
 
 //job
