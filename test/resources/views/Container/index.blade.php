@@ -125,121 +125,110 @@
                                                 </div>
                                                 @endif
                                                 <div class="shellinabox">
-                                                    <button id="shellInABoxBtn">Shell In A Box</button>
+                                                    <button id="shellInABoxBtn"
+                                                        data-container-id="{{ $container->id }}">Shell In A
+                                                        Box</button>
+                                                </div>
 
-                                                    <script>
-                                                    document.getElementById('shellInABoxBtn').addEventListener('click',
-                                                        function() {
-                                                            // Ambil ID kontainer dari server Laravel
-                                                            fetch('/getContainerId' + {
-                                                                    {
-                                                                        $container - > id
-                                                                    }
-                                                                })
-                                                                .then(response => response.json())
-                                                                .then(data => {
-                                                                    var containerId = data.containerId;
-                                                                    if (containerId) {
-                                                                        // Kirim permintaan POST ke server Django untuk menjalankan perintah Docker execute
-                                                                        fetch('http://10.0.0.21:8080/executeCommand/', {
-                                                                                method: 'POST',
-                                                                                headers: {
-                                                                                    'Content-Type': 'application/json'
-                                                                                },
-                                                                                body: JSON.stringify({
-                                                                                    containerId: containerId
-                                                                                })
-                                                                            })
-                                                                            .then(response => response.json())
-                                                                            .then(data => {
-                                                                                var success = data.success;
-                                                                                if (success) {
-                                                                                    // Redirect ke halaman Shell In A Box dengan menyertakan ID kontainer
-                                                                                    window.location.href =
-                                                                                        "http://10.0.0.21:4200/?containerId=" +
-                                                                                        containerId;
-                                                                                } else {
-                                                                                    console.log(
-                                                                                        "Failed to execute command"
-                                                                                    );
-                                                                                }
-                                                                            })
-                                                                            .catch(error => {
-                                                                                console.log(error);
-                                                                            });
-                                                                    } else {
-                                                                        console.log(
-                                                                            "Failed to retrieve container ID"
-                                                                        );
-                                                                    }
-                                                                })
-                                                                .catch(error => {
-                                                                    console.log(error);
-                                                                });
-                                                        });
-                                                    </script>
+                                                <script>
+                                                document.getElementById('shellInABoxBtn').addEventListener('click',
+                                                    function() {
+                                                        var containerId = this.getAttribute(
+                                                            'data-container-id');
+
+                                                        // Membuat objek data untuk dikirim dalam permintaan POST
+                                                        var data = {
+                                                            containerId: containerId
+                                                        };
+
+                                                        // Mengirim permintaan POST ke server Django
+                                                        fetch('http://10.0.0.21:8080/executeCommand/', {
+                                                                method: 'POST',
+                                                                headers: {
+                                                                    'Content-Type': 'application/json'
+                                                                },
+                                                                body: JSON.stringify(data)
+                                                            })
+                                                            .then(response => response.json())
+                                                            .then(data => {
+                                                                var success = data.success;
+                                                                if (success) {
+                                                                    // Redirect ke halaman Shell In A Box dengan menyertakan ID kontainer
+                                                                    window.location.href =
+                                                                        "http://10.0.0.21:4200/?containerId=" +
+                                                                        containerId;
+                                                                } else {
+                                                                    console.log(
+                                                                        "Failed to execute command");
+                                                                }
+                                                            })
+                                                            .catch(error => {
+                                                                console.log(error);
+                                                            });
+                                                    });
+                                                </script>
+
+                                            </div>
+                        </div>
+
+
+                        </td>
+                        <td>
+                            <div>
+
+
+                            </div>
+                        </td>
+
+
+                        <!-- edit Modal  -->
+                        <div class=" modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-light p-3">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close" id="close-modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="{{ route('container.update', $container->id) }}"
+                                            enctype="multipart/form-data" id="myForm">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="nama_kontainer">Nama
+                                                    kontainer</label>
+                                                <input type="text" name="nama_kontainer" class="form-control"
+                                                    id="nama_kontainer" value="{{ $container->nama_kontainer }}"
+                                                    required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="id_template">Template</label>
+                                                <select name="id_template" class="form-control" id="id_template"
+                                                    required readonly>
+                                                    @foreach($template as $temp)
+                                                    @if($temp->id ==$container->id_template)
+                                                    <option value="{{ $temp->id }}">
+                                                        {{ $temp->nama_template }}</option>
+                                                    @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div class=" modal-footer">
+                                                <div class="hstack gap-2 justify-content-end">
+                                                    <button type="button" class="btn2 btn-light"
+                                                        data-bs-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn1 btn-success"
+                                                        id="edit-btn">Perbarui</button>
                                                 </div>
                                             </div>
-
-
-                                        </td>
-                                        <td>
-                                            <div>
-
-
-                                            </div>
-                                        </td>
-
-
-                                        <!-- edit Modal  -->
-                                        <div class=" modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header bg-light p-3">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close" id="close-modal"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="post"
-                                                            action="{{ route('container.update', $container->id) }}"
-                                                            enctype="multipart/form-data" id="myForm">
-                                                            @csrf
-                                                            <div class="mb-3">
-                                                                <label for="nama_kontainer">Nama
-                                                                    kontainer</label>
-                                                                <input type="text" name="nama_kontainer"
-                                                                    class="form-control" id="nama_kontainer"
-                                                                    value="{{ $container->nama_kontainer }}" required>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="id_template">Template</label>
-                                                                <select name="id_template" class="form-control"
-                                                                    id="id_template" required readonly>
-                                                                    @foreach($template as $temp)
-                                                                    @if($temp->id ==$container->id_template)
-                                                                    <option value="{{ $temp->id }}">
-                                                                        {{ $temp->nama_template }}</option>
-                                                                    @endif
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-
-                                                            <div class=" modal-footer">
-                                                                <div class="hstack gap-2 justify-content-end">
-                                                                    <button type="button" class="btn2 btn-light"
-                                                                        data-bs-dismiss="modal">Tutup</button>
-                                                                    <button type="submit" class="btn1 btn-success"
-                                                                        id="edit-btn">Perbarui</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                </tbody>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            </tbody>
                             </table>
                         </div>
                     </div>
