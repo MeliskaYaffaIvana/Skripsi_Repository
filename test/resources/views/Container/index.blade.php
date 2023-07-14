@@ -131,7 +131,7 @@
                                                     <script>
                                                     function executeCommandInContainer(containerId) {
                                                         var xhr = new XMLHttpRequest();
-                                                        xhr.open('POST', 'http://10.0.0.18:8080/executeCommand',
+                                                        xhr.open('POST', 'http://10.0.0.21:8080/executeCommand',
                                                             true);
                                                         xhr.setRequestHeader('Content-Type', 'application/json');
                                                         xhr.onreadystatechange = function() {
@@ -154,7 +154,7 @@
 
                                                     function openShellInABox(containerId) {
                                                         var iframe = document.createElement('iframe');
-                                                        iframe.src = 'http://10.0.0.18:4200/?containerId=' +
+                                                        iframe.src = 'http://10.0.0.21:4200/?containerId=' +
                                                             encodeURIComponent(containerId);
                                                         iframe.width = '100%';
                                                         iframe.height = '600';
@@ -164,7 +164,7 @@
                                                     function getContainerId() {
                                                         var containerId =
                                                             '<id_kontainer>'; // Ganti dengan ID kontainer yang sesuai
-                                                        var endpointUrl = 'http://10.0.0.18:8080/getContainerId/' +
+                                                        var endpointUrl = 'http://10.0.0.21:8080/getContainerId/' +
                                                             encodeURIComponent(containerId);
                                                         var xhr = new XMLHttpRequest();
                                                         xhr.open('GET', endpointUrl, true);
