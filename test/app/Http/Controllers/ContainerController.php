@@ -173,13 +173,13 @@ public function getContainersByCategory()
     $query = "
         SELECT
             kategori.kategori AS category,
-            container.nama_kontainer as nama_kontainer
+            container.nama_kontainer as nama_kontainer,
             users.nim AS nim
         FROM
             container
             INNER JOIN template ON container.id_template = template.id
             INNER JOIN kategori ON template.id_kategori = kategori.id
-             INNER JOIN users ON container.id_user = users.id
+            INNER JOIN users ON container.id_user = users.id
         ORDER BY
             kategori.kategori, container.nama_kontainer
     ";
