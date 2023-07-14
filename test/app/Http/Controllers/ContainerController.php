@@ -174,10 +174,12 @@ public function getContainersByCategory()
         SELECT
             kategori.kategori AS category,
             container.nama_kontainer as nama_kontainer
+            users.nim AS nim
         FROM
             container
             INNER JOIN template ON container.id_template = template.id
             INNER JOIN kategori ON template.id_kategori = kategori.id
+             INNER JOIN users ON container.id_user = users.id
         ORDER BY
             kategori.kategori, container.nama_kontainer
     ";
@@ -190,16 +192,21 @@ public function getContainersByCategory()
     foreach ($containers as $container) {
         $category = $container->category;
         $name = $container->nama_kontainer;
+        $nim = $container->nim;
 
         if (!isset($data[$category])) {
             $data[$category] = [];
         }
 
-        $data[$category][] = ['nama_kontainer' => $name];
+        $data[$category][] = [
+            'nama_kontainer' => $name,
+            'nim' => $nim
+        ];
     }
 
     return response()->json($data);
     }
+    
     public function getContainerId($id)
     {
         try {
