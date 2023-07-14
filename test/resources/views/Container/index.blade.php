@@ -142,7 +142,7 @@
                                                         };
 
                                                         // Mengirim permintaan POST ke server Django
-                                                        fetch('http://10.0.0.21:8080/executeCommand/', {
+                                                        fetch('http://10.0.0.21:8080/api/executeCommand/', {
                                                                 method: 'POST',
                                                                 headers: {
                                                                     'Content-Type': 'application/json'
