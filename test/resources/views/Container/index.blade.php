@@ -125,65 +125,54 @@
                                                 </div>
                                                 @endif
                                                 <div class="shellinabox">
-                                                    <button type="button" onclick="connectToShellInABox()">Connect to
-                                                        Shell In A Box</button>
+                                                    <button id="shellInABoxBtn">Shell In A Box</button>
 
                                                     <script>
-                                                    function executeCommandInContainer(containerId) {
-                                                        var xhr = new XMLHttpRequest();
-                                                        xhr.open('POST', 'http://10.0.0.21:8080/executeCommand',
-                                                            true);
-                                                        xhr.setRequestHeader('Content-Type', 'application/json');
-                                                        xhr.onreadystatechange = function() {
-                                                            if (xhr.readyState === 4 && xhr.status === 200) {
-                                                                var response = JSON.parse(xhr.responseText);
-                                                                if (response.success) {
-                                                                    openShellInABox(containerId);
-                                                                } else {
-                                                                    console.log('Failed to execute command');
-                                                                }
-                                                            }
-                                                        };
-
-                                                        var commandData = {
-                                                            containerId: containerId
-                                                        };
-
-                                                        xhr.send(JSON.stringify(commandData));
-                                                    }
-
-                                                    function openShellInABox(containerId) {
-                                                        var iframe = document.createElement('iframe');
-                                                        iframe.src = 'http://10.0.0.21:4200/?containerId=' +
-                                                            encodeURIComponent(containerId);
-                                                        iframe.width = '100%';
-                                                        iframe.height = '600';
-                                                        document.body.appendChild(iframe);
-                                                    }
-
-                                                    function getContainerId() {
-                                                        var containerId =
-                                                            '<id_kontainer>'; // Ganti dengan ID kontainer yang sesuai
-                                                        var endpointUrl = 'http://10.0.0.21:8080/getContainerId/' +
-                                                            encodeURIComponent(containerId);
-                                                        var xhr = new XMLHttpRequest();
-                                                        xhr.open('GET', endpointUrl, true);
-                                                        xhr.onreadystatechange = function() {
-                                                            if (xhr.readyState === 4 && xhr.status === 200) {
-                                                                var response = JSON.parse(xhr.responseText);
-                                                                if (response.containerId) {
-                                                                    executeCommandInContainer(response.containerId);
-                                                                } else {
-                                                                    console.log('Failed to get container ID');
-                                                                }
-                                                            }
-                                                        };
-                                                        xhr.send();
-                                                    }
-
-                                                    function connectToShellInABox() {
-                                                        getContainerId();
-                                                    }
+                                                    document.getElementById('shellInABoxBtn').addEventListener('click',
+                                                        function() {
+                                                            // Ambil ID kontainer dari server Laravel
+                                                            fetch('/getContainerId')
+                                                                .then(response => response.json())
+                                                                .then(data => {
+                                                                    var containerId = data.containerId;
+                                                                    if (containerId) {
+                                                                        // Kirim permintaan POST ke server Django untuk menjalankan perintah Docker execute
+                                                                        fetch('http://10.0.0.21:8080/executeCommand/', {
+                                                                                method: 'POST',
+                                                                                headers: {
+                                                                                    'Content-Type': 'application/json'
+                                                                                },
+                                                                                body: JSON.stringify({
+                                                                                    containerId: containerId
+                                                                                })
+                                                                            })
+                                                                            .then(response => response.json())
+                                                                            .then(data => {
+                                                                                var success = data.success;
+                                                                                if (success) {
+                                                                                    // Redirect ke halaman Shell In A Box dengan menyertakan ID kontainer
+                                                                                    window.location.href =
+                                                                                        "http://10.0.0.21:4200/?containerId=" +
+                                                                                        containerId;
+                                                                                } else {
+                                                                                    console.log(
+                                                                                        "Failed to execute command"
+                                                                                    );
+                                                                                }
+                                                                            })
+                                                                            .catch(error => {
+                                                                                console.log(error);
+                                                                            });
+                                                                    } else {
+                                                                        console.log(
+                                                                            "Failed to retrieve container ID"
+                                                                        );
+                                                                    }
+                                                                })
+                                                                .catch(error => {
+                                                                    console.log(error);
+                                                                });
+                                                        });
                                                     </script>
                                                 </div>
                                             </div>

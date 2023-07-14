@@ -199,6 +199,16 @@ public function getContainersByCategory()
     }
 
     return response()->json($data);
-}
+    }
+    public function getContainerId($id)
+    {
+        try {
+            $container = Container::findOrFail($id);
+            $containerId = $container->id;
+            return response()->json(['containerId' => $containerId]);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Container not found'], 404);
+        }
+    }
 
 }
