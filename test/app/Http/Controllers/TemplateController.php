@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Template;
@@ -116,23 +117,36 @@ class TemplateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-         // Mengambil data kategori berdasarkan ID
-        $template = Template::findOrFail($id);
-        
-        // Memeriksa apakah kategori digunakan oleh template
-        $isUsedInContainer = Container::where('id_template', $template->id)->exists();
+{
+    // Mengambil data template berdasarkan ID
+    $template = Template::findOrFail($id);
 
-        // Jika kategori digunakan oleh template, tampilkan pesan error
-        if ($isUsedInContainer) {
-            return redirect()->route('Template.index')->with('error', 'Template tidak dapat dihapus karena digunakan oleh Kontainer.');
-        }
+    // Simpan ID template yang dihapus dan atribut link_template
+    $deletedTemplateId = $template->id;
+    $deletedTemplateLink = $template->link_template;
 
-        // Jika kategori tidak digunakan oleh template, lanjutkan proses penghapusan
-        $template->delete();
+    // Memeriksa apakah template digunakan oleh container
+    $isUsedInContainer = Container::where('id_template', $template->id)->exists();
 
-        return redirect()->route('Template.index')->with('success', 'Data berhasil dihapus.');
+    // Jika template digunakan oleh container, tampilkan pesan error
+    if ($isUsedInContainer) {
+        return redirect()->route('Template.index')->with('error', 'Template tidak dapat dihapus karena digunakan oleh Kontainer.');
     }
+
+    // Lakukan proses penghapusan template
+    $template->delete();
+
+    // Kirim ID dan atribut link_template yang dihapus ke API server
+    $response = Http::post('http://10.0.0.21:8181/api/delete_template/', [
+        'deleted_template_id' => $deletedTemplateId,
+        'deleted_template_link' => $deletedTemplateLink
+    ]);
+
+    // Periksa kode status respons API server jika diperlukan
+
+    return redirect()->route('Template.index')->with('success', 'Data berhasil dihapus.');
+}
+
     // ...
     public function updateBolehkan(Request $request, $id)
     {
