@@ -217,5 +217,12 @@ public function getContainersByCategory()
             return response()->json(['error' => 'Container not found'], 404);
         }
     }
+    public function showContainerStatus()
+    {
+        $activeCount = Container::where('status', true)->count();
+        $inactiveCount = Container::where('status', false)->count();
+
+        return view('container.status', compact('activeCount', 'inactiveCount'));
+    }
 
 }
