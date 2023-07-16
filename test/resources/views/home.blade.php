@@ -59,6 +59,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if(Auth::user()->status == 'administrator')
                                 <div class="col-lg-6">
                                     <div class="card border border-warning">
                                         <div class="card-body">
@@ -79,7 +80,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                @endif
                             </div><!-- end col -->
                         </div> <!-- end row-->
                         <table id="example" class="table " style="width:100%">

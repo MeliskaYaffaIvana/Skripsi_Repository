@@ -125,8 +125,12 @@
                                                 </div>
                                                 @endif
                                                 <div class="shellinabox">
-                                                    <button class="shellInABoxBtn"
-                                                        data-container-id="{{ $container->id }}">Shell In A Box</button>
+                                                    <button class="shellInABoxBtn "
+                                                        style="background-color: white; border: none;"
+                                                        data-container-id="{{ $container->id }}"><img
+                                                            src="{{ asset('assets') }}/images/shell.png" alt=""
+                                                            height="22">
+                                                    </button>
                                                 </div>
 
                                                 <div id="shellInABoxContainer"></div>
@@ -152,7 +156,7 @@
                                                         var targetElement = document.getElementById(
                                                             'shellInABoxContainer');
                                                         targetElement.innerHTML =
-                                                        ''; // Menghapus konten sebelumnya (jika ada)
+                                                            ''; // Menghapus konten sebelumnya (jika ada)
                                                         targetElement.appendChild(iframe);
                                                     });
                                                 });
