@@ -63,14 +63,14 @@
                                 <div class="col-lg-6">
                                     <div class="card border border-warning">
                                         <div class="card-body">
-                                            <p class="text-muted "><strong>Jumlah Template</strong>
-                                                < /p>
-                                                    <p class="text-muted mb-0"><i
-                                                            class="text-success fs-18 align-middle me-2 rounded-circle shadow">
-                                                            <span
-                                                                class="badge bg-success">{{ $templateCount }}</span></i>Template
-                                                    </p>
-                                                    <h5 class="fs-15 fw-semibold">Template</h5>
+                                            <p class="text-muted "><strong>Jumlah Template</strong></p>
+
+                                            <p class="text-muted mb-0"><i
+                                                    class="text-success fs-18 align-middle me-2 rounded-circle shadow">
+                                                    <span
+                                                        class="badge bg-success">{{ $templateCount }}</span></i>Template
+                                            </p>
+                                            <h5 class="fs-15 fw-semibold">Template</h5>
                                         </div>
                                         <div class="progress animated-progress bg-soft-primary rounded-bottom rounded-0"
                                             style="height: 6px;">
