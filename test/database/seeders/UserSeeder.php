@@ -25,22 +25,6 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('admin123'),
                 'status'=>'administrator'
             ],
-            [
-                'nim' => '1941720020',
-                'nama' => 'ika',
-                'judul' => 'yaffa',
-                'deskripsi' => 'ivana',
-                'password' => Hash::make('1941720020'),
-                'status'=>'mahasiswa'
-            ],
-            [
-                'nim' => '2241760021',
-                'nama' => 'melis',
-                'judul' => 'ka',
-                'deskripsi' => 'yo',
-                'password' => Hash::make('2241760021'),
-                'status'=>'mahasiswa'
-            ],
         ];
         foreach ($users as $userData) {
             $userData['id'] = User::getIdFromNim($userData['nim']);
