@@ -146,11 +146,33 @@ class ContainerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $container = Container::where('id', $id);
-        $container->delete();
-        return redirect()->route('Container.index')->with('succes', 'data berhasil dihapus');
+{
+    // Mengambil data template berdasarkan ID
+    $container = Template::findOrFail($id);
+
+    // Memeriksa apakah kontainer memiliki status "enable"
+    if ($container->status == true) {
+        return redirect()->route('Container.index')->with('error', 'Kontainer dengan status "enable" tidak dapat dihapus.');
     }
+    
+    // Simpan ID template yang dihapus dan atribut link_template
+    $deletedContainerId = $container->id;
+
+    
+
+    // Lakukan proses penghapusan template
+    $container->delete();
+
+    // Kirim ID dan atribut link_template yang dihapus ke API server
+    $response = Http::post('http://10.0.0.21:8080/api/delete_container/', [
+        'deleted_container_id' => $deletedContainerId,
+    ]);
+
+    // Periksa kode status respons API server jika diperlukan
+
+    return redirect()->route('Template.index')->with('success', 'Data berhasil dihapus.');
+}
+
     public function toggleBolehkan(Request $request, $id)
     {
         $container = Container::where('id', $id)->firstOrFail();
