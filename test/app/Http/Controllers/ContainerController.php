@@ -170,7 +170,7 @@ class ContainerController extends Controller
 
     // Periksa kode status respons API server jika diperlukan
 
-    return redirect()->route('Template.index')->with('success', 'Data berhasil dihapus.');
+    return redirect()->route('Container.index')->with('success', 'Data berhasil dihapus.');
 }
 
     public function toggleBolehkan(Request $request, $id)
