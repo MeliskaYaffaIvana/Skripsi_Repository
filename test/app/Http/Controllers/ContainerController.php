@@ -147,23 +147,23 @@ class ContainerController extends Controller
      */
     public function destroy($id)
 {
-    // Mengambil data template berdasarkan ID
-    $container = Template::findOrFail($id);
+    // Mengambil data container berdasarkan ID
+    $container = Container::findOrFail($id);
 
     // Memeriksa apakah kontainer memiliki status "enable"
     if ($container->status == true) {
         return redirect()->route('Container.index')->with('error', 'Kontainer dengan status "enable" tidak dapat dihapus.');
     }
     
-    // Simpan ID template yang dihapus dan atribut link_template
+    // Simpan ID container yang dihapus 
     $deletedContainerId = $container->id;
 
     
 
-    // Lakukan proses penghapusan template
+    // Lakukan proses penghapusan container
     $container->delete();
 
-    // Kirim ID dan atribut link_template yang dihapus ke API server
+    // Kirim ID yang dihapus ke API server
     $response = Http::post('http://10.0.0.21:8080/api/delete_container/', [
         'deleted_container_id' => $deletedContainerId,
     ]);
