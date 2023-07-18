@@ -197,6 +197,7 @@ public function getContainersByCategory()
         SELECT
             kategori.kategori AS category,
             container.id as id,
+            container.port_kontainer as port_kontainer,
             users.nim AS nim
         FROM
             container
@@ -215,6 +216,7 @@ public function getContainersByCategory()
     foreach ($containers as $container) {
         $category = $container->category;
         $name = $container->id;
+        $port = $container->port_kontainer;
         $nim = $container->nim;
 
         if (!isset($data[$category])) {
@@ -223,6 +225,7 @@ public function getContainersByCategory()
 
         $data[$category][] = [
             'id' => $name,
+            'port'=>$port,
             'nim' => $nim
         ];
     }
