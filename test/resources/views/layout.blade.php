@@ -270,6 +270,12 @@
                         </a>
                     </li>
                     @endif
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('Container.index') }}" role="button"
+                            aria-expanded="false" aria-controls="sidebarApps">
+                            <i class="mdi mdi-view-column"></i> <span data-key="t-apps">Panduan</span>
+                        </a>
+                    </li>
 
 
                     <!-- end Dashboard Menu -->
