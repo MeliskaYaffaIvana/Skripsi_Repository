@@ -95,6 +95,7 @@ class ContainerController extends Controller
         
     //     return redirect()->route('Container.create')->with('success', 'Data berhasil ditambahkan');
     // }
+    
     public function store(Request $request)
 {
     $containers = $request->input('container');
@@ -103,6 +104,9 @@ class ContainerController extends Controller
     if ($user) {
         $nim = $user->nim;
         $existingCategories = [];
+        $frontendCount = 0;
+        $backendCount = 0;
+        $databaseCount = 0;
 
         foreach ($containers as $containerData) {
             $templateId = $containerData['id_template'];
@@ -117,67 +121,68 @@ class ContainerController extends Controller
                 }
 
                 $existingCategories[] = $category;
+
+                // Hitung jumlah kontainer frontend, backend, dan database yang sudah ada
+                if ($category === 'frontend') {
+                    $frontendCount++;
+                } elseif ($category === 'backend') {
+                    $backendCount++;
+                } elseif ($category === 'database') {
+                    $databaseCount++;
+                }
             } else {
                 return redirect()->route('Container.create')->with('error', 'Template tidak valid');
             }
         }
 
-        $existingCategories = [];
+        // Periksa jumlah kontainer frontend, backend, dan database yang sudah ada
+        if ($frontendCount > 1 || $backendCount > 1 || $databaseCount > 1) {
+            return redirect()->route('Container.create')->with('error', 'Anda hanya dapat memiliki satu kontainer dengan template kategori frontend, backend, dan database');
+        }
 
+        // Lanjutkan dengan pembuatan kontainer
         foreach ($containers as $containerData) {
-            $templateId = $containerData['id_template'];
-            $template = Template::find($templateId);
+            $user = User::find(Auth::id()); // Get the associated user
 
-            if ($template) {
-                $category = $template->kategori;
+        if ($user) {
+            $nim = $user->nim;
+            $digit6 = substr($nim, 5, 1);
 
-                // Periksa apakah NIM tersebut sudah memiliki kontainer dengan kategori yang sama
-                if (in_array($category, $existingCategories)) {
-                    return redirect()->route('Container.create')->with('error', 'Anda hanya dapat memiliki satu kontainer dengan kategori yang sama');
-                }
+            $prodi = '';
+            $portPrefix = 0;
+            $portSuffix = 0;
 
-                $existingCategories[] = $category;
+            if ($digit6 == '2') {
+                $prodi = 'TI';
+                $nimDigit = substr($nim, 0, 2);
+                $portPrefix = intval($nimDigit) - 9;
 
-                $nim = $user->nim;
-                $digit6 = substr($nim, 5, 1);
-                $prodi = '';
-                $portPrefix = 0;
-                $portSuffix = 0;
+                // Mendapatkan nilai counter terakhir untuk TI
+                $lastPortTI = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
+                $counterTI = intval(substr($lastPortTI, -3)) + 1;
+                $portSuffix = str_pad($counterTI, 3, '0', STR_PAD_LEFT);
+            } elseif ($digit6 == '6') {
+                $prodi = 'SIB';
+                $nimDigit = substr($nim, 0, 2);
+                $portPrefix = intval($nimDigit) + 16;
 
-                if ($digit6 == '2') {
-                    $prodi = 'TI';
-                    $nimDigit = substr($nim, 0, 2);
-                    $portPrefix = intval($nimDigit) - 9;
-
-                    // Mendapatkan nilai counter terakhir untuk TI
-                    $lastPortTI = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
-                    $counterTI = intval(substr($lastPortTI, -3)) + 1;
-                    $portSuffix = str_pad($counterTI, 3, '0', STR_PAD_LEFT);
-                } elseif ($digit6 == '6') {
-                    $prodi = 'SIB';
-                    $nimDigit = substr($nim, 0, 2);
-                    $portPrefix = intval($nimDigit) + 16;
-
-                    // Mendapatkan nilai counter terakhir untuk SIB
-                    $lastPortSIB = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
-                    $counterSIB = intval(substr($lastPortSIB, -3)) + 1;
-                    $portSuffix = str_pad($counterSIB, 3, '0', STR_PAD_LEFT);
-                }
-
-                // Mengisi kolom port di tabel kontainer dengan format port
-                $port = intval($portPrefix . $portSuffix);
-
-                $container = [
-                    'nama_kontainer' => $containerData['nama_kontainer'],
-                    'id_template' => $containerData['id_template'],
-                    'id_user' => Auth::id(),
-                    'port_kontainer' => $port
-                ];
-
-                Container::create($container);
-            } else {
-                return redirect()->route('Container.create')->with('error', 'Template tidak valid');
+                // Mendapatkan nilai counter terakhir untuk SIB
+                $lastPortSIB = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
+                $counterSIB = intval(substr($lastPortSIB, -3)) + 1;
+                $portSuffix = str_pad($counterSIB, 3, '0', STR_PAD_LEFT);
             }
+
+            // Mengisi kolom port di tabel kontainer dengan format port
+            $port = intval($portPrefix . $portSuffix);
+
+            $container = [
+                'nama_kontainer' => $containerData['nama_kontainer'],
+                'id_template' =>$containerData['id_template'],
+                'id_user' => Auth::id(),
+                'port_kontainer' => $port
+            ];
+
+            Container::create($container);
         }
 
         return redirect()->route('Container.create')->with('success', 'Data berhasil ditambahkan');
@@ -185,7 +190,7 @@ class ContainerController extends Controller
 
     return redirect()->route('Container.create')->with('error', 'User tidak valid');
 }
-
+}
 
     /**
      * Display the specified resource.
