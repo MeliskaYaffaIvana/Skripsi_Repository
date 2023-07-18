@@ -45,16 +45,35 @@ class ContainerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $containers = $request->input('container');
+{
+    $containers = $request->input('container');
+    $user = User::find(Auth::id()); // Get the associated user
 
-    foreach ($containers as $containerData) {
-        $user = User::find(Auth::id()); // Get the associated user
+    if ($user) {
+        $nim = $user->nim;
+        $existingCategories = [];
 
-        if ($user) {
+        foreach ($containers as $containerData) {
+            $templateId = $containerData['id_template'];
+            $template = Template::find($templateId);
+
+            if ($template) {
+                $category = $template->kategori;
+
+                // Periksa apakah NIM tersebut sudah memiliki kontainer dengan kategori yang sama
+                if (in_array($category, $existingCategories)) {
+                    return redirect()->route('Container.create')->with('error', 'Anda hanya dapat memiliki satu kontainer dengan kategori yang sama');
+                }
+
+                $existingCategories[] = $category;
+            } else {
+                return redirect()->route('Container.create')->with('error', 'Template tidak valid');
+            }
+        }
+
+        foreach ($containers as $containerData) {
             $nim = $user->nim;
             $digit6 = substr($nim, 5, 1);
-
             $prodi = '';
             $portPrefix = 0;
             $portSuffix = 0;
@@ -84,17 +103,20 @@ class ContainerController extends Controller
 
             $container = [
                 'nama_kontainer' => $containerData['nama_kontainer'],
-                'id_template' =>$containerData['id_template'],
+                'id_template' => $containerData['id_template'],
                 'id_user' => Auth::id(),
                 'port_kontainer' => $port
             ];
 
             Container::create($container);
         }
-        }
-        
+
         return redirect()->route('Container.create')->with('success', 'Data berhasil ditambahkan');
     }
+
+    return redirect()->route('Container.create')->with('error', 'User tidak valid');
+}
+
 
     /**
      * Display the specified resource.
