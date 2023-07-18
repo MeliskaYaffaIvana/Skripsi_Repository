@@ -94,17 +94,6 @@
                                         </td>
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <!-- <div class="edit"> -->
-                                                <!-- <a class="dropdown-item" data-bs-toggle="modal"
-                                                            data-bs-target="#showEditModal{{$container->id}}">Edit</a> -->
-
-                                                @endif
-                                                @if(session('status'))
-                                                <div class="alert alert-success">
-                                                    {{ session('status') }}
-                                                </div>
-                                                @endif
-
                                                 <div class="bolehkan">
                                                     <form
                                                         action="{{ route('container.update_bolehkan', $container->id) }}"
@@ -184,6 +173,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                             @endforeach
                                 </tbody>
                             </table>
