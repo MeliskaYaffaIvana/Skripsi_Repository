@@ -45,8 +45,17 @@
                                         <td>{{ $temp->nama_template}}</td>
                                         @endif
                                         @endforeach
-                                        <td>{{ $container->port}}</td>
-                                        <td>{{ $container->status_job}}</td>
+                                        <td>{{ $container->port_kontainer}}</td>
+                                        <td>
+                                            @if ($container->status_job ==0)
+                                            Masuk Antrian
+                                            @elseif ($container->status_job ==1)
+                                            Dalam Proses
+                                            @elseif ($container->status_job ==2)
+                                            Selesai
+                                            @else
+                                            Failed
+                                            @endif</td>
                                         <td>{{ $container->tgl_dibuat}}</td>
                                         <td>{{ $container->tgl_selesai}}</td>
                                     </tr>

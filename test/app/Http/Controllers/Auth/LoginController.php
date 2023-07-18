@@ -72,7 +72,7 @@ public function login(Request $request)
                     // }
                 } else {
                     // NIM tidak ada di API, tampilkan pesan error atau lakukan tindakan yang sesuai
-                    return redirect()->back()->withInput()->withErrors(['nim' => 'NIM tidak terdaftarrrrrrr']);
+                    return redirect()->back()->withInput()->withErrors(['nim' => 'Username Tidak Terdaftar']);
                 }
             } else {
                 // Panggilan ke API mengalami kesalahan, tangani sesuai kebutuhan
@@ -86,7 +86,7 @@ public function login(Request $request)
             return redirect()->intended('home');
         } else {
             // Login gagal
-            return redirect()->back()->withInput()->withErrors(['nim' => 'NIM atau password salah']);
+            return redirect()->back()->withInput()->withErrors(['password' => 'Password Salah']);
         }
     }
     /**

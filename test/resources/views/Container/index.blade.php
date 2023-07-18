@@ -1,6 +1,18 @@
 @extends('layout')
 
 @section('content')
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+@if (session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
+
 <style>
 .form-input {
     display: none;
@@ -110,7 +122,6 @@
                                                         @endif
                                                     </form>
                                                 </div>
-                                                @if($container->status == false)
                                                 <div class="remove">
                                                     <form action="{{ route('Container.destroy', $container->id) }}"
                                                         method="POST">
@@ -123,8 +134,7 @@
                                                                 class="mdi mdi-delete-outline"></i></button>
                                                     </form>
                                                 </div>
-                                                @endif
-                                                <div class="shellinabox">
+                                                <!-- <div class="shellinabox">
                                                     <button class="shellInABoxBtn "
                                                         style="background-color: white; border: none;"
                                                         data-container-id="{{ $container->id }}"><img
@@ -164,67 +174,68 @@
 
 
 
-                                            </div>
-                        </div>
-
-
-                        </td>
-                        <td>
-                            <div>
-
-
-                            </div>
-                        </td>
-
-
-                        <!-- edit Modal  -->
-                        <div class=" modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-light p-3">
-                                        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close" id="close-modal"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form method="post" action="{{ route('container.update', $container->id) }}"
-                                            enctype="multipart/form-data" id="myForm">
-                                            @csrf
-                                            <div class="mb-3">
-                                                <label for="nama_kontainer">Nama
-                                                    kontainer</label>
-                                                <input type="text" name="nama_kontainer" class="form-control"
-                                                    id="nama_kontainer" value="{{ $container->nama_kontainer }}"
-                                                    required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="id_template">Template</label>
-                                                <select name="id_template" class="form-control" id="id_template"
-                                                    required readonly>
-                                                    @foreach($template as $temp)
-                                                    @if($temp->id ==$container->id_template)
-                                                    <option value="{{ $temp->id }}">
-                                                        {{ $temp->nama_template }}</option>
-                                                    @endif
-                                                    @endforeach
-                                                </select>
+                                            </div> -->
                                             </div>
 
-                                            <div class=" modal-footer">
-                                                <div class="hstack gap-2 justify-content-end">
-                                                    <button type="button" class="btn2 btn-light"
-                                                        data-bs-dismiss="modal">Tutup</button>
-                                                    <button type="submit" class="btn1 btn-success"
-                                                        id="edit-btn">Perbarui</button>
+
+                                        </td>
+                                        <td>
+                                            <div>
+
+
+                                            </div>
+                                        </td>
+
+
+                                        <!-- edit Modal  -->
+                                        <div class=" modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-light p-3">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close" id="close-modal"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                            action="{{ route('container.update', $container->id) }}"
+                                                            enctype="multipart/form-data" id="myForm">
+                                                            @csrf
+                                                            <div class="mb-3">
+                                                                <label for="nama_kontainer">Nama
+                                                                    kontainer</label>
+                                                                <input type="text" name="nama_kontainer"
+                                                                    class="form-control" id="nama_kontainer"
+                                                                    value="{{ $container->nama_kontainer }}" required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="id_template">Template</label>
+                                                                <select name="id_template" class="form-control"
+                                                                    id="id_template" required readonly>
+                                                                    @foreach($template as $temp)
+                                                                    @if($temp->id ==$container->id_template)
+                                                                    <option value="{{ $temp->id }}">
+                                                                        {{ $temp->nama_template }}</option>
+                                                                    @endif
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+
+                                                            <div class=" modal-footer">
+                                                                <div class="hstack gap-2 justify-content-end">
+                                                                    <button type="button" class="btn2 btn-light"
+                                                                        data-bs-dismiss="modal">Tutup</button>
+                                                                    <button type="submit" class="btn1 btn-success"
+                                                                        id="edit-btn">Perbarui</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            </tbody>
+                                            @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>

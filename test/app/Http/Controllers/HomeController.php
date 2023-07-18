@@ -30,15 +30,23 @@ class HomeController extends Controller
         $template = Template::all();        
         $container = Container::all();
         // Menghitung jumlah kontainer dengan status aktif
-    $activeCount = Container::where('status', true)->count();
+        $activeCount = Container::where('status', true)->count();
 
-    // Menghitung jumlah kontainer dengan status tidak aktif
-    $inactiveCount = Container::where('status', false)->count();
-    $templateCount = Template::count();
+        // Menghitung jumlah kontainer dengan status tidak aktif
+        $inactiveCount = Container::where('status', false)->count();
+        $templateCount = Template::count();
+
+        #user
+        $studentactiveCount = Container::where('id_user', auth()->user()->id)
+                                ->where('status', true)
+                                ->count();
+        $studentinactiveCount = Container::where('id_user', auth()->user()->id)
+                                  ->where('status', false)
+                                  ->count();
         if(Auth::User()->level == 'administrator'){
             return view('home', compact('users', 'template', 'container'));
         }else{
-        return view('home', compact('users', 'template', 'container', 'activeCount', 'inactiveCount', 'templateCount'));
+        return view('home', compact('users', 'template', 'container', 'activeCount', 'inactiveCount','studentactiveCount','studentinactiveCount',  'templateCount'));
     }
 }
 }

@@ -153,7 +153,7 @@ class ContainerController extends Controller
 
     // Memeriksa apakah kontainer memiliki status "enable"
     if ($container->status == true) {
-        return redirect()->route('Container.index')->with('error', 'Kontainer dengan status "enable" tidak dapat dihapus.');
+        return redirect()->route('Container.index')->with('error', 'Kontainer dengan status enable tidak dapat dihapus.');
     }
     
     // Simpan ID container yang dihapus 
