@@ -196,7 +196,7 @@ public function getContainersByCategory()
     $query = "
         SELECT
             kategori.kategori AS category,
-            container.nama_kontainer as nama_kontainer,
+            container.id as id,
             users.nim AS nim
         FROM
             container
@@ -204,7 +204,7 @@ public function getContainersByCategory()
             INNER JOIN kategori ON template.id_kategori = kategori.id
             INNER JOIN users ON container.id_user = users.id
         ORDER BY
-            kategori.kategori, container.nama_kontainer
+            kategori.kategori, container.id
     ";
 
     // Eksekusi query menggunakan DB facade
@@ -214,7 +214,7 @@ public function getContainersByCategory()
     $data = [];
     foreach ($containers as $container) {
         $category = $container->category;
-        $name = $container->nama_kontainer;
+        $name = $container->id;
         $nim = $container->nim;
 
         if (!isset($data[$category])) {
@@ -222,7 +222,7 @@ public function getContainersByCategory()
         }
 
         $data[$category][] = [
-            'nama_kontainer' => $name,
+            'id' => $name,
             'nim' => $nim
         ];
     }
