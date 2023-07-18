@@ -204,6 +204,8 @@ public function getContainersByCategory()
             INNER JOIN template ON container.id_template = template.id
             INNER JOIN kategori ON template.id_kategori = kategori.id
             INNER JOIN users ON container.id_user = users.id
+        WHERE
+            kategori.kategori IN ('frontend', 'backend')  -- Hanya mengambil kategori frontend dan backend
         ORDER BY
             kategori.kategori, container.id
     ";
