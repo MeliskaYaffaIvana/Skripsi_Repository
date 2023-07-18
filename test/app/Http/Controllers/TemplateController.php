@@ -137,7 +137,7 @@ class TemplateController extends Controller
     $template->delete();
 
     // Kirim ID dan atribut link_template yang dihapus ke API server
-    $response = Http::post('http://10.0.0.21:8080/api/delete_template/', [
+    $response = Http::post('http://10.0.0.21:8000/api/delete_template/', [
         'deleted_template_id' => $deletedTemplateId,
         'deleted_template_link' => $deletedTemplateLink
     ]);
