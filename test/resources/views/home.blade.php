@@ -60,109 +60,108 @@
                                         </div>
                                     </div>
                                     @endif
-                                </div>
 
-                            </div><!-- end col -->
-                            @if(Auth::user()->status == 'administrator')
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="card border border-warning">
-                                        <div class="card-body">
-                                            <p class="text-muted"><strong>Status Kontainer</strong></p>
-                                            @if ($activeCount > 0)
-                                            <p class="text-muted mb-0"><i
-                                                    class=" text-success fs-18 align-middle me-2 rounded-circle shadow">
-                                                    <span
-                                                        class="badge bg-success">{{ $activeCount }}</span></i>Kontainer
-                                                Aktif</p>
-                                            @endif
-                                            @if ($inactiveCount > 0)
-                                            <p class="text-muted mb-0"><i
-                                                    class=" text-info fs-18 align-middle me-2 rounded-circle shadow"><span
-                                                        class="badge bg-dark">{{ $inactiveCount }}</span></i>Kontainer
-                                                tidak aktif
-                                            </p>
-                                            @endif
-                                        </div>
-                                        <div class="progress animated-progress bg-soft-primary rounded-bottom rounded-0"
-                                            style="height: 6px;">
-                                            <div class="progress-bar bg-success rounded-0" role="progressbar"
-                                                style="width: {{ $activeCount > 0 ? $activeCount / ($activeCount + $inactiveCount) * 100 : 0 }}%"
-                                                aria-valuenow="{{ $activeCount }}" aria-valuemin="0"
-                                                aria-valuemax="{{ $activeCount + $inactiveCount }}"></div>
-                                            <div class="progress-bar bg-dark rounded-0" role="progressbar"
-                                                style="width: {{ $inactiveCount > 0 ? $inactiveCount / ($activeCount + $inactiveCount) * 100 : 0 }}%"
-                                                aria-valuenow="{{ $inactiveCount }}" aria-valuemin="0"
-                                                aria-valuemax="{{ $activeCount + $inactiveCount }}"></div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="card border border-warning">
-                                        <div class="card-body">
-                                            <p class="text-muted "><strong>Jumlah Template</strong></p>
-
-                                            <p class="text-muted mb-0"><i
-                                                    class="text-success fs-18 align-middle me-2 rounded-circle shadow">
-                                                    <span
-                                                        class="badge bg-success">{{ $templateCount }}</span></i>Template
-                                            </p>
-                                            <h5 class="fs-15 fw-semibold">Template</h5>
-                                        </div>
-                                        <div class="progress animated-progress bg-soft-primary rounded-bottom rounded-0"
-                                            style="height: 6px;">
-                                            <div class="progress-bar bg-success rounded-0" role="progressbar"
-                                                style="width: 100%" aria-valuenow="{{ $templateCount }}"
-                                                aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                            </div><!-- end col -->
-
-                            <table id="example" class="table " style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Kontainer</th>
-                                        <th>Status</th>
-                                        <th>Port</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($container as $container)
-                                    @if($container->id_user == $users->id || $users->status == 'administrator')
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $container->nama_kontainer}}</div>
+                                </div><!-- end col -->
+                                @if(Auth::user()->status == 'administrator')
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="card border border-warning">
+                                            <div class="card-body">
+                                                <p class="text-muted"><strong>Status Kontainer</strong></p>
+                                                @if ($activeCount > 0)
+                                                <p class="text-muted mb-0"><i
+                                                        class=" text-success fs-18 align-middle me-2 rounded-circle shadow">
+                                                        <span
+                                                            class="badge bg-success">{{ $activeCount }}</span></i>Kontainer
+                                                    Aktif</p>
+                                                @endif
+                                                @if ($inactiveCount > 0)
+                                                <p class="text-muted mb-0"><i
+                                                        class=" text-info fs-18 align-middle me-2 rounded-circle shadow"><span
+                                                            class="badge bg-dark">{{ $inactiveCount }}</span></i>Kontainer
+                                                    tidak aktif
+                                                </p>
+                                                @endif
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">
-                                                    @if ($container->bolehkan == 0)
-                                                    Exited
-                                                    @elseif ($container->bolehkan == 1)
-                                                    Running
-                                                    @endif
+                                            <div class="progress animated-progress bg-soft-primary rounded-bottom rounded-0"
+                                                style="height: 6px;">
+                                                <div class="progress-bar bg-success rounded-0" role="progressbar"
+                                                    style="width: {{ $activeCount > 0 ? $activeCount / ($activeCount + $inactiveCount) * 100 : 0 }}%"
+                                                    aria-valuenow="{{ $activeCount }}" aria-valuemin="0"
+                                                    aria-valuemax="{{ $activeCount + $inactiveCount }}"></div>
+                                                <div class="progress-bar bg-dark rounded-0" role="progressbar"
+                                                    style="width: {{ $inactiveCount > 0 ? $inactiveCount / ($activeCount + $inactiveCount) * 100 : 0 }}%"
+                                                    aria-valuenow="{{ $inactiveCount }}" aria-valuemin="0"
+                                                    aria-valuemax="{{ $activeCount + $inactiveCount }}"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="card border border-warning">
+                                            <div class="card-body">
+                                                <p class="text-muted "><strong>Jumlah Template</strong></p>
+
+                                                <p class="text-muted mb-0"><i
+                                                        class="text-success fs-18 align-middle me-2 rounded-circle shadow">
+                                                        <span
+                                                            class="badge bg-success">{{ $templateCount }}</span></i>Template
+                                                </p>
+                                                <h5 class="fs-15 fw-semibold">Template</h5>
+                                            </div>
+                                            <div class="progress animated-progress bg-soft-primary rounded-bottom rounded-0"
+                                                style="height: 6px;">
+                                                <div class="progress-bar bg-success rounded-0" role="progressbar"
+                                                    style="width: 100%" aria-valuenow="{{ $templateCount }}"
+                                                    aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                </div><!-- end col -->
+
+                                <table id="example" class="table " style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Kontainer</th>
+                                            <th>Status</th>
+                                            <th>Port</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($container as $container)
+                                        @if($container->id_user == $users->id || $users->status == 'administrator')
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">{{ $container->nama_kontainer}}</div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $container->port_kontainer}}</div>
-                                            </div>
-                                        </td>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">
+                                                        @if ($container->bolehkan == 0)
+                                                        Exited
+                                                        @elseif ($container->bolehkan == 1)
+                                                        Running
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">{{ $container->port_kontainer}}</div>
+                                                </div>
+                                            </td>
 
-                                        <!-- <td>
+                                            <!-- <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $container->id_user }}</div>
                                             </div>
                                         </td> -->
-                                        @endif
-                                        <!-- <td>
+                                            @endif
+                                            <!-- <td>
                       <div class="btn-group">
                             <button type="button" class="btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Aksi</button>
                             <div class="dropdown-menu dropdownmenu-secondary">
@@ -182,25 +181,25 @@
                                         </div>
                                         </div>
                                     </td> -->
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div><!-- end card -->
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><!-- end card -->
+                    </div>
+                    <!-- end col -->
                 </div>
                 <!-- end col -->
             </div>
-            <!-- end col -->
+            <!-- main-panel ends -->
         </div>
-        <!-- main-panel ends -->
+        <!-- page-body-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
-</div>
 
-<script>
-$(document).ready(function() {
-    $('#example').DataTable();
-});
-</script>
-@endsection
+    <script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+    </script>
+    @endsection

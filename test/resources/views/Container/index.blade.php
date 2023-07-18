@@ -134,58 +134,8 @@
                                                                 class="mdi mdi-delete-outline"></i></button>
                                                     </form>
                                                 </div>
-                                                <!-- <div class="shellinabox">
-                                                    <button class="shellInABoxBtn "
-                                                        style="background-color: white; border: none;"
-                                                        data-container-id="{{ $container->id }}"><img
-                                                            src="{{ asset('assets') }}/images/shell.png" alt=""
-                                                            height="22">
-                                                    </button>
-                                                </div>
-
-                                                <div id="shellInABoxContainer"></div>
-
-                                                <script>
-                                                var shellInABoxBtns = document.querySelectorAll('.shellInABoxBtn');
-
-                                                shellInABoxBtns.forEach(function(btn) {
-                                                    btn.addEventListener('click', function() {
-                                                        var containerId = this.getAttribute(
-                                                            'data-container-id');
-
-                                                        // Buat elemen <iframe>
-                                                        var iframe = document.createElement('iframe');
-                                                        iframe.src =
-                                                            "http://10.0.0.21:4200/?containerId=" +
-                                                            containerId;
-                                                        iframe.width = "100%";
-                                                        iframe.height = "500px";
-                                                        iframe.style.border = "none";
-
-                                                        // Sisipkan elemen <iframe> ke dalam elemen target di halaman
-                                                        var targetElement = document.getElementById(
-                                                            'shellInABoxContainer');
-                                                        targetElement.innerHTML =
-                                                            ''; // Menghapus konten sebelumnya (jika ada)
-                                                        targetElement.appendChild(iframe);
-                                                    });
-                                                });
-                                                </script>
-
-
-
-                                            </div> -->
-                                            </div>
-
-
-                                        </td>
-                                        <td>
-                                            <div>
-
-
                                             </div>
                                         </td>
-
 
                                         <!-- edit Modal  -->
                                         <div class=" modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
@@ -293,12 +243,12 @@
             </div>
         </div>
     </div>
+
     <script>
     $(document).ready(function() {
         $('#example').DataTable();
     });
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>

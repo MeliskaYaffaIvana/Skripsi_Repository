@@ -128,6 +128,7 @@
     <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
+
 <script>
 $(document).ready(function() {
     $('#example').DataTable();
