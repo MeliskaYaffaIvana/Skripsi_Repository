@@ -44,6 +44,57 @@ class ContainerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     $containers = $request->input('container');
+
+    // foreach ($containers as $containerData) {
+    //     $user = User::find(Auth::id()); // Get the associated user
+
+    //     if ($user) {
+    //         $nim = $user->nim;
+    //         $digit6 = substr($nim, 5, 1);
+
+    //         $prodi = '';
+    //         $portPrefix = 0;
+    //         $portSuffix = 0;
+
+    //         if ($digit6 == '2') {
+    //             $prodi = 'TI';
+    //             $nimDigit = substr($nim, 0, 2);
+    //             $portPrefix = intval($nimDigit) - 9;
+
+    //             // Mendapatkan nilai counter terakhir untuk TI
+    //             $lastPortTI = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
+    //             $counterTI = intval(substr($lastPortTI, -3)) + 1;
+    //             $portSuffix = str_pad($counterTI, 3, '0', STR_PAD_LEFT);
+    //         } elseif ($digit6 == '6') {
+    //             $prodi = 'SIB';
+    //             $nimDigit = substr($nim, 0, 2);
+    //             $portPrefix = intval($nimDigit) + 16;
+
+    //             // Mendapatkan nilai counter terakhir untuk SIB
+    //             $lastPortSIB = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
+    //             $counterSIB = intval(substr($lastPortSIB, -3)) + 1;
+    //             $portSuffix = str_pad($counterSIB, 3, '0', STR_PAD_LEFT);
+    //         }
+
+    //         // Mengisi kolom port di tabel kontainer dengan format port
+    //         $port = intval($portPrefix . $portSuffix);
+
+    //         $container = [
+    //             'nama_kontainer' => $containerData['nama_kontainer'],
+    //             'id_template' =>$containerData['id_template'],
+    //             'id_user' => Auth::id(),
+    //             'port_kontainer' => $port
+    //         ];
+
+    //         Container::create($container);
+    //     }
+    //     }
+        
+    //     return redirect()->route('Container.create')->with('success', 'Data berhasil ditambahkan');
+    // }
     public function store(Request $request)
 {
     $containers = $request->input('container');
@@ -71,44 +122,62 @@ class ContainerController extends Controller
             }
         }
 
+        $existingCategories = [];
+
         foreach ($containers as $containerData) {
-            $nim = $user->nim;
-            $digit6 = substr($nim, 5, 1);
-            $prodi = '';
-            $portPrefix = 0;
-            $portSuffix = 0;
+            $templateId = $containerData['id_template'];
+            $template = Template::find($templateId);
 
-            if ($digit6 == '2') {
-                $prodi = 'TI';
-                $nimDigit = substr($nim, 0, 2);
-                $portPrefix = intval($nimDigit) - 9;
+            if ($template) {
+                $category = $template->kategori;
 
-                // Mendapatkan nilai counter terakhir untuk TI
-                $lastPortTI = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
-                $counterTI = intval(substr($lastPortTI, -3)) + 1;
-                $portSuffix = str_pad($counterTI, 3, '0', STR_PAD_LEFT);
-            } elseif ($digit6 == '6') {
-                $prodi = 'SIB';
-                $nimDigit = substr($nim, 0, 2);
-                $portPrefix = intval($nimDigit) + 16;
+                // Periksa apakah NIM tersebut sudah memiliki kontainer dengan kategori yang sama
+                if (in_array($category, $existingCategories)) {
+                    return redirect()->route('Container.create')->with('error', 'Anda hanya dapat memiliki satu kontainer dengan kategori yang sama');
+                }
 
-                // Mendapatkan nilai counter terakhir untuk SIB
-                $lastPortSIB = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
-                $counterSIB = intval(substr($lastPortSIB, -3)) + 1;
-                $portSuffix = str_pad($counterSIB, 3, '0', STR_PAD_LEFT);
+                $existingCategories[] = $category;
+
+                $nim = $user->nim;
+                $digit6 = substr($nim, 5, 1);
+                $prodi = '';
+                $portPrefix = 0;
+                $portSuffix = 0;
+
+                if ($digit6 == '2') {
+                    $prodi = 'TI';
+                    $nimDigit = substr($nim, 0, 2);
+                    $portPrefix = intval($nimDigit) - 9;
+
+                    // Mendapatkan nilai counter terakhir untuk TI
+                    $lastPortTI = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
+                    $counterTI = intval(substr($lastPortTI, -3)) + 1;
+                    $portSuffix = str_pad($counterTI, 3, '0', STR_PAD_LEFT);
+                } elseif ($digit6 == '6') {
+                    $prodi = 'SIB';
+                    $nimDigit = substr($nim, 0, 2);
+                    $portPrefix = intval($nimDigit) + 16;
+
+                    // Mendapatkan nilai counter terakhir untuk SIB
+                    $lastPortSIB = Container::where('port_kontainer', 'LIKE', $portPrefix . '%')->max('port_kontainer');
+                    $counterSIB = intval(substr($lastPortSIB, -3)) + 1;
+                    $portSuffix = str_pad($counterSIB, 3, '0', STR_PAD_LEFT);
+                }
+
+                // Mengisi kolom port di tabel kontainer dengan format port
+                $port = intval($portPrefix . $portSuffix);
+
+                $container = [
+                    'nama_kontainer' => $containerData['nama_kontainer'],
+                    'id_template' => $containerData['id_template'],
+                    'id_user' => Auth::id(),
+                    'port_kontainer' => $port
+                ];
+
+                Container::create($container);
+            } else {
+                return redirect()->route('Container.create')->with('error', 'Template tidak valid');
             }
-
-            // Mengisi kolom port di tabel kontainer dengan format port
-            $port = intval($portPrefix . $portSuffix);
-
-            $container = [
-                'nama_kontainer' => $containerData['nama_kontainer'],
-                'id_template' => $containerData['id_template'],
-                'id_user' => Auth::id(),
-                'port_kontainer' => $port
-            ];
-
-            Container::create($container);
         }
 
         return redirect()->route('Container.create')->with('success', 'Data berhasil ditambahkan');
