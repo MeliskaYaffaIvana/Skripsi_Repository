@@ -167,7 +167,7 @@
                                     <tr>
                                         <?php $no++; ?>
                                         <td>{{ $no }}</td>
-                                        <td><a href="https://produk.pta.jti.polinema.ac.id/{{$container->user->nim}}/fe/"
+                                        <td><a href="http://produk.pta.jti.polinema.ac.id/{{$container->user->nim}}/fe/"
                                                 target="_blank">{{ $container->user->judul }}</a></td>
                                         <td>{{$container->user->nim}}</td>
                                         <td>
