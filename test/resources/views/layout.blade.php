@@ -270,12 +270,14 @@
                         </a>
                     </li>
                     @endif
+                    @if(Auth::user()->status == 'mahasiswa')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('Container.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
                             <i class="mdi mdi-view-grid-plus-outline"></i><span data-key="t-apps">Panduan</span>
                         </a>
                     </li>
+                    @endif
 
 
                     <!-- end Dashboard Menu -->
