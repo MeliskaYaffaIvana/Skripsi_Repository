@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\ContainerController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\JobContainerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +23,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\WelcomeController@index');
+
 Route::middleware(['auth'])->group(function () {
 //kategori
 Route::resource('Kategori',KategoriController::class);

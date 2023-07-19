@@ -64,6 +64,7 @@ protected static function boot()
 public function Template(){
         return $this->hasMany('App\Models\Template');
     }
+    
 
     /**
      * The attributes that should be cast.

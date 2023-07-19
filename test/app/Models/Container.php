@@ -64,6 +64,9 @@ class Container extends Model
         });
         }
     public function template(){
-        return $this->belongsTo('App\Models\Template');
+        return $this->belongsTo(Template::class, 'id_template');
+    }
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
     }
 }
