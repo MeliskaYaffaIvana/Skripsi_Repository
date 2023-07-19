@@ -46,12 +46,14 @@
                         <div id="Container">
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
+                                    @if(Auth::user()->status == 'mahasiswa')
                                     <div>
                                         <button type="button" class="btn btn-success waves-effect waves-light edit-btn"
                                             data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i
                                                 class="ri-add-line align-bottom me-1"></i>
                                             Tambah</button>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
 
