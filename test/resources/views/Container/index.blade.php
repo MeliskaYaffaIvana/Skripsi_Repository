@@ -113,6 +113,7 @@
                                                         @endif
                                                     </form>
                                                 </div>
+                                                @if(Auth::user()->status == 'mahasiswa')
                                                 <div class="remove">
                                                     <form action="{{ route('Container.destroy', $container->id) }}"
                                                         method="POST">
@@ -125,6 +126,7 @@
                                                                 class="mdi mdi-delete-outline"></i></button>
                                                     </form>
                                                 </div>
+                                                @endif
                                             </div>
                                         </td>
 
