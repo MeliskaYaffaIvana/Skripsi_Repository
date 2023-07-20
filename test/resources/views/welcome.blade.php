@@ -167,8 +167,11 @@
                                     <tr>
                                         <?php $no++; ?>
                                         <td>{{ $no }}</td>
-
-                                        <td>{{$user->judul}}</td>
+                                        @if ($user->hasFrontendContainer)
+                                        <td><a href="http://produk.pta.jti.polinema.ac.id/">{{$user->judul}}</a>
+                                        </td>
+                                        @else
+                                        <td>{{$user->judul}}</td> @endif
                                         <td>{{$user->nim}}</td>
                                         <td>
                                             <div class="Detail">

@@ -10,12 +10,26 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $users = User::All();
-        // Ambil kontainer dengan kategori "frontend"
-        $frontendContainers = Container::with('user', 'template.kategori')->whereHas('template.kategori', function ($query) {
-            $query->where('kategori', 'frontend');
-        })->get();
+        $users = User::where('status', 'mahasiswa')->get();
         
-        return view('welcome', compact('users', 'frontendContainers'));
+        foreach ($users as $user) {
+            $userContainers = Container::where('id_user', $user->id)->get();
+            $hasFrontendContainer = false;
+
+            if ($userContainers->count() > 0) {
+                foreach ($userContainers as $container) {
+                    $kategori = $container->template->kategori->kategori;
+
+                    if ($kategori === 'frontend') {
+                        $hasFrontendContainer = true;
+                        break;
+                    }
+                }
+            }
+
+            $user->hasFrontendContainer = $hasFrontendContainer;
+        }
+        
+        return view('welcome', compact('users'));
     }
 }
