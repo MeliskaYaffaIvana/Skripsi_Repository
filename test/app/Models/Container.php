@@ -53,6 +53,26 @@ class Container extends Model
     public static function boot(){
         parent::boot();
 
+        // Validasi saat menyimpan data baru
+        static::creating(function ($container) {
+            $user = User::find($container->id_user);
+            $kategori = $container->template->id_kategori;
+
+            // Cek apakah pengguna sudah memiliki entri kontainer untuk kategori template yang dipilih
+            $existingContainer = Container::where('id_user', $user->id)
+                ->whereHas('template', function ($query) use ($kategori) {
+                    $query->where('id_kategori', $kategori);
+                })->first();
+
+            if ($existingContainer) {
+                // Jika pengguna sudah memiliki entri kontainer untuk kategori template ini,
+                // set the error message in the session
+                session()->flash('error', 'Anda sudah memiliki kontainer untuk kategori template ini.');
+
+                // Batalkan proses menyimpan data baru
+                return false;
+            }
+        });
         static::creating(function($model){
             $model->tgl_dibuat = Carbon::now('Asia/Jakarta');
             $model->id = self::generateCustomID();
