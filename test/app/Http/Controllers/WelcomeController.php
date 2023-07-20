@@ -10,12 +10,12 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $user = User::All();
+        $users = User::All();
         // Ambil kontainer dengan kategori "frontend"
         $frontendContainers = Container::with('user', 'template.kategori')->whereHas('template.kategori', function ($query) {
             $query->where('kategori', 'frontend');
         })->get();
         
-        return view('welcome', compact('frontendContainers'));
+        return view('welcome', compact('users', 'frontendContainers'));
     }
 }

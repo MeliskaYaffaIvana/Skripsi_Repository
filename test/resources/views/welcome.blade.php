@@ -163,17 +163,17 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 0; ?>
-                                    @foreach ($frontendContainers as $container)
+                                    @foreach ($users as $user)
                                     <tr>
                                         <?php $no++; ?>
                                         <td>{{ $no }}</td>
-                                        <td><a href="http://produk.pta.jti.polinema.ac.id/{{$container->user->nim}}/fe/"
-                                                target="_blank">{{ $container->user->judul }}</a></td>
-                                        <td>{{$container->user->nim}}</td>
+
+                                        <td>{{$user->judul}}</td>
+                                        <td>{{$user->nim}}</td>
                                         <td>
                                             <div class="Detail">
                                                 <button class="btn btn-sm btn-info edit-item-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#showDetailModal{{ $container->id }}">Detail</button>
+                                                    data-bs-target="#showDetailModal{{$user->id}}">Detail</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -206,8 +206,8 @@
     </div>
     <!-- END layout-wrapper -->
     <!-- Detail Modal -->
-    @foreach ($frontendContainers as $container)
-    <div class="modal fade" id="showDetailModal{{$container->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    @foreach ($users as $user)
+    <div class="modal fade" id="showDetailModal{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -217,32 +217,28 @@
                         id="close-modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{route('container.update', $container->id)}}"
-                        enctype="multipart/form-data" id="myForm">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="Judul">Judul</label>
-                            <input type="text" name="judul" class="form-control" value="{{$container->user->judul}}"
-                                readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="desc">Deskripsi</label>
-                            <textarea type="text" name="deskripsi" class="form-control" rows="5"
-                                value="{{$container->user->deskripsi}}"
-                                readonly>{{$container->user->deskripsi}}</textarea>
-                        </div>
-                        <div class=" mb-3">
-                            <label for="Mhs">Mahasiswa</label>
-                            <input type="text" name="nim" class="form-control" value="{{$container->user->nim}}"
-                                readonly>
-                        </div>
 
-                        <div class="modal-footer">
-                            <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn2 btn-light" data-bs-dismiss="modal">Tutup</button>
+                    @csrf
+                    <div class="mb-3">
+                        <label for="Judul">Judul</label>
+                        <input type="text" name="judul" class="form-control" value="{{$user->judul}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc">Deskripsi</label>
+                        <textarea type="text" name="deskripsi" class="form-control" rows="5"
+                            value="{{$user->deskripsi}}" readonly>{{$user->deskripsi}}</textarea>
+                    </div>
+                    <div class=" mb-3">
+                        <label for="Mhs">Mahasiswa</label>
+                        <input type="text" name="nim" class="form-control" value="{{$user->nim}}" readonly>
+                    </div>
 
-                            </div>
+                    <div class="modal-footer">
+                        <div class="hstack gap-2 justify-content-end">
+                            <button type="button" class="btn2 btn-light" data-bs-dismiss="modal">Tutup</button>
+
                         </div>
+                    </div>
                     </form>
                 </div>
             </div>
