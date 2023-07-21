@@ -81,26 +81,25 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                @if ($container->template->kategori->kategori == 'frontend' ||
-                                                $container->template->kategori->kategori == 'backend')
+                                                @if ($container->template->kategori->kategori == 'frontend')
                                                 <div class="flex-grow-1">
-                                                    http://produk.pta.jti.polinema.ac.id:{{$container->port_kontainer}}
+                                                    http://produk.pta.jti.polinema.ac.id/{{$container->user->nim}}/fe
+                                                </div>
+                                                @elseif ($container->template->kategori->kategori == 'backend')
+                                                <div class="flex-grow-1">
+                                                    http://produk.pta.jti.polinema.ac.id/{{$container->user->nim}}/be
                                                 </div>
                                                 @elseif ($container->template->kategori->kategori == 'database')
                                                 <div class="flex-grow-1">
-                                                    http://cmp.pta.jti.polinema.ac.id:{{$container->port_kontainer}}
+                                                    http://cmp.pta.jti.polinema.ac.id/{{$container->port_kontainer}}
                                                 </div>
                                                 @endif
                                             </div>
                                         </td>
                                         <td>
-                                            @foreach($template as $temp)
-                                            @if($temp->id ==$container->id_template)
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $temp->nama_template}}</div>
+                                                <div class="flex-grow-1">{{ $container->template->nama_template}}</div>
                                             </div>
-                                            @endif
-                                            @endforeach
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
