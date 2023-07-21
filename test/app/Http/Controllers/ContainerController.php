@@ -22,7 +22,7 @@ class ContainerController extends Controller
     {
         $users = auth()->user();
         $template = Template::all();        
-        $container = Container::all();
+        $container = Container::with('template')->get();
         return view('Container.index', compact('users', 'template', 'container'));
     }
 

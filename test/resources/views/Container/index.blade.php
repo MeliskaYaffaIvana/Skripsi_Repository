@@ -63,6 +63,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Kontainer</th>
+                                        <th>Link Kontainer</th>
                                         <th>Template</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
@@ -76,6 +77,20 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $container->nama_kontainer}}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @if ($container->template->kategori->kategori == 'frontend' ||
+                                                $container->template->kategori->kategori == 'backend')
+                                                <div class="flex-grow-1">
+                                                    http://produk.pta.jti.polinema.ac.id:{{$container->port_kontainer}}
+                                                </div>
+                                                @elseif ($container->template->kategori->kategori == 'database')
+                                                <div class="flex-grow-1">
+                                                    http://cmp.pta.jti.polinema.ac.id:{{$container->port_kontainer}}
+                                                </div>
+                                                @endif
                                             </div>
                                         </td>
                                         <td>

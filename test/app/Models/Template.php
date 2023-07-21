@@ -74,6 +74,6 @@ class Template extends Model
         return $this->belongsTo(Kategori::class, 'id_kategori');
     }
     public function container(){
-        return $this->hasMany('App\Models\Container');
+        return $this->hasMany(Container::class, 'id_template');
     }
 }
