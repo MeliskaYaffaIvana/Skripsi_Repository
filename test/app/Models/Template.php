@@ -27,6 +27,7 @@ class Template extends Model
         'tgl_dibuat',
         'tgl_selesai',
         'port',
+        'env_template',
     ];
     
     

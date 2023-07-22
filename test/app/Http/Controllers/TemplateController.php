@@ -54,8 +54,19 @@ class TemplateController extends Controller
         $template->link_template = $request->link_template;
         $template->default_dir = $request->default_dir;
         $template->port = $request->port;
-        // $template->bolehkan = $request->bolehkan;
-        // $template->status_job = $request->status_job;
+        
+        // Menyusun nilai untuk kolom JSON credentials
+        $env_template = [
+            'usertmp' => $request->input('usertmp'),
+            'passtmp' => $request->input('passtmp'),
+            'rootpasstmp' => $request->input('rootpasstmp')
+        ];
+        // Encode array menjadi JSON (string)
+        $env_template_json = json_encode($env_template);
+    
+        // Simpan nilai kolom credentials sebagai JSON
+        $template->env_template = $env_template_json;
+
         $template->save();
          return redirect()->route('Template.create')->with('success', 'Data berhasil ditambahkan');
     }
@@ -103,11 +114,30 @@ class TemplateController extends Controller
         $template->link_template = $request->get('link_template');
         $template->default_dir = $request->get('default_dir');
         $template->port = $request->get('port');
-        // $template->bolehkan = $request->get('bolehkan');
-        // $template->status_job = $request->get('status_job');
-        
-        $template->save();
-          return redirect()->route('Template.edit', $id)->with('success', 'Data berhasil diubah');
+        // Update the env_template field if the category is KT001
+        if ($request->get('id_kategori') === "KT001") {
+            $usertmp = $request->input('usertmp');
+            $passtmp = $request->input('passtmp');
+            $rootpasstmp = $request->input('rootpasstmp');
+
+        // Check if any of the values are not null before saving as JSON
+        if ($usertmp !== null && $passtmp !== null && $rootpasstmp !== null) {
+            $env_template = [
+                'usertmp' => $usertmp,
+                'passtmp' => $passtmp,
+                'rootpasstmp' => $rootpasstmp
+            ];
+            $template->env_template = json_encode($env_template);
+        }
+    } else {
+        // If the category is not KT001, set the env_template field to null
+        $template->env_template = null;
+    }
+
+    // Save the changes to the database
+    $template->save();
+
+        return redirect()->route('Template.edit', $id)->with('success', 'Data berhasil diubah');
     }
 
     /**

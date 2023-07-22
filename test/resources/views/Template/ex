@@ -141,10 +141,8 @@
                                                 <label for="id_kategori">Kategori</label>
                                                 <select name="id_kategori" class="form-control" id="id_kategori">
                                                     @foreach($kategori as $kat)
-                                                    @if($kat->id == $template->id_kategori)
                                                     <option value="{{$kat->id}}">{{"$kat->kategori"}}
                                                     </option>
-                                                    @endif
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -170,55 +168,31 @@
                                                 <input type="text" name="port" class="form-control" id="port"
                                                     value="{{ $template->port }}" required readonly>
                                             </div>
-                                            @if($template->id_kategori == "KT001")
-                                            <div class="field-container" id="env_template">
-                                                <div class="mb-3">
-                                                    <label for="usertmp">User TMP</label>
-                                                    <input type="text" name="usertmp" class="form-control" id="usertmp"
-                                                        value="{{ isset($template->env_template) ? json_decode($template->env_template)->usertmp : '' }}"
-                                                        required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="passtmp">Pass TMP</label>
-                                                    <input type="text" name="passtmp" class="form-control" id="passtmp"
-                                                        value="{{ isset($template->env_template) ? json_decode($template->env_template)->passtmp : '' }}"
-                                                        required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="rootpasstmp">Root Pass TMP</label>
-                                                    <input type="text" name="rootpasstmp" class="form-control"
-                                                        id="rootpasstmp"
-                                                        value="{{ isset($template->env_template) ? json_decode($template->env_template)->rootpasstmp : '' }}"
-                                                        required>
+                                            <div class=" modal-footer">
+                                                <div class="hstack gap-2 justify-content-end">
+                                                    <button type="button" class="btn2 btn-light"
+                                                        data-bs-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn1 btn-success"
+                                                        id="edit-btn">Perbarui</button>
                                                 </div>
                                             </div>
+                                        </form>
                                     </div>
-                                    @endif
-                                    <div class=" modal-footer">
-                                        <div class="hstack gap-2 justify-content-end">
-                                            <button type="button" class="btn2 btn-light"
-                                                data-bs-dismiss="modal">Tutup</button>
-                                            <button type="submit" class="btn1 btn-success"
-                                                id="edit-btn">Perbarui</button>
-                                        </div>
-                                    </div>
-                                    </form>
                                 </div>
                             </div>
+                            @endforeach
+                            </tbody>
+                            </table>
                         </div>
-                        @endforeach
-                        </tbody>
-                        </table>
-                    </div>
-                </div><!-- end card -->
+                    </div><!-- end card -->
+                </div>
+                <!-- end col -->
             </div>
             <!-- end col -->
         </div>
-        <!-- end col -->
+        <!-- main-panel ends -->
     </div>
-    <!-- main-panel ends -->
-</div>
-<!-- page-body-wrapper ends -->
+    <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
 
@@ -228,10 +202,6 @@ $(document).ready(function() {
     $('#example').DataTable();
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 
 <script>
 var toggleButtons = document.querySelectorAll('.toggle-bolehkan');
@@ -273,11 +243,10 @@ toggleButtons.forEach(function(button) {
                     </div>
                     <div class="mb-3">
                         <label for="id_kategori" class="kategori">Kategori</label>
-                        <select name="id_kategori" class="form-control" id="id_kategori"
-                            onchange="updateField(this.value)">
+                        <select name=" id_kategori" class="form-control" id="id_kategori">
                             <option value="0">Pilih Kategori</option>
                             @foreach($kategori as $kat)
-                            <option value="{{ $kat->id}}">{{ $kat->kategori }}</option>
+                            <option value=" {{$kat->id}}">{{"$kat->kategori"}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -297,20 +266,22 @@ toggleButtons.forEach(function(button) {
                         <label for="port">Port</label>
                         <input type="text" name="port" class="form-control" id="port" required>
                     </div>
-                    <div class="field-container kategori-KT001" id="env_template" style="display:none; ">
+                    <!-- Field Credential -->
+                    <div class="credentialFields" id="credentialFields" style="display:none;">
                         <div class="mb-3">
                             <label for="usertmp">User TMP</label>
-                            <input type="text" name="usertmp" class="form-control" id="usertmp">
+                            <input type="text" name="usertmp" class="form-control" id="usertmp" required>
                         </div>
                         <div class="mb-3">
                             <label for="passtmp">Pass TMP</label>
-                            <input type="text" name="passtmp" class="form-control" id="passtmp">
+                            <input type="text" name="passtmp" class="form-control" id="passtmp" required>
                         </div>
                         <div class="mb-3">
                             <label for="rootpasstmp">Root Pass TMP</label>
-                            <input type="text" name="rootpasstmp" class="form-control" id="rootpasstmp">
+                            <input type="text" name="rootpasstmp" class="form-control" id="rootpasstmp" required>
                         </div>
                     </div>
+
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn2 btn-light" data-bs-dismiss="modal">Tutup</button>
@@ -322,12 +293,75 @@ toggleButtons.forEach(function(button) {
         </div>
     </div>
 </div>
-<!-- Add more field containers for other categories as needed... -->
+
 
 <script>
-function updateField(selectedValue) {
-    // Check the selected ID_kategori value
-    console.log("Selected ID_kategori: " + selectedValue);
+function updateField() {
+    var dropdown = document.getElementById("id_kategori");
+    var selectedValue = dropdown.value;
+
+    // Enable all fields first
+    enableAllFields();
+
+    // Disable the field if not the selected category
+    if (selectedValue !== "KT004") {
+        document.getElementById("usertmp").disabled = true;
+        document.getElementById("passtmp").disabled = true;
+        document.getElementById("rootpasstmp").disabled = true;
+    }
+}
+
+function enableAllFields() {
+    document.getElementById("usertmp").disabled = false;
+    document.getElementById("passtmp").disabled = false;
+    document.getElementById("rootpasstmp").disabled = false;
+}
+</script>
+
+
+@endsection<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal content... -->
+    <div class="modal-body">
+        <form method="post" action="{{ route('Template.store') }}" enctype="multipart/form-data" id="myForm">
+            @csrf
+            <!-- Other form fields... -->
+            <div class="mb-3">
+                <label for="id_kategori" class="kategori">Kategori</label>
+                <select name="id_kategori" class="form-control" id="id_kategori" onchange="updateField()">
+                    <option value="0">Pilih Kategori</option>
+                    @foreach($kategori as $kat)
+                    <option value="{{ $kat->id }}">{{ $kat->kategori }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Field containers for each category -->
+            <div class="field-container kategori-KT001" style="display: none;">
+                <!-- Fields for Kategori KT001 -->
+                <label for="field1">Field 1:</label>
+                <input type="text" name="field1" id="field1">
+            </div>
+
+            <div class="field-container kategori-KT003" style="display: none;">
+                <!-- Fields for Kategori KT003 -->
+                <label for="field2">Field 2:</label>
+                <input type="text" name="field2" id="field2">
+            </div>
+
+            <div class="field-container kategori-KT004" style="display: none;">
+                <!-- Fields for Kategori KT004 -->
+                <label for="field3">Field 3:</label>
+                <input type="text" name="field3" id="field3">
+            </div>
+
+            <!-- Rest of the form fields... -->
+        </form>
+    </div>
+</div>
+<script>
+function updateField() {
+    var dropdown = document.getElementById("id_kategori");
+    var selectedValue = dropdown.value;
 
     // Hide all field containers first
     hideAllFieldContainers();
@@ -337,25 +371,12 @@ function updateField(selectedValue) {
     if (fieldContainer) {
         fieldContainer.style.display = "block";
     }
-    // Hide the KT004 field container if the selected category is not KT004
-    var kt001FieldContainer = document.querySelector('.kategori-KT001');
-    if (selectedValue !== "KT001" && kt001FieldContainer) {
-        kt001FieldContainer.style.display = "none";
-        // Set nilai input field 'usertmp', 'passtmp', dan 'rootpasstmp' menjadi null
-        document.getElementById('usertmp').setAttribute('value', null);
-        document.getElementById('passtmp').setAttribute('value', null);
-        document.getElementById('rootpasstmp').setAttribute('value', null);
-    }
-    return true;
 }
 
 function hideAllFieldContainers() {
-    var allFieldContainers = document.querySelectorAll('[class^="kategori-"]');
+    var allFieldContainers = document.querySelectorAll('.field-container');
     allFieldContainers.forEach(function(container) {
         container.style.display = "none";
     });
 }
 </script>
-
-
-@endsection

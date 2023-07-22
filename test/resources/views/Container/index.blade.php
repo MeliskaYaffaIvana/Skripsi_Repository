@@ -146,7 +146,7 @@
                                         </td>
 
                                         <!-- edit Modal  -->
-                                        <div class=" modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
+                                        <!-- <div class=" modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
@@ -191,9 +191,9 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            @endif
-                                            @endforeach
+                                            </div> -->
+                                        @endif
+                                        @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -322,6 +322,17 @@
         html += '<option value="{{ $temp->id }}">{{ $temp->nama_template }}</option>';
         @endforeach
         html += '</select>';
+        html += '</div>';
+        html += '<label for="username">Username</label>';
+        html += '<input type="text" name="container[1][username]" class="form-control" required>';
+        html += '</div>';
+        html += '<div class="mb-3">';
+        html += '<label for="password">Password</label>';
+        html += '<input type="password" name="container[1][password]" class="form-control" required>';
+        html += '</div>';
+        html += '<div class="mb-3">';
+        html += '<label for="rootpass">Root Password</label>';
+        html += '<input type="password" name="container[1][rootpass]" class="form-control" required>';
         html += '</div>';
         $('#formInput').html(html);
     }

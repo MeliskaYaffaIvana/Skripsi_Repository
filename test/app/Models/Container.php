@@ -23,6 +23,7 @@ class Container extends Model
         'tgl_dibuat',
         'status',
         'port_kontainer',
+        'env_kontainer',
     ];
     public static function generateCustomID(){
         $prefix = 'CT';

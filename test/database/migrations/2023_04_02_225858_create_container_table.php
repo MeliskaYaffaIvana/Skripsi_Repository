@@ -20,6 +20,7 @@ class CreateContainerTable extends Migration
             $table->string('id_template')->nullable();
             $table->foreign('id_template')->references('id')->on('template')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nama_kontainer');
+            $table->json('env_kontainer')->nullable();
             $table->tinyInteger('bolehkan')->default(0)->comment('0: Exited, 1: Running');
             $table->tinyInteger('status_job')->default(0)->comment('0: Masuk Antrian, 1: Dalam Proses, 2: Selesai, 3: Failed');
             $table->boolean('status')->default(false);

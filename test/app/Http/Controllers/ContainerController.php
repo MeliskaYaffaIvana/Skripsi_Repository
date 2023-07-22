@@ -82,13 +82,34 @@ class ContainerController extends Controller
 
             // Mengisi kolom port di tabel kontainer dengan format port
             $port = intval($portPrefix . $portSuffix);
+            
+            // Process the env_kontainer data based on the template category
+            $template = Template::find($containerData['id_template']);
+            $templateCategory = $template->kategori->id;
+            
+            $env_kontainer = null;
 
-            $container = [
-                'nama_kontainer' => $containerData['nama_kontainer'],
-                'id_template' =>$containerData['id_template'],
-                'id_user' => Auth::id(),
-                'port_kontainer' => $port
-            ];
+        if ($templateCategory === 'KT001') {
+            // Check if any of the username, password, or rootpass is provided
+            if ($containerData['username'] || $containerData['password'] || $containerData['rootpass']) {
+                // Populate $env_kontainer with the provided data
+                $env_kontainer = [
+                    'username' => $containerData['username'],
+                    'password' => $containerData['password'],
+                    'rootpass' => $containerData['rootpass'],
+                ];
+            }
+        }
+
+        // Continue with the existing code...
+
+        $container = [
+            'nama_kontainer' => $containerData['nama_kontainer'],
+            'id_template' => $containerData['id_template'],
+            'id_user' => Auth::id(),
+            'port_kontainer' => $port,
+            'env_kontainer' => $env_kontainer ? json_encode($env_kontainer) : null, // Encode the array if not null, otherwise set to null
+        ];
 
             Container::create($container);
         }
