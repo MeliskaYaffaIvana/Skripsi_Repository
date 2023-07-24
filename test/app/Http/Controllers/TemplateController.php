@@ -59,7 +59,8 @@ class TemplateController extends Controller
         $env_template = [
             'usertmp' => $request->input('usertmp'),
             'passtmp' => $request->input('passtmp'),
-            'rootpasstmp' => $request->input('rootpasstmp')
+            'rootpasstmp' => $request->input('rootpasstmp'),
+            'dbtmp' => $request->input('dbtmp')
         ];
         // Encode array menjadi JSON (string)
         $env_template_json = json_encode($env_template);
@@ -119,13 +120,15 @@ class TemplateController extends Controller
             $usertmp = $request->input('usertmp');
             $passtmp = $request->input('passtmp');
             $rootpasstmp = $request->input('rootpasstmp');
+            $dbtmp = $request->input('dbtmp');
 
         // Check if any of the values are not null before saving as JSON
         if ($usertmp !== null && $passtmp !== null && $rootpasstmp !== null) {
             $env_template = [
                 'usertmp' => $usertmp,
                 'passtmp' => $passtmp,
-                'rootpasstmp' => $rootpasstmp
+                'rootpasstmp' => $rootpasstmp,
+                'dbtmp' => $dbtmp
             ];
             $template->env_template = json_encode($env_template);
         }

@@ -269,13 +269,35 @@
                             <i class="bx bx-category"></i> <span data-key="t-icons">Daftar Pengguna</span>
                         </a>
                     </li>
+
                     @endif
                     @if(Auth::user()->status == 'mahasiswa')
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('panduan.index') }}" role="button"
-                            aria-expanded="false" aria-controls="sidebarApps">
-                            <i class="mdi mdi-view-grid-plus-outline"></i><span data-key="t-apps">Panduan</span>
+                        <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="sidebarLayouts">
+                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-layouts">Panduan</span>
                         </a>
+                        <div class="collapse menu-dropdown" id="sidebarLayouts">
+                            <ul class="nav nav-sm flex-column">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('panduan1.index') }}" class="nav-link"
+                                        data-key="t-horizontal">Request
+                                        Kontainer</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('panduan2.index') }}" class="nav-link"
+                                        data-key="t-detached">Upload
+                                        Project</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('panduan3.index') }}" class="nav-link"
+                                        data-key="t-detached">Running
+                                        Aplikasi</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     @endif
 

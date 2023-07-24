@@ -62,6 +62,7 @@
                             <table id="example" class="table " style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>ID Kontainer</th>
                                         <th>Nama Kontainer</th>
                                         <th>Link Kontainer</th>
                                         <th>Template</th>
@@ -74,6 +75,11 @@
                                     @foreach($container as $container)
                                     @if($container->id_user == $users->id || $users->status == 'administrator')
                                     <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $container->id}}</div>
+                                            </div>
+                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $container->nama_kontainer}}</div>
@@ -91,7 +97,7 @@
                                                 </div>
                                                 @elseif ($container->template->kategori->kategori == 'database')
                                                 <div class="flex-grow-1">
-                                                    http://cmp.pta.jti.polinema.ac.id/{{$container->port_kontainer}}
+                                                    http://cmp1.pta.jti.polinema.ac.id:{{$container->port_kontainer}}
                                                 </div>
                                                 @endif
                                             </div>
@@ -333,6 +339,10 @@
         html += '<div class="mb-3">';
         html += '<label for="rootpass">Root Password</label>';
         html += '<input type="password" name="container[1][rootpass]" class="form-control" required>';
+        html += '</div>';
+        html += '<div class="mb-3">';
+        html += '<label for="dbname">Root Password</label>';
+        html += '<input type="password" name="container[1][dbname]" class="form-control" >';
         html += '</div>';
         $('#formInput').html(html);
     }

@@ -91,12 +91,13 @@ class ContainerController extends Controller
 
         if ($templateCategory === 'KT001') {
             // Check if any of the username, password, or rootpass is provided
-            if ($containerData['username'] || $containerData['password'] || $containerData['rootpass']) {
+            if ($containerData['username'] || $containerData['password'] || $containerData['rootpass'] || $containerData['dbname']) {
                 // Populate $env_kontainer with the provided data
                 $env_kontainer = [
                     'username' => $containerData['username'],
                     'password' => $containerData['password'],
                     'rootpass' => $containerData['rootpass'],
+                    'dbname' => $containerData['dbname'],
                 ];
             }
         }

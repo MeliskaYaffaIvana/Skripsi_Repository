@@ -179,16 +179,22 @@
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="passtmp">Pass TMP</label>
+                                                    <label for="passtmp">Password TMP</label>
                                                     <input type="text" name="passtmp" class="form-control" id="passtmp"
                                                         value="{{ isset($template->env_template) ? json_decode($template->env_template)->passtmp : '' }}"
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="rootpasstmp">Root Pass TMP</label>
+                                                    <label for="rootpasstmp">Root Password TMP</label>
                                                     <input type="text" name="rootpasstmp" class="form-control"
                                                         id="rootpasstmp"
                                                         value="{{ isset($template->env_template) ? json_decode($template->env_template)->rootpasstmp : '' }}"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="dbtmp">Database TMP</label>
+                                                    <input type="text" name="dbtmp" class="form-control" id="dbtmp"
+                                                        value="{{ isset($template->env_template) ? json_decode($template->env_template)->dbtmp : '' }}"
                                                         required>
                                                 </div>
                                             </div>
@@ -303,12 +309,16 @@ toggleButtons.forEach(function(button) {
                             <input type="text" name="usertmp" class="form-control" id="usertmp">
                         </div>
                         <div class="mb-3">
-                            <label for="passtmp">Pass TMP</label>
+                            <label for="passtmp">Password TMP</label>
                             <input type="text" name="passtmp" class="form-control" id="passtmp">
                         </div>
                         <div class="mb-3">
-                            <label for="rootpasstmp">Root Pass TMP</label>
+                            <label for="rootpasstmp">Root Password TMP</label>
                             <input type="text" name="rootpasstmp" class="form-control" id="rootpasstmp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="dbtmp">Database TMP</label>
+                            <input type="text" name="dbtmp" class="form-control" id="dbtmp">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -345,6 +355,7 @@ function updateField(selectedValue) {
         document.getElementById('usertmp').setAttribute('value', null);
         document.getElementById('passtmp').setAttribute('value', null);
         document.getElementById('rootpasstmp').setAttribute('value', null);
+        document.getElementById('dbtmp').setAttribute('value', null);
     }
     return true;
 }

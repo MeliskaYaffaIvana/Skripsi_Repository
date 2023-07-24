@@ -55,7 +55,9 @@ Route::resource('Job',JobController::class);
 Route::resource('Jc',JobContainerController::class);
 Route::resource('Home',HomeController::class);
 Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
-Route::get('/Panduan/index',[ProfileController::class, 'indexPanduan'])->name('panduan.index');
+Route::get('/Panduan/index1',[ProfileController::class, 'indexPanduan1'])->name('panduan1.index');
+Route::get('/Panduan/index2',[ProfileController::class, 'indexPanduan2'])->name('panduan2.index');
+Route::get('/Panduan/index3',[ProfileController::class, 'indexPanduan3'])->name('panduan3.index');
 
 
 
