@@ -195,7 +195,7 @@ class ContainerController extends Controller
     $container->delete();
 
     // Kirim ID yang dihapus ke API server
-    $response = Http::post('http://10.0.0.21:8000/api/delete_container/', [
+    $response = Http::post('http://10.0.0.21:8000/api/delete_kontainer/', [
         'deleted_container_id' => $deletedContainerId,
     ]);
 
