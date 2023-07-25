@@ -247,6 +247,7 @@
                         <label>2. Fronted & Backend </label>
                         <input type="radio" name="pilihan" value="gabung" onclick="show1()" required> Gabung
                         <input type="radio" name="pilihan" value="pisah" onclick="show2()" required> Pisah
+                        <input type="radio" name="pilihan" value="tidak" onclick="hideForm2()" required> Tidak
 
                         <div id="form1" class="form1">
 
@@ -320,6 +321,8 @@
     function showForm() {
         var formInput = document.getElementById("formInput");
         formInput.style.display = "block";
+        // Reset the form input values when showing the section
+        formInput.innerHTML = ''; // Clear existing content
 
         var html = '<div class="form-group" id="row">';
         html += '<div class="mb-3">';
@@ -331,37 +334,55 @@
         html += '<select name="container[1][id_template]" class="form-control" required>';
         html += '<option value="">Pilih Template</option>';
         @foreach($template as $temp)
+        @if($temp->kategori->kategori === 'database')
         html += '<option value="{{ $temp->id }}">{{ $temp->nama_template }}</option>';
-        @endforeach
-        html += '</select>';
+        @endif
+        @endforeach html +=
+            '</select>';
         html += '</div>';
         html += '<label for="username">Username</label>';
-        html += '<input type="text" name="container[1][username]" class="form-control" required>';
-        html += '</div>';
+        html +=
+            '<input type="text" name="container[1][username]" class="form-control" required>';
+        html +=
+            '</div>';
         html += '<div class="mb-3">';
         html += '<label for="password">Password</label>';
-        html += '<input type="password" name="container[1][password]" class="form-control" required>';
-        html += '</div>';
+        html +=
+            '<input type="password" name="container[1][password]" class="form-control" required>';
+        html +=
+            '</div>';
         html += '<div class="mb-3">';
         html += '<label for="rootpass">Root Password</label>';
-        html += '<input type="password" name="container[1][rootpass]" class="form-control" required>';
-        html += '</div>';
+        html +=
+            '<input type="password" name="container[1][rootpass]" class="form-control" required>';
+        html +=
+            '</div>';
         html += '<div class="mb-3">';
         html += '<label for="dbname">Nama Database</label>';
-        html += '<input type="text" name="container[1][dbname]" class="form-control" >';
+        html +=
+            '<input type="text" name="container[1][dbname]" class="form-control" >';
         html += '</div>';
-        $('#formInput').html(html);
+        $(
+            '#formInput').html(html);
     }
 
     function hideForm() {
         var formInput = document.getElementById("formInput");
         formInput.style.display = "none";
+
+        // Reset the form input values when showing the section
+        formInput.innerHTML = ''; // Clear existing content
     }
 
     function show1() {
 
 
         var form1 = document.getElementById("form1"); {
+            form1.style.display = "block";
+            form2.style.display = "none";
+
+            // Reset the form input values when showing the section
+            form1.innerHTML = ''; // Clear existing content
 
             var html = '<div class="form-group" id="row">';
             html += '<div class="mb-3">';
@@ -373,13 +394,14 @@
             html += '<select name="container[2][id_template]" class="form-control" required>';
             html += '<option value="">Pilih Template</option>';
             @foreach($template as $temp)
+            @if($temp->kategori->kategori === 'frontend' || $temp->kategori->kategori === 'backend')
             html += '<option value="{{ $temp->id }}">{{ $temp->nama_template }}</option>';
+            @endif
             @endforeach
             html += '</select>';
             html += '</div>';
 
-            form1.style.display = "block";
-            form2.style.display = "none";
+
             $('#form1').html(html);
 
         }
@@ -387,6 +409,11 @@
 
     function show2() {
         var form2 = document.getElementById("form2");
+        form2.style.display = "block";
+        form1.style.display = "none";
+
+        // Reset the form input values when showing the section
+        form2.innerHTML = ''; // Clear existing content
 
         var html = '<div class="form-group" id="row">';
         html += '<div class="mb-3">';
@@ -398,7 +425,9 @@
         html += '<select name="container[2][id_template]" class="form-control" required>';
         html += '<option value="">Pilih Template</option>';
         @foreach($template as $temp)
+        @if($temp->kategori->kategori === 'frontend')
         html += '<option value="{{ $temp->id }}">{{ $temp->nama_template }}</option>';
+        @endif
         @endforeach
         html += '</select>';
         html += '</div>';
@@ -411,15 +440,26 @@
         html += '<select name="container[3][id_template]" class="form-control" required>';
         html += '<option value="">Pilih Template</option>';
         @foreach($template as $temp)
+        @if($temp->kategori->kategori === 'backend')
         html += '<option value="{{ $temp->id }}">{{ $temp->nama_template }}</option>';
+        @endif
         @endforeach
         html += '</select>';
         html += '</div>';
 
-        form2.style.display = "block";
-        form1.style.display = "none";
+
         $('#form2').html(html);
 
+    }
+
+    function hideForm2() {
+        var form1 = document.getElementById("form1");
+        var form2 = document.getElementById("form2");
+        form1.style.display = "none";
+        form2.style.display = "none";
+        // Reset the form input values when hiding the section
+        form1.innerHTML = ''; // Clear existing content
+        form2.innerHTML = ''; // Clear existing content
     }
     </script>
     @endsection
