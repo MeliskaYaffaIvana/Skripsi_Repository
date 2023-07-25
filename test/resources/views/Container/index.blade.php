@@ -65,6 +65,7 @@
                                         <th>ID Kontainer</th>
                                         <th>Nama Kontainer</th>
                                         <th>Link Kontainer</th>
+                                        <th>Port</th>
                                         <th>Template</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
@@ -100,6 +101,11 @@
                                                     http://cmp1.pta.jti.polinema.ac.id:{{$container->port_kontainer}}
                                                 </div>
                                                 @endif
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $container->port_kontainer}}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -341,8 +347,8 @@
         html += '<input type="password" name="container[1][rootpass]" class="form-control" required>';
         html += '</div>';
         html += '<div class="mb-3">';
-        html += '<label for="dbname">Root Password</label>';
-        html += '<input type="password" name="container[1][dbname]" class="form-control" >';
+        html += '<label for="dbname">Nama Database</label>';
+        html += '<input type="text" name="container[1][dbname]" class="form-control" >';
         html += '</div>';
         $('#formInput').html(html);
     }
