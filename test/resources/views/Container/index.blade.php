@@ -151,7 +151,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="wetty">
-                                                   <a href="{{ route('terminal', ['containerId' => $container->id) }}" target="_blank">
+                                                   <a href="{{ route('terminal', ['containerId' => $container->id]) }}" target="_blank">
                                                         <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
                                                     </button>
                                                 </div>
