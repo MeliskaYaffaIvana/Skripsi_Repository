@@ -23,6 +23,7 @@ class CreateTemplateTable extends Migration
             $table->string('versi');
             $table->string('link_template');
             $table->string('default_dir');
+            $table->string('default_shell');
             $table->string('port');
             $table->json('env_template')->nullable();
             $table->tinyInteger('bolehkan')->default(0)->comment('0: Tidak Menyala, 1: Menyala');

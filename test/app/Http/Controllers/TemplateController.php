@@ -53,6 +53,7 @@ class TemplateController extends Controller
         $template->versi = $request->versi;
         $template->link_template = $request->link_template;
         $template->default_dir = $request->default_dir;
+        $template->default_shell = $request->default_shell;
         $template->port = $request->port;
         
         // Menyusun nilai untuk kolom JSON credentials
@@ -114,6 +115,7 @@ class TemplateController extends Controller
         $template->versi = $request->get('versi');
         $template->link_template = $request->get('link_template');
         $template->default_dir = $request->get('default_dir');
+        $template->default_shell = $request->get('default_shell');
         $template->port = $request->get('port');
         // Update the env_template field if the category is KT001
         if ($request->get('id_kategori') === "KT001") {

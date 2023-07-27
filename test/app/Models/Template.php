@@ -22,6 +22,7 @@ class Template extends Model
         'versi',
         'link_template',
         'default_dir',
+        'default_shell',
         'bolehkan',
         'status_job',
         'tgl_dibuat',

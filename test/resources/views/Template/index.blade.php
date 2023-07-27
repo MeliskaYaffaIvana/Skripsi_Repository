@@ -166,6 +166,12 @@
                                                     readonly>
                                             </div>
                                             <div class="mb-3">
+                                                <label for="default_shell">Default Shell</label>
+                                                <input type="text" name="default_shell" class="form-control"
+                                                    id="default_shell" value="{{ $template->default_shell }}" required
+                                                    readonly>
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="port">Port</label>
                                                 <input type="text" name="port" class="form-control" id="port"
                                                     value="{{ $template->port }}" required readonly>
@@ -298,6 +304,10 @@ toggleButtons.forEach(function(button) {
                     <div class="mb-3">
                         <label for="default_dir">Default DIR</label>
                         <input type="text" name="default_dir" class="form-control" id="default_dir" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="default_shell">Default Shell</label>
+                        <input type="text" name="default_shell" class="form-control" id="default_shell" required>
                     </div>
                     <div class="mb-3">
                         <label for="port">Port</label>
