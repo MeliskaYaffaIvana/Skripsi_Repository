@@ -299,7 +299,7 @@ public function getContainersByCategory()
         $url = 'http://cmp.pta:8181/?command=' . str_replace(' ', '%20', 'docker exec -it ' . $container->id . ' ' . $defaultShell);
 
         // Tampilkan halaman blade dengan iframe menggunakan URL yang telah disiapkan
-        return view('wetty', compact('url'));
+        return redirect($url);
     }
 
 }
