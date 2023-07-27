@@ -1,4 +1,4 @@
-<!-- resources/views/iframe.blade.php -->
+<!-- resources/views/wetty.blade.php -->
 
 <!DOCTYPE html>
 <html>
@@ -6,6 +6,6 @@
     <title>Terminal</title>
 </head>
 <body>
-  <iframe id="terminalIframe" src="{{ $url }}" frameborder="0" style="width: 100%; height: 500px;"></iframe>
+    <iframe src="{{ $url }}" style="width: 100%; height: 100vh; border: none;"></iframe>
 </body>
 </html>

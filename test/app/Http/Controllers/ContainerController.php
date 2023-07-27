@@ -296,10 +296,10 @@ public function getContainersByCategory()
         }
 
         // Encode semua spasi pada bagian URL mulai dari "docker exec" hingga "default shell"
-        $url = 'http://cmp1.pta.polinema.ac.id:8181/?command=' . str_replace(' ', '%20', 'docker exec -it ' . $container->id . ' ' . $defaultShell);
+        $url = 'http://cmp1.pta.jti.polinema.ac.id:8181/?command=' . str_replace(' ', '%20', 'docker exec -it ' . $container->id . ' ' . $defaultShell);
 
         // Tampilkan halaman blade dengan iframe menggunakan URL yang telah disiapkan
-        return redirect($url);
+        return view('wetty', compact('url'));
     }
 
 }
