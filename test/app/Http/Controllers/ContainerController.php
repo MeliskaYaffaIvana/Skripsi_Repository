@@ -284,7 +284,7 @@ public function getContainersByCategory()
     }
 
     #iframe
-    public function terminal(Request $request, $containerId, $defaultShell)
+    public function terminal(Request $request, $containerId)
     {
         // Cari kontainer berdasarkan ID yang diterima dari URL
         $container = Container::where('id', $containerId)->first();
