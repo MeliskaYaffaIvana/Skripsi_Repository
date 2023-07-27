@@ -150,12 +150,9 @@
                                                         @endif
                                                     </form>
                                                 </div>
-                                                <div class="shellinabox">
-                                                    <button class="shellInABoxBtn "
-                                                        style="background-color: white; border: none;"
-                                                        data-container-id="{{ $container->id }}"><img
-                                                            src="{{ asset('assets') }}/images/shell.png" alt=""
-                                                            height="22">
+                                                <div class="wetty">
+                                                   <a href="{{ route('terminal', ['containerId' => $container->id, 'defaultShell' => $container->default_shell]) }}">
+                                                        <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
                                                     </button>
                                                 </div>
                                                 @if(Auth::user()->status == 'mahasiswa')

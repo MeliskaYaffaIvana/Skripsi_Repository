@@ -12,7 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ShellinaboxController;
+use App\Http\Controllers\WettyController;
 
 
 /*
@@ -67,8 +67,8 @@ Route::get('/Panduan/index3',[ProfileController::class, 'indexPanduan3'])->name(
 
 
 
-Route::get('/shellinabox/{container_id}', [ShellinaboxController::class, 'show'])->name('shellinabox');
-
+Route::get('/wetty/{id}', [WettyController::class, 'show'])->name('wetty');
+Route::get('/terminal/{containerId}/{defaultShell}', [ContainerController::class, 'terminal'])->name('terminal');
 
 
 });

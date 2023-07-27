@@ -283,4 +283,21 @@ public function getContainersByCategory()
         return view('container.status', compact('activeCount', 'inactiveCount'));
     }
 
+    #iframe
+    public function terminal(Request $request, $containerId, $defaultShell)
+    {
+        // Cari kontainer berdasarkan ID yang diterima dari URL
+        $container = Container::where('id', $containerId)->first();
+
+        if (!$container) {
+            return redirect()->back()->with('error', 'Kontainer tidak ditemukan');
+        }
+
+        // Encode semua spasi pada bagian URL mulai dari "docker exec" hingga "default shell"
+        $url = 'http://cmp.pta:8181/?command=' . str_replace(' ', '%20', 'docker exec -it ' . $container->id . ' ' . $defaultShell);
+
+        // Tampilkan halaman blade dengan iframe menggunakan URL yang telah disiapkan
+        return view('wetty', compact('url'));
+    }
+
 }

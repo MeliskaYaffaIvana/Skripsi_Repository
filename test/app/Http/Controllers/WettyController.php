@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Container;
 
-class ShellinaboxController extends Controller
+class WettyController extends Controller
 {
     public function show($id)
     {
@@ -14,6 +14,6 @@ class ShellinaboxController extends Controller
         $container = Container::findOrFail($id);
 
         // Tampilkan view untuk menampilkan shellinabox
-        return view('shellinabox', compact('container'));
+        return view('wetty', compact('container'));
     }
 }
