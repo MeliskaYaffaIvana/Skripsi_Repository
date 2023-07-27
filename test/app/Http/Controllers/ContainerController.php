@@ -289,7 +289,7 @@ public function getContainersByCategory()
         // Cari kontainer berdasarkan ID yang diterima dari URL
         $container = Container::where('id', $containerId)->first();
         // Dapatkan default shell dari template yang terkait
-        $defaultShell = $container->template->default_shell;
+        $defaultShell = urlencode($container->template->default_shell);
 
         if (!$container) {
             return redirect()->back()->with('error', 'Kontainer tidak ditemukan');
