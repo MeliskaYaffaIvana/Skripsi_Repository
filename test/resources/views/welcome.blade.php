@@ -164,6 +164,7 @@
                                 <tbody>
                                     <?php $no = 0; ?>
                                     @foreach ($users as $user)
+                                    @if($user->status != 'administrator')
                                     <tr>
                                         <?php $no++; ?>
                                         <td>{{ $no }}</td>
@@ -181,6 +182,7 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>

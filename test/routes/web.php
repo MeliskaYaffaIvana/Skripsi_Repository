@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ShellinaboxController;
 
 
 /*
@@ -64,6 +65,9 @@ Route::get('/Panduan/index1',[ProfileController::class, 'indexPanduan1'])->name(
 Route::get('/Panduan/index2',[ProfileController::class, 'indexPanduan2'])->name('panduan2.index');
 Route::get('/Panduan/index3',[ProfileController::class, 'indexPanduan3'])->name('panduan3.index');
 
+
+
+Route::get('/shellinabox/{container_id}', [ShellinaboxController::class, 'show'])->name('shellinabox');
 
 
 

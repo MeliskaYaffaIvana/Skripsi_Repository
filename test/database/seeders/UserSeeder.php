@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\UserAdmin;
 use Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         ];
         foreach ($users as $userData) {
             $userData['id'] = User::getIdFromNim($userData['nim']);
-            User::create($userData);
+            UserAdmin::create($userData);
         }
     }
 }
