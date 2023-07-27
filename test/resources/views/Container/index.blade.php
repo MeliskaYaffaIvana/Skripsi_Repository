@@ -153,8 +153,18 @@
                                                 <div class="wetty">
                                                    <a href="{{ route('terminal', ['containerId' => $container->id]) }}" target="_blank">
                                                         <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
-                                                    </button>
+                                                    </a>
                                                 </div>
+                                                <!-- <script>
+                                                    function openTerminal(url) {
+                                                        // Encode URL
+                                                        var encodedUrl = encodeURIComponent(url);
+                                                        
+                                                        // Set URL sumber iframe
+                                                        var iframeUrl = 'http://cmp.pta:8181/?command=' + encodedUrl;
+                                                        document.getElementById('terminalIframe').src = iframeUrl;
+                                                    }
+                                                </script> -->
                                                 @if(Auth::user()->status == 'mahasiswa')
                                                 <div class="remove">
                                                     <form action="{{ route('Container.destroy', $container->id) }}"
