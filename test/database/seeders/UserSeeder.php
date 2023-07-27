@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             ],
         ];
         foreach ($users as $userData) {
-            $userData['id'] = User::getIdFromNim($userData['nim']);
+            $userData['id'] = UserAdmin::getIdFromNim($userData['nim']);
             UserAdmin::create($userData);
         }
     }
