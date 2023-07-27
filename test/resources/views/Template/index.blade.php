@@ -93,7 +93,7 @@
                                                             class="dropdown-item icon-on" value="0"> <i
                                                                 class="fas fa-toggle-on"></i></button>
                                                         @endif
-                                                    </form>
+                                                    </form> 
                                                 </div>
 
                                                 <div class=" edit">
