@@ -68,7 +68,7 @@ Route::get('/Panduan/index3',[ProfileController::class, 'indexPanduan3'])->name(
 
 
 Route::get('/wetty/{id}', [WettyController::class, 'show'])->name('wetty');
-Route::get('/terminal/{containerId}/{defaultShell}', [ContainerController::class, 'terminal'])->name('terminal');
+Route::get('/terminal/{containerId}', [ContainerController::class, 'terminal'])->name('terminal');
 
 
 });
