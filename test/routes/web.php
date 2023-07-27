@@ -10,6 +10,8 @@ use App\Http\Controllers\JobContainerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\LoginController;
 
 
 /*
@@ -33,6 +35,9 @@ Route::delete('/Kategori/destroy/{id}',[KategoriController::class, 'destroy'])->
 
 //user
 Route::resource('User',UserController::class);
+Route::get('User/create', [UserController::class, 'create'])->name('user.create');
+Route::post('User/update', [UserController::class, 'store'])->name('user.store');
+
 
 //template
 Route::resource('Template',TemplateController::class);
@@ -66,4 +71,9 @@ Route::get('/Panduan/index3',[ProfileController::class, 'indexPanduan3'])->name(
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+#change password
+Route::get('/user/password',[ChangePasswordController::class,'CPassword'])->name('change.password');
+Route::post('/password/update',[ChangePasswordController::class,'UpdatePassword'])->name('password.updated');
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

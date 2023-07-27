@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->string('id', 50)->primary();    
             $table->string('nim', 10)->unique();
             $table->string('nama', 100);
-            $table->string('judul');
-            $table->text('deskripsi');
+            $table->string('judul')->nullable();
+            $table->text('deskripsi')->nullable();
             $table->enum('status', ['administrator', 'mahasiswa']);
             $table->string('password');
             $table->tinyInteger('terdaftar')->default(0)->comment('0: Tidak Terdaftar, 1: Terdaftar');

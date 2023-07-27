@@ -127,31 +127,12 @@
 
                         </div>
 
-                        <!-- <div class="ms-1 header-item d-none d-sm-flex">
-                            <button type="button"
-                                class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none"
-                                data-toggle="fullscreen">
-                                <i class='bx bx-fullscreen fs-22'></i>
-                            </button>
-                        </div>
-
-                        <div class="ms-1 header-item d-none d-sm-flex">
-                            <button type="button"
-                                class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode shadow-none">
-                                <i class='bx bx-moon fs-22'></i>
-                            </button>
-                        </div> -->
-
                         <div class="dropdown ms-sm-3 header-item topbar-user">
                             <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle header-profile-user"
                                         src="{{ asset('assets') }}/images/account.png" alt="Header Avatar">
-                                    <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
-                                        </span></span>
-
                                 </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -164,11 +145,6 @@
                                     <i class="mdi mdi-logout text-muted fs-16 align-middle me-1" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"></i>
                                     <span class="align-middle">Logout</span>
-
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
                             </div>
                             </li>
 

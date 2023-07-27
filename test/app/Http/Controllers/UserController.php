@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+use App\Models\UserAdmin;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = UserAdmin::all();
         return view('user', compact('users'));
     }
 
@@ -24,7 +24,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        
+        $users = UserAdmin::all();
+        return view('user', compact ('users'));
     }
 
     /**
@@ -35,7 +37,31 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi input dari form
+        $validatedData = $request->validate([
+            'nim' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
+            'judul' => 'nullable|string',
+            'deskripsi' => 'nullable|string',
+            'password' => 'required|string|min:6',
+            // sesuaikan validasi lainnya sesuai kebutuhan
+        ]);
+        // Simpan user baru ke dalam database
+        UserAdmin::create([
+            'nim' => $validatedData['nim'],
+            'nama' => $validatedData['nama'],
+            'judul' => $validatedData['judul'],
+            'deskripsi' => $validatedData['deskripsi'],
+            'password' => bcrypt($validatedData['password']),
+            'status' => 'administrator', 
+        ]);
+
+        return redirect()->route('user.create')->with('success', 'User berhasil ditambahkan.');
+
+    }
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class UserAdmin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -54,7 +54,7 @@ class User extends Authenticatable
     parent::boot();
 
     static::creating(function ($user) {
-        $user->status = 'mahasiswa';
+        $user->status = 'administrator';
         // Mendapatkan ID dari NIM menggunakan fungsi getIdFromNim()
         $id = static::getIdFromNim($user->nim);
 
@@ -74,10 +74,6 @@ class User extends Authenticatable
     public function Template(){
         return $this->hasMany('App\Models\Template');
     }
-    protected $attributes = [
-        'status' => 'mahasiswa', // Set status default sebagai "mahasiswa"
-    ];
-    
 
     /**
      * The attributes that should be cast.

@@ -62,6 +62,9 @@
                             <table id="example" class="table " style="width:100%">
                                 <thead>
                                     <tr>
+                                         @if(Auth::user()->status == 'administrator')
+                                        <th>NIM</th>
+                                        @endif
                                         <th>ID Kontainer</th>
                                         <th>Nama Kontainer</th>
                                         <th>Link Kontainer</th>
@@ -76,6 +79,13 @@
                                     @foreach($container as $container)
                                     @if($container->id_user == $users->id || $users->status == 'administrator')
                                     <tr>
+                                        @if(Auth::user()->status == 'administrator')
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $container->user->nim}}</div>
+                                            </div>
+                                        </td>
+                                        @endif
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $container->id}}</div>
