@@ -2,12 +2,21 @@
 
 @section('content')
 <style>
-/* Ganti lebar dan tinggi gambar sesuai yang Anda inginkan */
-.gambar {
-    display: block;
-    max-width: 200px;
-    height: auto;
-    margin-top: 10px;
+    .back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #546c9c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.back-button:hover {
+  background-color: #3c5173;
+}
+
+.back-button:focus {
+  outline: none;
 }
 </style>
 
@@ -28,7 +37,7 @@
                         <div id="Container">
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
-                                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
+                                    <a href="{{ url()->previous() }}" class="back-button">Kembali</a><br>
                                      <iframe src="http://10.0.0.21:8181/?command={{ $url }}" style="width: 360%; height: 500px; border: 2px solid black;"></iframe>
                                 </div>
                             </div>
