@@ -151,9 +151,9 @@
                                                     </form>
                                                 </div>
                                                 <div class="wetty">
-                                                    <button class="shellInABoxBtn" style="background-color: white; border: none;" data-container-id="{{ $container->id }}">
+                                                   <a href="{{ 'http://10.0.0.21:8181/?command=' . str_replace(' ', '%20', 'docker exec -it ' . $container->id . ' ' . urlencode($container->template->default_shell)) }}" target="_blank">
                                                         <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
-                                                    </button>
+                                                    </a>
                                                 </div>
                                                 <script>
                                                     // Get all buttons with class "shellInABoxBtn"
