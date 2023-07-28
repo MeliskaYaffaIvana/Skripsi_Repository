@@ -150,29 +150,11 @@
                                                         @endif
                                                     </form>
                                                 </div>
-                                                        <div class="wetty">
-            <a onclick="openTerminal('{{ $container->id }}', '{{ urlencode($container->template->default_shell) }}')">
-                <img src="{{ asset('assets/images/shell.png') }}" alt="" height="22">
-            </a>
-        </div>
-
-        <!-- Container to display the terminal iframe -->
-    <div id="terminal-container"></div>
-                                                <script>
-        function openTerminal(containerId, defaultShell) {
-            var encodedUrl = 'http://10.0.0.21:8181/?command=' + encodeURIComponent('docker exec -it ' + containerId + ' ' + defaultShell);
-
-            var iframe = document.createElement('iframe');
-            iframe.src = encodedUrl;
-            iframe.style.width = '80%';
-            iframe.style.height = '300px';
-            iframe.style.border = '2px solid black';
-
-            var container = document.getElementById('terminal-container');
-            container.innerHTML = '';
-            container.appendChild(iframe);
-        }
-    </script>
+                                                <div class="wetty">
+                                                   <a href="{{ route('terminal', ['containerId' => $container->id]) }}">
+                                                        <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
+                                                    </a>
+                                                </div>
                                                 @if(Auth::user()->status == 'mahasiswa')
                                                 <div class="remove">
                                                     <form action="{{ route('Container.destroy', $container->id) }}"
