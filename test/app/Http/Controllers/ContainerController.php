@@ -299,7 +299,7 @@ public function getContainersByCategory()
         $url = 'http://cmp1.pta.jti.polinema.ac.id:8181/?command=' . str_replace(' ', '%20', 'docker exec -it ' . $container->id . ' ' . $defaultShell);
 
         // Tampilkan halaman blade dengan iframe menggunakan URL yang telah disiapkan
-        return redirect($url);
+        return view('wetty', compact('url'));
     }
 
 }
