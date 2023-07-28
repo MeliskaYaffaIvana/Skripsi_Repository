@@ -156,6 +156,8 @@
             </a>
         </div>
 
+        <!-- Container to display the terminal iframe -->
+    <div id="terminal-container"></div>
                                                 <script>
         function openTerminal(containerId, defaultShell) {
             var encodedUrl = 'http://10.0.0.21:8181/?command=' + encodeURIComponent('docker exec -it ' + containerId + ' ' + defaultShell);
