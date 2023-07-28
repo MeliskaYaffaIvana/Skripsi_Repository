@@ -29,7 +29,7 @@
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
                                     {{ $url }}
-                                     <iframe src="http://10.0.0.21:8181/?command={{ $url }}" style="width: 100%; height: 400px; border: 2px solid black;"></iframe>
+                                     <iframe src="http://10.0.0.21:8181/?command={{ $url }}" style="width: 100%; height: 100%; border: 2px solid black;"></iframe>
                                 </div>
                             </div>
 
