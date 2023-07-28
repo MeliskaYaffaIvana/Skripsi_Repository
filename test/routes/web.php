@@ -66,8 +66,6 @@ Route::get('/Panduan/index2',[ProfileController::class, 'indexPanduan2'])->name(
 Route::get('/Panduan/index3',[ProfileController::class, 'indexPanduan3'])->name('panduan3.index');
 
 
-
-Route::get('/wetty/{id}', [WettyController::class, 'show'])->name('wetty');
 Route::get('/terminal/{containerId}', [ContainerController::class, 'terminal'])->name('terminal');
 
 

@@ -5,6 +5,6 @@
     <title>Terminal</title>
 </head>
 <body>
-    <iframe src="{{ $url }}" style="width: 100%; height: 100vh; border: none;"></iframe>
+    <iframe src="http://10.0.0.21:8181/?command={{ $url }}" style="width: 80%; height: 300px; border: 2px solid black;"></iframe>
 </body>
 </html>

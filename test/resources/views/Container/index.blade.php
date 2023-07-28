@@ -151,20 +151,25 @@
                                                     </form>
                                                 </div>
                                                 <div class="wetty">
-                                                   <a href="{{ route('terminal', ['containerId' => $container->id]) }}">
+                                                    <button class="shellInABoxBtn" style="background-color: white; border: none;" data-container-id="{{ $container->id }}">
                                                         <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
-                                                    </a>
+                                                    </button>
                                                 </div>
-                                                <!-- <script>
-                                                    function openTerminal(url) {
-                                                        // Encode URL
-                                                        var encodedUrl = encodeURIComponent(url);
-                                                        
-                                                        // Set URL sumber iframe
-                                                        var iframeUrl = 'http://cmp.pta:8181/?command=' + encodedUrl;
-                                                        document.getElementById('terminalIframe').src = iframeUrl;
-                                                    }
-                                                </script> -->
+                                                <script>
+                                                    // Get all buttons with class "shellInABoxBtn"
+                                                    const buttons = document.querySelectorAll('.shellInABoxBtn');
+
+                                                    // Add click event listener to each button
+                                                    buttons.forEach(button => {
+                                                        button.addEventListener('click', () => {
+                                                            // Get the data-container-id attribute value (container ID)
+                                                            const containerId = button.getAttribute('data-container-id');
+
+                                                            // Redirect to the terminal page with the container ID as a parameter
+                                                            window.location.href = "{{ route('terminal', ['containerId' => ':containerId']) }}".replace(':containerId', containerId);
+                                                        });
+                                                    });
+                                                </script>
                                                 @if(Auth::user()->status == 'mahasiswa')
                                                 <div class="remove">
                                                     <form action="{{ route('Container.destroy', $container->id) }}"

@@ -296,7 +296,7 @@ public function getContainersByCategory()
         }
 
         // Encode semua spasi pada bagian URL mulai dari "docker exec" hingga "default shell"
-        $url = 'http://10.0.0.21:8181/?command=' . str_replace(' ', '%20', 'docker exec -it ' . $container->id . ' ' . $defaultShell);
+        $url = str_replace(' ', '%20', 'docker exec -it ' . $container->id . ' ' . $defaultShell);
 
         // Tampilkan halaman blade dengan iframe menggunakan URL yang telah disiapkan
         return view('wetty', compact('url'));
