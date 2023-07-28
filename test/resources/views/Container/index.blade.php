@@ -151,25 +151,25 @@
                                                     </form>
                                                 </div>
                                                 <div class="wetty">
-                                                   <a href="{{ 'http://10.0.0.21:8181/?command=' . str_replace(' ', '%20', 'docker exec -it ' . $container->id . ' ' . urlencode($container->template->default_shell)) }}" target="_blank">
-                                                        <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
-                                                    </a>
-                                                </div>
+            <a href="#" onclick="openTerminal('{{ $container->id }}', '{{ urlencode($container->template->default_shell) }}')">
+                <img src="{{ asset('assets/images/shell.png') }}" alt="" height="22">
+            </a>
+        </div>
                                                 <script>
-                                                    // Get all buttons with class "shellInABoxBtn"
-                                                    const buttons = document.querySelectorAll('.shellInABoxBtn');
+        function openTerminal(containerId, defaultShell) {
+            var encodedUrl = 'http://10.0.0.21:8181/?command=' + encodeURIComponent('docker exec -it ' + containerId + ' ' + defaultShell);
 
-                                                    // Add click event listener to each button
-                                                    buttons.forEach(button => {
-                                                        button.addEventListener('click', () => {
-                                                            // Get the data-container-id attribute value (container ID)
-                                                            const containerId = button.getAttribute('data-container-id');
+            var iframe = document.createElement('iframe');
+            iframe.src = encodedUrl;
+            iframe.style.width = '80%';
+            iframe.style.height = '300px';
+            iframe.style.border = '2px solid black';
 
-                                                            // Redirect to the terminal page with the container ID as a parameter
-                                                            window.location.href = "{{ route('terminal', ['containerId' => ':containerId']) }}".replace(':containerId', containerId);
-                                                        });
-                                                    });
-                                                </script>
+            var container = document.getElementById('terminal-container');
+            container.innerHTML = '';
+            container.appendChild(iframe);
+        }
+    </script>
                                                 @if(Auth::user()->status == 'mahasiswa')
                                                 <div class="remove">
                                                     <form action="{{ route('Container.destroy', $container->id) }}"
