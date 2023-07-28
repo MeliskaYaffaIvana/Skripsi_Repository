@@ -151,12 +151,10 @@
                                                     </form>
                                                 </div>
                                                 <div class="wetty">
-                                                   <button class="shellInABoxBtn" onclick="openIframe('{{ $url }}')">
-                                        <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
-                                    </button>
-
+                                                   <a href="{{ route('terminal', ['containerId' => $container->id]) }}">
+                                                        <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
+                                                    </a>
                                                 </div>
-                                                <div id="IframeContainer"></div>
                                                 @if(Auth::user()->status == 'mahasiswa')
                                                 <div class="remove">
                                                     <form action="{{ route('Container.destroy', $container->id) }}"
@@ -173,17 +171,6 @@
                                                 @endif
                                             </div>
                                         </td>
-                                        <script>
-    function openIframe(url) {
-        var iframe = document.createElement('iframe');
-        iframe.src = 'http://10.0.0.21:8181/?command=' + url;
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
-        document.getElementById('IframeContainer').innerHTML = '';
-        document.getElementById('IframeContainer').appendChild(iframe);
-    }
-</script>
 
                                         <!-- edit Modal  -->
                                         <!-- <div class=" modal fade" id="showEditModal{{$container->id}}" tabindex=" -1"
