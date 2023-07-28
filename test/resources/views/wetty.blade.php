@@ -28,7 +28,7 @@
                         <div id="Container">
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
-                                     <iframe src="http://10.0.0.21:8181/?command={{ $url }}" style="width: 350%; height: 500px; border: 2px solid black;"></iframe>
+                                     <iframe src="http://10.0.0.21:8181/?command={{ $url }}" style="width: 380%; height: 500px; border: 2px solid black;"></iframe>
                                 </div>
                             </div>
 
