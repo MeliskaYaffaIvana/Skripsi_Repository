@@ -19,7 +19,7 @@
                         <div id="Container">
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
-                                    <iframe src="{{ $url }}" style="width: 80%; height: 100vh; border: none;"></iframe>
+                                    <iframe src="{{ $url }}" style="width: 50%; height: 300px; border: 2px solid black;"></iframe>
                                 </div>
                             </div>
 
