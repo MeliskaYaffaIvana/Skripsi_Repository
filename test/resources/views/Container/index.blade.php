@@ -150,11 +150,12 @@
                                                         @endif
                                                     </form>
                                                 </div>
-                                                <div class="wetty">
-            <a href="#" onclick="openTerminal('{{ $container->id }}', '{{ urlencode($container->template->default_shell) }}')">
+                                                        <div class="wetty">
+            <a onclick="openTerminal('{{ $container->id }}', '{{ urlencode($container->template->default_shell) }}')">
                 <img src="{{ asset('assets/images/shell.png') }}" alt="" height="22">
             </a>
         </div>
+
                                                 <script>
         function openTerminal(containerId, defaultShell) {
             var encodedUrl = 'http://10.0.0.21:8181/?command=' + encodeURIComponent('docker exec -it ' + containerId + ' ' + defaultShell);
