@@ -28,6 +28,7 @@
                         <div id="Container">
                             <div class="row g-4 mb-3">
                                 <div class="col-sm-auto">
+                                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                                      <iframe src="http://10.0.0.21:8181/?command={{ $url }}" style="width: 360%; height: 500px; border: 2px solid black;"></iframe>
                                 </div>
                             </div>
