@@ -54,6 +54,7 @@ Route::put('/Container/{id}/toggle-status', [ContainerController::class, 'toggle
 Route::patch('/Container/{id}/update-bolehkan', [ContainerController::class, 'updateBolehkan'])->name('container.update_bolehkan');
 Route::get('/getContainerId/{id}', [ContainerController::class, 'getContainerId']);
 Route::post('/Container/{containerId}/izin_user',  [ContainerController::class, 'izinUser'])->name('container.izin_user');
+Route::post('/Container/{containerId}/izin_data',  [ContainerController::class, 'izinData'])->name('container.izin_data');
 
 
 //job

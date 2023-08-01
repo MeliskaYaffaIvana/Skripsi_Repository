@@ -303,36 +303,68 @@ public function getContainersByCategory()
         return view('wetty', compact('url'));
     }
     public function izinUser(Request $request, $containerId)
-{
-    // Cari kontainer berdasarkan ID yang diterima dari URL
-    $container = Container::with('user', 'template')->find($containerId);
+    {
+        // Cari kontainer berdasarkan ID yang diterima dari URL
+        $container = Container::with('user', 'template')->find($containerId);
 
-    if (!$container) {
-        return redirect()->back()->with('error', 'Kontainer tidak ditemukan');
+        if (!$container) {
+            return redirect()->back()->with('error', 'Kontainer tidak ditemukan');
+        }
+
+        // Dapatkan NIM user dan kategori kontainer dari relasi
+        $nimUser = $container->user->nim;
+        
+        // Access the template and its relationship to get the kategori
+        $kategoriKontainer = $container->template->kategori->kategori;
+        
+        // Kirim data ke server menggunakan REST API
+        $response = Http::post('http://10.0.0.20:8080/api/izin_user/', [
+            'container_id' => $containerId,
+            'nim_user' => $nimUser,
+            'kategori_kontainer' => $kategoriKontainer,
+        ]);
+
+        // Uncomment this line if needed for debugging, but remember to remove it before the redirect
+
+        // Jika server mengirim respon, Anda dapat melakukan tindakan selanjutnya berdasarkan respon tersebut
+        $responseData = $response->json();
+
+        // ...
+
+        // Redirect kembali ke halaman terminal atau lakukan tindakan lain yang diperlukan
+        return redirect()->back();
     }
+    public function izinData(Request $request, $containerId)
+    {
+        // Cari kontainer berdasarkan ID yang diterima dari URL
+        $container = Container::with('user', 'template')->find($containerId);
 
-    // Dapatkan NIM user dan kategori kontainer dari relasi
-    $nimUser = $container->user->nim;
-    
-    // Access the template and its relationship to get the kategori
-    $kategoriKontainer = $container->template->kategori->kategori;
-    
-    // Kirim data ke server menggunakan REST API
-    $response = Http::post('http://10.0.0.20:8080/api/izin_user/', [
-        'container_id' => $containerId,
-        'nim_user' => $nimUser,
-        'kategori_kontainer' => $kategoriKontainer,
-    ]);
+        if (!$container) {
+            return redirect()->back()->with('error', 'Kontainer tidak ditemukan');
+        }
 
-    // Uncomment this line if needed for debugging, but remember to remove it before the redirect
+        // Dapatkan NIM user dan kategori kontainer dari relasi
+        $nimUser = $container->user->nim;
+        
+        // Access the template and its relationship to get the kategori
+        $kategoriKontainer = $container->template->kategori->kategori;
+        
+        // Kirim data ke server menggunakan REST API
+        $response = Http::post('http://10.0.0.20:8080/api/izin_user/', [
+            'container_id' => $containerId,
+            'nim_user' => $nimUser,
+            'kategori_kontainer' => $kategoriKontainer,
+        ]);
 
-    // Jika server mengirim respon, Anda dapat melakukan tindakan selanjutnya berdasarkan respon tersebut
-    $responseData = $response->json();
+        // Uncomment this line if needed for debugging, but remember to remove it before the redirect
 
-    // ...
+        // Jika server mengirim respon, Anda dapat melakukan tindakan selanjutnya berdasarkan respon tersebut
+        $responseData = $response->json();
 
-    // Redirect kembali ke halaman terminal atau lakukan tindakan lain yang diperlukan
-    return redirect()->back();
-}
+        // ...
+
+        // Redirect kembali ke halaman terminal atau lakukan tindakan lain yang diperlukan
+        return redirect()->back();
+    }
 
 }

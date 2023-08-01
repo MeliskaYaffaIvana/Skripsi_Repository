@@ -162,6 +162,13 @@
                                                         <button type="submit" class="btn btn-sm">Izin User</button>
                                                     </form>
                                                 </div>
+                                                <div class="izin_user">
+                                                    <form action="{{ route('container.izin_data', ['containerId' => $container->id]) }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="container_id" value="{{ $container->id }}">
+                                                        <button type="submit" class="btn btn-sm">Izin Data</button>
+                                                    </form>
+                                                </div>
                                                 @if(Auth::user()->status == 'mahasiswa')
                                                 <div class="remove">
                                                     <form action="{{ route('Container.destroy', $container->id) }}"
