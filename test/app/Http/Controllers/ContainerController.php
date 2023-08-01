@@ -198,6 +198,7 @@ class ContainerController extends Controller
     $response = Http::post('http://10.0.0.21:8000/api/delete_kontainer/', [
         'deleted_container_id' => $deletedContainerId,
     ]);
+     
 
     // Periksa kode status respons API server jika diperlukan
 
@@ -324,7 +325,6 @@ public function getContainersByCategory()
     ]);
 
     // Uncomment this line if needed for debugging, but remember to remove it before the redirect
-     dd($response);
 
     // Jika server mengirim respon, Anda dapat melakukan tindakan selanjutnya berdasarkan respon tersebut
     $responseData = $response->json();

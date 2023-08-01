@@ -156,7 +156,11 @@
                                                     </a>
                                                 </div>
                                                 <div class="izin_user">
-                                                    <a href="{{ route('container.izin_user',  ['containerId' => $container->id]) }}" class="btn btn-sm">Izin User</a>
+                                                    <form action="{{ route('container.izin_user', ['containerId' => $container->id]) }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="container_id" value="{{ $container->id }}">
+                                                        <button type="submit" class="btn btn-sm">Izin User</button>
+                                                    </form>
                                                 </div>
                                                 @if(Auth::user()->status == 'mahasiswa')
                                                 <div class="remove">
