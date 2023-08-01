@@ -170,7 +170,7 @@
                                         <td>{{ $no }}</td>
                                         @if ($user->hasFrontendContainer)
                                         <td><a
-                                                href="http://10.0.0.21:{{$user->port_kontainer}}">{{$user->portKontainer}}</a>
+                                                href="http://10.0.0.21:{{$user->portKontainer}}">{{$user->judul}}</a>
                                         </td>
                                         @else
                                         <td>{{$user->judul}}</td> @endif
