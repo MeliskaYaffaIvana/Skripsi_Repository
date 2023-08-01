@@ -350,7 +350,7 @@ public function getContainersByCategory()
         $kategoriKontainer = $container->template->kategori->kategori;
         
         // Kirim data ke server menggunakan REST API
-        $response = Http::post('http://10.0.0.20:8080/api/izin_user/', [
+        $response = Http::post('http://10.0.0.20:8080/api/izin_data/', [
             'container_id' => $containerId,
             'nim_user' => $nimUser,
             'kategori_kontainer' => $kategoriKontainer,
