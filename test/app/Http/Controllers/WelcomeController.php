@@ -12,9 +12,11 @@ class WelcomeController extends Controller
     {
         $users = User::where('status', 'mahasiswa')->get();
         
+        
         foreach ($users as $user) {
             $userContainers = Container::where('id_user', $user->id)->get();
             $hasFrontendContainer = false;
+              $portKontainer = null;
 
             if ($userContainers->count() > 0) {
                 foreach ($userContainers as $container) {
@@ -22,12 +24,14 @@ class WelcomeController extends Controller
 
                     if ($kategori === 'frontend') {
                         $hasFrontendContainer = true;
+                         $portKontainer = $container->port_kontainer;
                         break;
                     }
                 }
             }
 
             $user->hasFrontendContainer = $hasFrontendContainer;
+            $user->portKontainer = $portKontainer;
         }
         
         return view('welcome', compact('users'));
