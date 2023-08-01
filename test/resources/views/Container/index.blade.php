@@ -64,8 +64,8 @@
                                     <tr>
                                          @if(Auth::user()->status == 'administrator')
                                         <th>NIM</th>
-                                        @endif
                                         <th>ID Kontainer</th>
+                                        @endif
                                         <th>Nama Kontainer</th>
                                         <th>Link Kontainer</th>
                                         <th>Port</th>
@@ -85,12 +85,12 @@
                                                 <div class="flex-grow-1">{{ $container->user->nim}}</div>
                                             </div>
                                         </td>
-                                        @endif
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $container->id}}</div>
                                             </div>
                                         </td>
+                                        @endif
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $container->nama_kontainer}}</div>
@@ -127,7 +127,7 @@
                                             <div class="d-flex align-items-center">
                                                 <!-- <div class="flex-grow-1">{{ $container->id_user }}</div> -->
                                                 <span
-                                                    id="status{{ $container->id }}">{{ $container->status ? 'Enable' : 'Disable' }}</span>
+                                                    id="status{{ $container->id }}">{{ $container->status ? 'Running' : 'Stopped' }}</span>
 
                                             </div>
                                         </td>
@@ -154,6 +154,9 @@
                                                    <a href="{{ route('terminal', ['containerId' => $container->id]) }}">
                                                         <img src="{{ asset('assets') }}/images/shell.png" alt="" height="22">
                                                     </a>
+                                                </div>
+                                                <div class="izin_user">
+                                                    <a href="{{ route('container.izin_user',  ['containerId' => $container->id]) }}" class="btn btn-sm">Izin User</a>
                                                 </div>
                                                 @if(Auth::user()->status == 'mahasiswa')
                                                 <div class="remove">
@@ -298,7 +301,7 @@
                 .then(function(response) {
                     var statusElement = document.getElementById('bolehkan' + id);
                     if (statusElement.innerText === 'Running') {
-                        statusElement.innerText = 'Exited';
+                        statusElement.innerText = 'Stopped';
                     } else {
                         statusElement.innerText = 'Running';
                     }

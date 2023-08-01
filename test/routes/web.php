@@ -53,7 +53,7 @@ Route::delete('/Container/destroy/{id}',[ContainerController::class, 'destroy'])
 Route::put('/Container/{id}/toggle-status', [ContainerController::class, 'toggleStatus']);
 Route::patch('/Container/{id}/update-bolehkan', [ContainerController::class, 'updateBolehkan'])->name('container.update_bolehkan');
 Route::get('/getContainerId/{id}', [ContainerController::class, 'getContainerId']);
-
+Route::get('/Container/{containerId}/izin_user',  [ContainerController::class, 'izinUser'])->name('container.izin_user');
 
 
 //job

@@ -301,5 +301,38 @@ public function getContainersByCategory()
         // Tampilkan halaman blade dengan iframe menggunakan URL yang telah disiapkan
         return view('wetty', compact('url'));
     }
+    public function izinUser(Request $request, $containerId)
+{
+    // Cari kontainer berdasarkan ID yang diterima dari URL
+    $container = Container::with('user', 'template')->find($containerId);
+
+    if (!$container) {
+        return redirect()->back()->with('error', 'Kontainer tidak ditemukan');
+    }
+
+    // Dapatkan NIM user dan kategori kontainer dari relasi
+    $nimUser = $container->user->nim;
+    
+    // Access the template and its relationship to get the kategori
+    $kategoriKontainer = $container->template->kategori->kategori;
+    
+    // Kirim data ke server menggunakan REST API
+    $response = Http::post('https://10.0.0.20:8080/api/izin_user', [
+        'container_id' => $containerId,
+        'nim_user' => $nimUser,
+        'kategori_kontainer' => $kategoriKontainer,
+    ]);
+
+    // Uncomment this line if needed for debugging, but remember to remove it before the redirect
+     dd($response);
+
+    // Jika server mengirim respon, Anda dapat melakukan tindakan selanjutnya berdasarkan respon tersebut
+    $responseData = $response->json();
+
+    // ...
+
+    // Redirect kembali ke halaman terminal atau lakukan tindakan lain yang diperlukan
+    return redirect()->back();
+}
 
 }
