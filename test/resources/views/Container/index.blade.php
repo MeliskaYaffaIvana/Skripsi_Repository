@@ -58,7 +58,7 @@
                                 </div>
                             </div>
 
-                            <div class="table-responsive table-card mt-3 mb-1">
+                             <div class="card-body table-responsive">
                             <table id="example" class="table " style="width:100%">
                                 <thead>
                                     <tr>
