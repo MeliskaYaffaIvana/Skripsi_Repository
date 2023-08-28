@@ -13,7 +13,7 @@
                         </div>
                     </div><!-- end card header -->
 
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <div id="Container">
                             <table id="example" class="table " style="width:100%">
                                 <thead>

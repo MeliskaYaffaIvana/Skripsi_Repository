@@ -35,7 +35,7 @@
                                                 address dan klik enter
                                             </li>
                                             <img src="{{ asset('assets') }}/images/panduan/ftp.png" alt=""
-                                                height="250"><br><br>
+                                                height="100"><br><br>
                                             <li>Masukkan kredensial untuk nama pengguna dan sandi untuk dapat masuk
                                                 keserver ftp (sama dengan username dan password saat login ke)
                                                 website</li>
@@ -45,15 +45,20 @@
                                                 code pada folder sesuai container yang direquest sebelumnya.
                                             </li>
                                             <img src="{{ asset('assets') }}/images/panduan/folder.png" alt=""
-                                                height="250"><br><br>
+                                                height="100"><br><br>
                                             <img src="{{ asset('assets') }}/images/panduan/upload.png" alt=""
-                                                height="250">
+                                                height="100">
                                             <li>Khusus untuk database harus menggunakan app pihak ketiga untuk
                                                 import kedatabase. Dapat menggunakan navicat, dbeaver
-                                                tableplus.Jadi file sql diimport terlebih dahulu
+                                                tableplus.Connect ke database menggunakan host 10.0.0.21. Untuk port,
+                                                username, dan password sesuai dengan container yang sudah dibuat sebelumnya
                                             </li>
-
-
+                                            <img src="{{ asset('assets') }}/images/panduan/connect.png" alt=""
+                                                height="250"><br><br>
+                                            <li>Setelah connect kedalam database, import file sql 
+                                            </li>
+                                            <img src="{{ asset('assets') }}/images/panduan/import.png" alt=""
+                                                height="250"><br><br>
                                     </ol>
                                 </div>
                             </div>

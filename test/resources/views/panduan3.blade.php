@@ -31,9 +31,12 @@
                                     <ol>
                                         <li>Dapat dijalankan dengan klik judul skripsi dihalaman daftar
                                             produk</li>
-                                        <li>Bisa juga dengan copy link dikolom link pada menu kontainer
-                                            yang kategori frontend
+                                            <img src="{{ asset('assets') }}/images/panduan/list.png" alt=""
+                                                height="250"><br><br>
+                                        <li>Contoh aplikasi yang dijalankan
                                         </li>
+                                        <img src="{{ asset('assets') }}/images/panduan/run.png" alt=""
+                                                height="250"><br><br>
                                     </ol>
                                 </div>
                             </div>
