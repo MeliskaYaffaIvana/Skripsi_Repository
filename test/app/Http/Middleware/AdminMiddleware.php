@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         // Cek apakah pengguna saat ini adalah admin
-        if (Auth::check() && Auth::user()->administrator()) {
+        if (auth()->user() && auth()->user()->status =='administrator') {
             return $next($request);
         }
 

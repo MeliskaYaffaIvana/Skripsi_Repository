@@ -29,23 +29,6 @@ use App\Http\Controllers\WettyController;
 Route::get('/', 'App\Http\Controllers\WelcomeController@index');
 
 Route::middleware(['auth'])->group(function () {
-//kategori
-Route::resource('Kategori',KategoriController::class);
-Route::post('/Kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
-Route::delete('/Kategori/destroy/{id}',[KategoriController::class, 'destroy'])->name('kategori.destroy');
-
-//user
-Route::resource('User',UserController::class);
-Route::get('User/create', [UserController::class, 'create'])->name('user.create');
-Route::post('User/update', [UserController::class, 'store'])->name('user.store');
-
-
-//template
-Route::resource('Template',TemplateController::class);
-Route::post('/Template/update/{id}', [TemplateController::class, 'update'])->name('template.update');
-Route::delete('/Template/destroy/{id}',[TemplateController::class, 'destroy'])->name('template.destroy');
-Route::patch('/Template/{id}/update-bolehkan', [TemplateController::class, 'updateBolehkan'])->name('template.update_bolehkan');
-
 //container
 Route::resource('Container',ContainerController::class);
 Route::post('/Container/update/{id}', [ContainerController::class, 'update'])->name('container.update');
@@ -56,27 +39,41 @@ Route::get('/getContainerId/{id}', [ContainerController::class, 'getContainerId'
 Route::post('/Container/{containerId}/izin_user',  [ContainerController::class, 'izinUser'])->name('container.izin_user');
 Route::post('/Container/{containerId}/izin_data',  [ContainerController::class, 'izinData'])->name('container.izin_data');
 
-
-//job
-Route::resource('Job',JobController::class);
-Route::resource('Jc',JobContainerController::class);
 Route::resource('Home',HomeController::class);
 Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
 Route::get('/Panduan/index1',[ProfileController::class, 'indexPanduan1'])->name('panduan1.index');
 Route::get('/Panduan/index2',[ProfileController::class, 'indexPanduan2'])->name('panduan2.index');
 Route::get('/Panduan/index3',[ProfileController::class, 'indexPanduan3'])->name('panduan3.index');
 
-
 Route::get('/terminal/{containerId}', [ContainerController::class, 'terminal'])->name('terminal');
 
+});
+Route::middleware(['auth', 'administrator'])->group(function () {
+    //kategori
+    Route::resource('Kategori',KategoriController::class);
+    Route::post('/Kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+    Route::delete('/Kategori/destroy/{id}',[KategoriController::class, 'destroy'])->name('kategori.destroy');
 
+    //template
+    Route::resource('Template',TemplateController::class);
+    Route::post('/Template/update/{id}', [TemplateController::class, 'update'])->name('template.update');
+    Route::delete('/Template/destroy/{id}',[TemplateController::class, 'destroy'])->name('template.destroy');
+    Route::patch('/Template/{id}/update-bolehkan', [TemplateController::class, 'updateBolehkan'])->name('template.update_bolehkan');
+
+    //user
+    Route::resource('User',UserController::class);
+    Route::get('User/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('User/update', [UserController::class, 'store'])->name('user.store');
+
+    //job
+    Route::resource('Job',JobController::class);
+    Route::resource('Jc',JobContainerController::class);
+
+    #change password
+    Route::get('/user/password',[ChangePasswordController::class,'CPassword'])->name('change.password');
+    Route::post('/password/update',[ChangePasswordController::class,'UpdatePassword'])->name('password.updated');
 });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-#change password
-Route::get('/user/password',[ChangePasswordController::class,'CPassword'])->name('change.password');
-Route::post('/password/update',[ChangePasswordController::class,'UpdatePassword'])->name('password.updated');
-
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
