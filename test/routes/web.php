@@ -29,25 +29,26 @@ use App\Http\Controllers\WettyController;
 Route::get('/', 'App\Http\Controllers\WelcomeController@index');
 
 Route::middleware(['auth'])->group(function () {
-//container
-Route::resource('Container',ContainerController::class);
-Route::post('/Container/update/{id}', [ContainerController::class, 'update'])->name('container.update');
-Route::delete('/Container/destroy/{id}',[ContainerController::class, 'destroy'])->name('container.destroy');
-Route::put('/Container/{id}/toggle-status', [ContainerController::class, 'toggleStatus']);
-Route::patch('/Container/{id}/update-bolehkan', [ContainerController::class, 'updateBolehkan'])->name('container.update_bolehkan');
-Route::get('/getContainerId/{id}', [ContainerController::class, 'getContainerId']);
-Route::post('/Container/{containerId}/izin_user',  [ContainerController::class, 'izinUser'])->name('container.izin_user');
-Route::post('/Container/{containerId}/izin_data',  [ContainerController::class, 'izinData'])->name('container.izin_data');
+    //container
+    Route::resource('Container',ContainerController::class);
+    Route::post('/Container/update/{id}', [ContainerController::class, 'update'])->name('container.update');
+    Route::delete('/Container/destroy/{id}',[ContainerController::class, 'destroy'])->name('container.destroy');
+    Route::put('/Container/{id}/toggle-status', [ContainerController::class, 'toggleStatus']);
+    Route::patch('/Container/{id}/update-bolehkan', [ContainerController::class, 'updateBolehkan'])->name('container.update_bolehkan');
+    Route::get('/getContainerId/{id}', [ContainerController::class, 'getContainerId']);
+    Route::post('/Container/{containerId}/izin_user',  [ContainerController::class, 'izinUser'])->name('container.izin_user');
+    Route::post('/Container/{containerId}/izin_data',  [ContainerController::class, 'izinData'])->name('container.izin_data');
 
-Route::resource('Home',HomeController::class);
-Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
-Route::get('/Panduan/index1',[ProfileController::class, 'indexPanduan1'])->name('panduan1.index');
-Route::get('/Panduan/index2',[ProfileController::class, 'indexPanduan2'])->name('panduan2.index');
-Route::get('/Panduan/index3',[ProfileController::class, 'indexPanduan3'])->name('panduan3.index');
+    Route::resource('Home',HomeController::class);
+    Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/Panduan/index1',[ProfileController::class, 'indexPanduan1'])->name('panduan1.index');
+    Route::get('/Panduan/index2',[ProfileController::class, 'indexPanduan2'])->name('panduan2.index');
+    Route::get('/Panduan/index3',[ProfileController::class, 'indexPanduan3'])->name('panduan3.index');
 
-Route::get('/terminal/{containerId}', [ContainerController::class, 'terminal'])->name('terminal');
+    Route::get('/terminal/{containerId}', [ContainerController::class, 'terminal'])->name('terminal');
 
 });
+
 Route::middleware(['auth', 'administrator'])->group(function () {
     //kategori
     Route::resource('Kategori',KategoriController::class);

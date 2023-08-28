@@ -58,7 +58,7 @@
                                 </div>
                             </div>
 
-
+                            <div class="table-responsive table-card mt-3 mb-1">
                             <table id="example" class="table " style="width:100%">
                                 <thead>
                                     <tr>
@@ -239,6 +239,7 @@
                                         @endforeach
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div><!-- end card -->
