@@ -59,6 +59,15 @@
                                             </li>
                                             <img src="{{ asset('assets') }}/images/panduan/import.png" alt=""
                                                 height="250"><br><br>
+                                            <li>Untuk konfigurasi yang diperlukan dalam menjalankan aplikasi dapat
+                                                dilakukan dengan setting didalam terminal. Dapat click icon shell dikolom action container
+                                            </li>
+                                            <img src="{{ asset('assets') }}/images/panduan/icon.png" alt=""
+                                                height="250"><br><br>
+                                                <li>Lakukan konfigurasi
+                                            </li>
+                                            <img src="{{ asset('assets') }}/images/panduan/shel.png" alt=""
+                                                height="250"><br><br>
                                     </ol>
                                 </div>
                             </div>
